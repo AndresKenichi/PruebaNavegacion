@@ -5,17 +5,40 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/agregarFragment"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Agregar Usuarios"
-            />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Realizar Examen" />
-        <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_inicio_a"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Modificar Examen" />
+            android:title="INICIO" />
+        <item
+            android:id="@+id/nav_agregarusuario_a"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="AGREGAR USUARIO" />
+        <item
+            android:id="@+id/nav_modificarusuario_a"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="MODIFICAR USUARIO" />
+        <item
+            android:id="@+id/nav_medicamentos_a"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="MEDICAMENTOS" />
+        <item
+            android:id="@+id/nav_consultarmedicamentos_a"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="CONSULTAR MEDICAMENTOS" />
+        <item
+            android:id="@+id/nav_consultarpacientes_a"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="CONSULTAR PACIENTES" />
+        <item
+            android:id="@+id/nav_gestionarconsultas_a"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="GESTIONAR CONSULTAS" />
+        <item
+            android:id="@+id/nav_gestionarareas_a"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="GESTIONAR AREAS" />
+        <item
+            android:id="@+id/nav_consultarareas_a"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="CONSULTAR AREAS" />
     </group>
 </menu>

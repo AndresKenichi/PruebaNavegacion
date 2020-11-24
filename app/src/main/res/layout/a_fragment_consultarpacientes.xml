@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui_administrador.ConsultarPacientes.ConsultarPacientesF">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logoshadow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView74"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text=" " />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/textView80"
+                android:layout_width="29dp"
+                android:layout_height="wrap_content"
+                android:text=" " />
+
+            <TextView
+                android:id="@+id/textviewx91"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:text="No.Paciente" />
+
+            <EditText
+                android:id="@+id/edtNumPacienteCP"
+                android:layout_width="186dp"
+                android:layout_height="25dp"
+                android:background="@drawable/edt"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView81"
+                android:layout_width="17dp"
+                android:layout_height="wrap_content"
+                android:text="  " />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="49dp"
+                android:layout_height="25dp"
+                android:background="@drawable/btnbuscarxx"
+                android:text=" " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView84"
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:text="  " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView85"
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:text="  " />
+
+            <GridView
+                android:id="@+id/gridPacientesCP"
+                android:layout_width="377dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/textView87"
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="  " />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView86"
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:text="  " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView91"
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:text="  " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView92"
+                android:layout_width="149dp"
+                android:layout_height="match_parent"
+                android:text="  " />
+
+            <Button
+                android:id="@+id/btnImprimirCP"
+                android:layout_width="103dp"
+                android:layout_height="32dp"
+                android:background="@drawable/imprimir"
+                android:text=" " />
+
+            <TextView
+                android:id="@+id/textView90"
+                android:layout_width="149dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="  " />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView83"
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:text="  " />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

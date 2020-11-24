@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_laboratorio"
+    app:startDestination="@id/lbCuadrosFragment">
+
+
+    <fragment
+        android:id="@+id/lbCuadrosFragment"
+        android:name="com.example.pruebanavegacion.lbCuadrosFragment"
+        android:label="Consultar Cuadro"
+        tools:layout="@layout/fragment_lb_cuadros" />
+</navigation>

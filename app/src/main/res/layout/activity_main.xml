@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="8dp"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    android:paddingLeft="8dp"
+    android:background="#FFF"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="257dp"
+        android:layout_gravity="center"
+        android:src="@drawable/dctransparente" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Correo"
+        android:textColor="#707070"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/txtUsuario"
+        android:drawableStart="@drawable/ic_email"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:drawablePadding="12dp"
+        android:inputType="textEmailAddress"
+        android:hint=" Ingrese su Correo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Contraseña"
+        android:textColor="#707070"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:id="@+id/txtPassword"
+        android:drawableStart="@drawable/ic_lock"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:hint=" Ingrese su Password"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnIngresar"
+        android:layout_width="100dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/boton_personalizado"
+        android:text="Ingresar"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/tvRegistrese"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="¿Haz olvidado tu contraseña?"
+        android:textColor="#3B595C"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

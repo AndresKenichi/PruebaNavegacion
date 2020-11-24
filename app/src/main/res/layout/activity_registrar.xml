@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Registrar">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="Registrar Usuarios"
+        android:textColor="#000"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="394dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txtNomUsu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingresar Nombre"
+                android:inputType="textPersonName"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/txtDisUsu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingresar Distrito"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtCorUsu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingrese su correo"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtPasUsu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingrese su Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/txtNit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingresar Nit"
+                android:inputType="textPersonName"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/txtDui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingresar Dui"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txtTipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Tipo Usuario"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txtEsp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingresar Especialidad"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txtEst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingrese su Estado"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txtTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingrese su Numero Tel"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/txtFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:ems="10"
+                android:hint="Ingrese su Numero Fecha"
+                android:inputType="date" />
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/boton_personalizado"
+        android:text="Registrar Usuario"
+        android:textColor="#fff" />
+
+
+
+
+
+
+</LinearLayout>

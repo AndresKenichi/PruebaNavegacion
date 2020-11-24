@@ -2,13 +2,54 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation_administrador"
-    app:startDestination="@id/agregarFragment">
-
+    android:id="@+id/mobile_navigation1"
+    app:startDestination="@id/nav_inicio_a">
 
     <fragment
-        android:id="@+id/agregarFragment"
-        android:name="com.example.pruebanavegacion.AgregarFragment"
-        android:label="fragment_agregar"
-        tools:layout="@layout/fragment_agregar" />
+        android:id="@+id/nav_inicio_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.Inicio.InicioFragment_A"
+        android:label="INICIO"
+        tools:layout="@layout/a_fragment_inicio" />
+
+    <fragment
+        android:id="@+id/nav_agregarusuario_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.AgregarUsuario.AgregarUsuarioF"
+        android:label="AGREGAR USUARIO"
+        tools:layout="@layout/a_fragment_agregarusuario" />
+
+    <fragment
+        android:id="@+id/nav_modificarusuario_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.ModificarUsuario.ModificarUsuarioF"
+        android:label="MODIFICAR USUARIO"
+        tools:layout="@layout/a_fragment_modificarusuario" />
+    <fragment
+        android:id="@+id/nav_medicamentos_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.Medicamentos.MedicamentosF"
+        android:label="MEDICAMENTOS"
+        tools:layout="@layout/a_fragment_medicamentos" />
+    <fragment
+        android:id="@+id/nav_consultarmedicamentos_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.ConsultarMedicamentos.ConsultarMedicamentosF"
+        android:label="CONSULTAR MEDICAMENTOS"
+        tools:layout="@layout/a_fragment_consultarmedicamentos" />
+    <fragment
+        android:id="@+id/nav_consultarpacientes_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.ConsultarPacientes.ConsultarPacientesF"
+        android:label="CONSULTAR PACIENTES"
+        tools:layout="@layout/a_fragment_consultarpacientes" />
+    <fragment
+        android:id="@+id/nav_gestionarconsultas_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.GestionarConsultas.GestionarConsultasF"
+        android:label="GESTIONAR CONSULTAS"
+        tools:layout="@layout/a_fragment_gestionarconsultas" />
+    <fragment
+        android:id="@+id/nav_gestionarareas_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.GestionarAreas.GestionarAreasF"
+        android:label="GESTIONAR AREAS"
+        tools:layout="@layout/a_fragment_gestionarareas" />
+    <fragment
+        android:id="@+id/nav_consultarareas_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.ConsultarAreas.ConsultarAreasF"
+        android:label="CONSULTAR AREAS"
+        tools:layout="@layout/a_fragment_consultarareas" />
 </navigation>

@@ -35,6 +35,13 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(Crear_Tabla_Pacientes);
         sqLiteDatabase.execSQL(Crear_Tabla_Cita_General);
         sqLiteDatabase.execSQL(Crear_Tabla_Consultas);
+        sqLiteDatabase.execSQL(Crear_Tabla_Medicamentos);
+        sqLiteDatabase.execSQL(Crear_Tabla_Area);
+        sqLiteDatabase.execSQL(Crear_Tabla_Lugares);
+        sqLiteDatabase.execSQL(Crear_Tabla_Ingresos);
+        sqLiteDatabase.execSQL(Crear_Tabla_ListaExamenes);
+        sqLiteDatabase.execSQL(Crear_Tabla_Cita_Examen);
+        sqLiteDatabase.execSQL(Crear_Tabla_ResultadosExamenes);
 
     }
 
@@ -47,6 +54,13 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Paciente);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Cita_General);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Consultas);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Medicamentos);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Areas);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Lugares);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Ingresos);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Lista_Examenes);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Cita_Examen);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Resultados_Examenes);
         onCreate(sqLiteDatabase);
 
     }

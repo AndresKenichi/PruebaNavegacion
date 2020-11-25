@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="416dp"
-        android:layout_height="726dp"
+        android:layout_width="362dp"
+        android:layout_height="645dp"
         android:src="@drawable/logoshadow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +19,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="413dp"
-        android:layout_height="687dp"
+        android:layout_width="363dp"
+        android:layout_height="600dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
             android:text=" " />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:orientation="horizontal">
 
@@ -48,25 +48,17 @@
 
             <TextView
                 android:id="@+id/textView76"
-                android:layout_width="113dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fecha Consulta:"
+                android:text="Fecha Consulta  "
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spnConsultasGC"
-                android:layout_width="204dp"
+                android:layout_width="171dp"
                 android:layout_height="30dp"
                 android:background="@drawable/spinlarge1" />
-
-            <TextView
-                android:id="@+id/textView78"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="  "
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnBuscarConsultasGC"
@@ -87,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="470dp"
@@ -94,7 +87,7 @@
 
             <TextView
                 android:id="@+id/textView77"
-                android:layout_width="149dp"
+                android:layout_width="136dp"
                 android:layout_height="wrap_content"
                 android:text=" " />
 

@@ -1,12 +1,25 @@
-package com.example.pruebanavegacion;
+package com.example.pruebanavegacion.ui_Laboratorio;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.pruebanavegacion.R;
+
+import BaseHospital.DatosConexion;
+import BaseHospital.Sqlite_Base;
+import Utilidades.Utilidades;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +73,51 @@ public class lbCuadrosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_lb_cuadros, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final EditText edtNumCuadro;
+        final TextView txtNombrePaciente,txtEdadPaciente,txtDuiPaciente,txtObservacionesP,txtDiagnosticoP,txtTratamientoP;
+        Button btnInsertarCuadros,btnLimpiar;
+
+        edtNumCuadro=view.findViewById(R.id.edtNumCuadro);
+        txtNombrePaciente=view.findViewById(R.id.txtNombrePaciente);
+        txtEdadPaciente=view.findViewById(R.id.txtEdadPaciente);
+        txtDuiPaciente=view.findViewById(R.id.txtDuiPaciente);
+        txtObservacionesP=view.findViewById(R.id.txtObservacionesP);
+        txtDiagnosticoP=view.findViewById(R.id.txtDiagnosticoP);
+        txtTratamientoP=view.findViewById(R.id.txtTratamientoP);
+        btnInsertarCuadros=view.findViewById(R.id.btnInsertarCuadros);
+        btnLimpiar=view.findViewById(R.id.btnLimpiar);
+
+        btnInsertarCuadros.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+              Toast.makeText(getContext(),"Holiiii",Toast.LENGTH_SHORT).show();
+              InsertarCuadro();
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+    }
+
+    private void InsertarCuadro() {
+
+        Sqlite_Base objCon=new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+
     }
 }

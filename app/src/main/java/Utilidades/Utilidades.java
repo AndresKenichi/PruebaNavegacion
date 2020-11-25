@@ -128,17 +128,17 @@ public class Utilidades {
     public static final String Campo_IdMedicamento_D="IdMedicamentos";
     public static final String Campo_IdPaciente_D="IdPaciente";
     public static final String Campo_IdUsuarios_D="IdUsuarios";
-    public static final String Campo_IdCita_GD="IdConsulta_G";
+    public static final String Campo_IdConsultasD="IdConsultas";
     public static final String Campo_CantidadD=" Cantidad";
 
-    //Declaramos una variable String donde tendremos un comando SQL para Resultados Examenes
+    //Declaramos una variable String donde tendremos un comando SQL para Detalle medicamentos
     public static final String Crear_Tabla_detallemedicamentos="create table "+Tabla_detalle_medicamentos+"("+Campo_IdDetalle+" integer primary key autoincrement, "+Campo_IdMedicamento_D+" integer, " +
             ""+Campo_IdPaciente_D+" integer, "+Campo_IdUsuarios_D+" integer, "+Campo_Tratamiento+" text, " +
-            " "+Campo_FechaREx+" text, "+Campo_HoraREx+" text "+Campo_Estado_REx+" Integer, "+Campo_IdCita_GD+" integer, "+Campo_CantidadD+" integer, " +
+            " "+Campo_FechaREx+" text, "+Campo_HoraREx+" text "+Campo_Estado_REx+" Integer, "+Campo_IdConsultasD+" integer, "+Campo_CantidadD+" integer, " +
             " foreign key("+Campo_IdMedicamento_D+") references "+Tabla_Medicamentos+"("+Campo_IdMedicamentos+"), " +
             " foreign key("+Campo_IdPaciente_D+") references "+Tabla_Paciente+"("+Campo_IdPaciente+"), " +
             " foreign key("+Campo_IdUsuarios_D+") references "+Tabla_Usuario+"("+Campo_Id+"), " +
-            " foreign key("+Campo_IdCita_GD+") references "+Tabla_Cita_General+"("+Campo_IdCita_G+"));";
+            " foreign key("+Campo_IdConsultasD+") references "+Tabla_Consultas+"("+Campo_IdConsultas+"));";
 
 
     //Declaramos una variable String donde tendremos un comando SQL para Resultados Examenes

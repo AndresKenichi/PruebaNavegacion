@@ -17,9 +17,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="363dp"
+        android:layout_height="587dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,7 +58,7 @@
 
                 <Spinner
                     android:id="@+id/spinner15"
-                    android:layout_width="263dp"
+                    android:layout_width="224dp"
                     android:layout_height="27dp"
                     android:background="@drawable/spinlarge1" />
 
@@ -74,24 +79,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="500dp"
             android:orientation="vertical">
 
             <GridView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="483dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -101,7 +99,7 @@
 
                 <TextView
                     android:id="@+id/textView135"
-                    android:layout_width="160dp"
+                    android:layout_width="137dp"
                     android:layout_height="match_parent"
                     android:text=" " />
 

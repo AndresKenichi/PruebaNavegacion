@@ -19,8 +19,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="413dp"
-        android:layout_height="687dp"
+        android:layout_width="361dp"
+        android:layout_height="640dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         <TextView
             android:id="@+id/textView75"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="12dp"
             android:text=" " />
 
         <LinearLayout
@@ -48,7 +48,7 @@
 
             <TextView
                 android:id="@+id/textView76"
-                android:layout_width="55dp"
+                android:layout_width="47dp"
                 android:layout_height="wrap_content"
                 android:text=" Tipo"
                 android:textSize="16sp"
@@ -56,7 +56,7 @@
 
             <Spinner
                 android:id="@+id/spinner4"
-                android:layout_width="266dp"
+                android:layout_width="240dp"
                 android:layout_height="30dp"
                 android:background="@drawable/spinlarge1" />
 
@@ -79,7 +79,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="470dp"
+            android:layout_height="420dp"
             android:orientation="horizontal">
 
             <GridView
@@ -87,14 +87,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="470dp"
+            android:layout_height="30dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView77"
-                android:layout_width="149dp"
+                android:layout_width="131dp"
                 android:layout_height="wrap_content"
                 android:text=" " />
 

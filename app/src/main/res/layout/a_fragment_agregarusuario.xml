@@ -8,15 +8,14 @@
     tools:context=".ui_administrador.AgregarUsuario.AgregarUsuarioF">
 
     <LinearLayout
-        android:layout_width="359dp"
-        android:layout_height="636dp"
+        android:layout_width="364dp"
+        android:layout_height="641dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18">
+        app:layout_constraintVertical_bias="0.168">
 
 
         <TextView
@@ -349,14 +348,14 @@
 
             <Spinner
                 android:id="@+id/spnDia"
-                android:layout_width="43dp"
+                android:layout_width="38dp"
                 android:layout_height="30dp"
                 android:background="@drawable/spin1"
                 android:entries="@array/snpdias" />
 
             <Spinner
                 android:id="@+id/spnMes"
-                android:layout_width="100dp"
+                android:layout_width="102dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="@drawable/spin1"
@@ -364,7 +363,7 @@
 
             <Spinner
                 android:id="@+id/spnAno"
-                android:layout_width="70dp"
+                android:layout_width="67dp"
                 android:layout_height="30dp"
                 android:background="@drawable/spin1"
                 android:entries="@array/snpanos" />

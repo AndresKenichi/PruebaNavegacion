@@ -3,12 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation_archivo"
-    app:startDestination="@id/registrarPFragment">
-
+    app:startDestination="@id/welcomeFragment">
 
     <fragment
-        android:id="@+id/registrarPFragment"
-        android:name="com.example.pruebanavegacion.RegistrarPFragment"
-        android:label="Registrar Pacientes"
-        tools:layout="@layout/fragment_registrar_p" />
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.pruebanavegacion.ui_archivo.WelcomeFragment"
+        android:label="Inicio"
+        tools:layout="@layout/ar_fragment_welcome" />
+
+    <fragment
+        android:id="@+id/registrarPaciente"
+        android:name="com.example.pruebanavegacion.ui_archivo.RegistrarPaciente"
+        android:label="Registrar paciente"
+        tools:layout="@layout/ar_fragment_welcome" />
+
+    <fragment
+        android:id="@+id/citaGeneral"
+        android:name="com.example.pruebanavegacion.ui_archivo.CitaGeneral"
+        android:label="Cita general"
+        tools:layout="@layout/ar_fragment_welcome" />
+
+    <fragment
+        android:id="@+id/agendarExamenes"
+        android:name="com.example.pruebanavegacion.ui_archivo.AgendarExamenes"
+        android:label="Agendar examenes"
+        tools:layout="@layout/ar_fragment_welcome" />
+
+    <fragment
+        android:id="@+id/consultarCuadros"
+        android:name="com.example.pruebanavegacion.ui_archivo.ConsultarCuadros"
+        android:label="Consultar cuadros"
+        tools:layout="@layout/ar_fragment_welcome" />
+
 </navigation>

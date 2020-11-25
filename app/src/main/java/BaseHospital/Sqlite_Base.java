@@ -42,6 +42,7 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(Crear_Tabla_ListaExamenes);
         sqLiteDatabase.execSQL(Crear_Tabla_Cita_Examen);
         sqLiteDatabase.execSQL(Crear_Tabla_ResultadosExamenes);
+        sqLiteDatabase.execSQL(Crear_Tabla_detallemedicamentos);
 
     }
 
@@ -61,6 +62,7 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Lista_Examenes);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Cita_Examen);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_Resultados_Examenes);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Tabla_detalle_medicamentos);
         onCreate(sqLiteDatabase);
 
     }

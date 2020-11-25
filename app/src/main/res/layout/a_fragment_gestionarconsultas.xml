@@ -19,8 +19,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="363dp"
-        android:layout_height="600dp"
+        android:layout_width="361dp"
+        android:layout_height="560dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,9 +30,9 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView75"
+            android:id="@+id/textView86"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:text=" " />
 
         <LinearLayout
@@ -71,18 +71,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="470dp"
+            android:layout_height="420dp"
             android:orientation="horizontal">
 
             <GridView
                 android:id="@+id/gridConsultasGC"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="444dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="470dp"
+            android:layout_height="30dp"
             android:orientation="horizontal">
 
             <TextView
@@ -93,8 +93,8 @@
 
             <Button
                 android:id="@+id/btnImprimirGC"
-                android:layout_width="102dp"
-                android:layout_height="31dp"
+                android:layout_width="86dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/imprimir"
                 android:text=" " />
 

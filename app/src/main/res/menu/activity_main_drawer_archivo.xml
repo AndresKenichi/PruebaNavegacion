@@ -5,17 +5,29 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/registrarPFragment"
+            android:id="@+id/welcomeFragment"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Registrar Pacientes"
+            android:title="Inicio"
             />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/registrarPaciente"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Realizar Examen" />
+            android:title="Registrar Paciente"
+            />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/citaGeneral"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Modificar Examen" />
+            android:title="Cita general"
+            />
+        <item
+            android:id="@+id/agendarExamenes"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Agendar examenes"
+            />
+        <item
+            android:id="@+id/consultarCuadros"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Consultar cuadros"
+            />
     </group>
 </menu>

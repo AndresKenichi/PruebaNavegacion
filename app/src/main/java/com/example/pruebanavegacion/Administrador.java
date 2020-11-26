@@ -8,17 +8,23 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.pruebanavegacion.ui_administrador.AgregarUsuario.AgregarUsuarioF;
+import com.example.pruebanavegacion.ui_administrador.Inicio.InicioFragment_A;
 import com.google.android.material.navigation.NavigationView;
+
+import BaseHospital.DatosConexion;
+import BaseHospital.Sqlite_Base;
 
 public class Administrador extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    private Sqlite_Base x;
     String correo;
 
     @Override
@@ -28,6 +34,8 @@ public class Administrador extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbara);
         setSupportActionBar(toolbar);
 
+        x = new Sqlite_Base(getApplicationContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+        x.abrir();
         correo=getIntent().getStringExtra("correo");
         /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +45,7 @@ public class Administrador extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         }); */
+
         DrawerLayout drawer = findViewById(R.id.drawer_layoutAdmin);
         NavigationView navigationView = findViewById(R.id.nav_viewAdmin);
         // Passing each menu ID as a set of Ids because each

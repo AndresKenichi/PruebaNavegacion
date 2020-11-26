@@ -63,4 +63,7 @@ public class AgendarExamenes extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.ar_fragment_agendar_examenes, container, false);
     }
+
+
+
 }

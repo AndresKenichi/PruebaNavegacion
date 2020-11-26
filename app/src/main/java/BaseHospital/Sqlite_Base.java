@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 import Utilidades.Utilidades;
 
 import static Utilidades.Utilidades.*;
@@ -44,6 +46,8 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(Crear_Tabla_ResultadosExamenes);
         sqLiteDatabase.execSQL(Crear_Tabla_detallemedicamentos);
 
+
+
     }
 
     //Si queremos modificar alguna estructura de nuestra base de datos utilizaremos el onUpgrade
@@ -66,7 +70,6 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
 
     }
-
     //Metodo para insertar registros en la tabla usuarios
 
     public void insetarReg(String nom, String correo, String clave ,Integer tipo, Integer esp ,String nit, String dui,String tel, String fecha, String direccion ,Integer est){
@@ -125,6 +128,7 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         return mcursor;
 
     }
+
 
 
 

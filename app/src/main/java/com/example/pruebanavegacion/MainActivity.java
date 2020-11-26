@@ -2,6 +2,8 @@ package com.example.pruebanavegacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import BaseHospital.DatosConexion;
 import BaseHospital.Sqlite_Base;
+import Utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +37,26 @@ public class MainActivity extends AppCompatActivity {
         txtPassUsu=findViewById(R.id.txtPassword);
         tvRegistrese=findViewById(R.id.tvRegistrese);
         btnIngresar=findViewById(R.id.btnIngresar);
+        Cursor h =  validacionArea();
+        Cursor k =  validacionLugares();
+
+
+        if(k.getCount()>0){
+            Toast.makeText(this,"TENEMOS DATOS LUGARES",Toast.LENGTH_LONG).show();
+        }else{
+            insertarLugares();
+        }
+
+        if(h.getCount()>0){
+            Toast.makeText(this,"TENEMOS DATOS AREAS",Toast.LENGTH_LONG).show();
+
+        }else{
+
+            insertarArea();
+
+        }
+
+
 
         tvRegistrese.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +166,50 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    public void insertarArea(){
+
+        helper.abrir();
+
+        String comandoAre4 = "INSERT INTO "+Utilidades.Tabla_Areas+"("+Utilidades.Campo_Area+") " +
+                "values('ANESTESIOLOGIA'),('URGENCIAS'),('CIRUGIA'),('ONCOLOGIA'),('CARDIOLOGIA');";
+
+        helper.getWritableDatabase().execSQL(comandoAre4);
+        helper.cerrar();
+
+    }
+    public void insertarLugares(){
+        helper.abrir();
+        String comandoL="INSERT INTO "+Utilidades.Tabla_Lugares+"("+Utilidades.Campo_IdAreaL+", "+Utilidades.Campo_Num_Cama+", "+Utilidades.Campo_Num_Cuarto+", "+Utilidades.Campo_TipoHabitacion+", "+Utilidades.Campo_EstadoL+" ) " +
+                "values('1','H-0001','H-1','DOS PERSONAS','0'),('1','H-0002','H-1','DOS PERSONAS','0'),('1','H-0003','H-1','PERSONAL','0'),('1','H-0004','H-1','EJECUTIVA','0')," +
+                "('1','H-0005','H-1','DOS PERSONAS','0'),('1','H-0006','H-1','DOS PERSONAS','0'),('1','H-0007','H-1','PERSONAL','0'),('1','H-0008','H-1','EJECUTIVA','0')," +
+                "('2','K-0001','K-6','DOS PERSONAS','0'),('2','K-0002','K-6','DOS PERSONAS','0'),('1','K-0003','K-6','PERSONAL','0'),('2','K-0003','K-6','EJECUTIVA','0')," +
+                "('2','K-0004','K-6','DOS PERSONAS','0'),('2','K-0005','K-6','DOS PERSONAS','0'),('1','K-0006','K-6','PERSONAL','0'),('2','K-0003','K-6','EJECUTIVA','0')," +
+                "('3','J-0001','K-6','DOS PERSONAS','0'),('3','J-0002','K-6','DOS PERSONAS','0'),('3','J-0003','K-6','PERSONAL','0'),('3','J-0003','J-6','EJECUTIVA','0')";
+
+        helper.getWritableDatabase().execSQL(comandoL);
+        helper.cerrar();
+    }
+    public Cursor validacionArea(){
+
+        helper.abrir();
+        Cursor u = null;
+
+        u=helper.getWritableDatabase().rawQuery("SELECT * FROM "+Utilidades.Tabla_Areas,new String[]{});
+
+        return u;
+
+    }
+    public Cursor validacionLugares(){
+
+        helper.abrir();
+        Cursor u = null;
+
+        u=helper.getWritableDatabase().rawQuery("SELECT * FROM "+Utilidades.Tabla_Lugares,new String[]{});
+
+        return u;
 
     }
 }

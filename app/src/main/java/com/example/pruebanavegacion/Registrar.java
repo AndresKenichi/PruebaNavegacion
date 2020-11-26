@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import BaseHospital.DatosConexion;
@@ -18,7 +19,7 @@ public class Registrar extends AppCompatActivity {
     Button btnRegistrar;
     EditText txtNomUsu,txtDisUsu,txtCorUsu,txtPassUsu, txtTipo;
     EditText txtEsp, txtEst, txtNit, txtDui, txtTel, txtFecha;
-
+    Spinner Especialidad;
 /*    String nom, correo, clave , tipo;
     Integer esp,est;
     String nit, dui, tel, fecha, direccion; */
@@ -39,7 +40,7 @@ public class Registrar extends AppCompatActivity {
         txtCorUsu=findViewById(R.id.txtCorUsu);
         txtPassUsu=findViewById(R.id.txtPasUsu);
         txtTipo=findViewById(R.id.txtTipo1);
-        txtEsp=findViewById(R.id.txtEsp);
+        Especialidad= findViewById(R.id.spnEspe);
         txtEst=findViewById(R.id.txtEst);
         txtNit=findViewById(R.id.txtNit);
         txtDui=findViewById(R.id.txtDui);
@@ -56,22 +57,21 @@ public class Registrar extends AppCompatActivity {
                 txtDisUsu.setError(null);
                 txtPassUsu.setError(null);
                 txtTipo.setError(null);
-                txtEsp.setError(null);
                 txtEst.setError(null);
                 txtNit.setError(null);
                 txtDui.setError(null);
                 txtTel.setError(null);
                 txtFecha.setError(null);
 
-                String nom, correo, clave,Stipo,Sesp,Sest;
-                Integer esp,est,tipo;
+                String nom, correo, clave,Stipo,Sest;
+                Integer est,tipo;
                 String nit, dui, tel, fecha, direccion;
 
                 nom=txtNomUsu.getText().toString().trim();
                 correo=txtCorUsu.getText().toString().trim();
                 clave=txtPassUsu.getText().toString().trim();
                 Stipo=txtTipo.getText().toString().trim();
-                Sesp=txtEsp.getText().toString().trim();
+
                 nit=txtNit.getText().toString().trim();
                 dui=txtDui.getText().toString().trim();
                 tel=txtTel.getText().toString().trim();
@@ -112,13 +112,6 @@ public class Registrar extends AppCompatActivity {
                     return;
                 }
 
-                if(Sesp.equals("")){
-                    //Primer error
-                    txtEsp.setError("No puedes dejar campos vacios");
-                    //Colocamos un focus
-                    txtEsp.requestFocus();
-                    return;
-                }
 
                 if(nit.equals("")){
                     //Primer error
@@ -175,11 +168,10 @@ public class Registrar extends AppCompatActivity {
                 try {
 
                     tipo=Integer.parseInt(Stipo);
-                    esp=Integer.parseInt(Sesp);
                     est=Integer.parseInt(Sest);
-
+                    String hue = Especialidad.getSelectedItem().toString();
                     helper.abrir();
-                    helper.insetarReg(nom, correo, clave, tipo, esp, nit, dui, tel, fecha, direccion, est);
+                    helper.insetarReg(nom, correo, clave, tipo, hue, nit, dui, tel, fecha, direccion, est);
                     Toast.makeText(getApplicationContext(), "Id Registro: " + helper.IdR(), Toast.LENGTH_SHORT).show();
                     helper.close();
 
@@ -194,4 +186,5 @@ public class Registrar extends AppCompatActivity {
 
 
     }
+
 }

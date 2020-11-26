@@ -27,10 +27,11 @@ public class GestionarAreasF extends Fragment {
     private GestionarAreasVM GestionarAreasVM;
     ArrayList<String> a;
     ArrayList<String> L;
-    ArrayAdapter adapter1,adapter2;
+    ArrayList<String> E;
+    ArrayAdapter adapter1,adapter2,adapter3;
     String nombreA;
     int indexHabitacion;
-    Spinner Areas,Habitacion;
+    Spinner Areas,Habitacion,Especialida,Medico;
     View vista;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,6 +42,8 @@ public class GestionarAreasF extends Fragment {
 
         Areas = vista.findViewById(R.id.spnAreasGA);
         Habitacion= vista.findViewById(R.id.spnHabi);
+        Especialida = vista.findViewById(R.id.spnEsp);
+        Medico = vista.findViewById(R.id.spnNMedico);
 
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
@@ -49,6 +52,7 @@ public class GestionarAreasF extends Fragment {
 
         adapter1 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,a);
         Areas.setAdapter(adapter1);
+
 
 
         Areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -69,6 +73,23 @@ public class GestionarAreasF extends Fragment {
 
             }
         });
+        Especialida.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                consultarDoc(adapterView.getSelectedItem().toString());
+                adapter3 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,E);
+                Medico.setAdapter(adapter3);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         x.close();
 
@@ -107,6 +128,24 @@ public class GestionarAreasF extends Fragment {
 
             nombreA=u.getString(2);
             L.add(nombreA);
+
+        }
+    }
+    public void consultarDoc(String esp){
+
+        E= new ArrayList<>();
+        x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+
+        x.abrir();
+
+        Cursor u = null;
+
+        u=x.getWritableDatabase().rawQuery("SELECT Nombre FROM "+Utilidades.Tabla_Usuario+" where Especialidad='"+esp+"'",new String[]{});
+
+        while(u.moveToNext()){
+
+            nombreA=u.getString(0);
+            E.add(nombreA);
 
         }
     }

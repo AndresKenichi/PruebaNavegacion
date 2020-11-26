@@ -130,7 +130,7 @@ public class AgregarUsuarioF extends Fragment {
                             try{
 
                                 helper.abrir();
-                                helper.insetarReg(NombreEmpleado.getText().toString(),Usuario.getText().toString(), Clave.getText().toString(),select[0], 2,NIT.getText().toString(),DUI.getText().toString(),"7809-4237", fecha_nac, Direccion.getText().toString(),1);
+                                helper.insetarReg(NombreEmpleado.getText().toString(),Usuario.getText().toString(), Clave.getText().toString(),select[0],Especialidad.getSelectedItem().toString(),NIT.getText().toString(),DUI.getText().toString(),"7809-4237", fecha_nac, Direccion.getText().toString(),1);
                                 Toast.makeText(getContext(),"COINCIDEN "+NombreEmpleado.getText()+fecha_nac,Toast.LENGTH_SHORT).show();
                                 helper.close();
                                 startActivity(ok);

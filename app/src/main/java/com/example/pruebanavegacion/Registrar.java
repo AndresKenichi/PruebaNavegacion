@@ -3,6 +3,7 @@ package com.example.pruebanavegacion;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +19,9 @@ public class Registrar extends AppCompatActivity {
     EditText txtNomUsu,txtDisUsu,txtCorUsu,txtPassUsu, txtTipo;
     EditText txtEsp, txtEst, txtNit, txtDui, txtTel, txtFecha;
 
-    String nom, correo, clave , tipo;
+/*    String nom, correo, clave , tipo;
     Integer esp,est;
-    String nit, dui, tel, fecha, direccion;
+    String nit, dui, tel, fecha, direccion; */
 
 
     //Creamos una instacia de nuestra base de datos
@@ -37,7 +38,7 @@ public class Registrar extends AppCompatActivity {
         txtDisUsu=findViewById(R.id.txtDisUsu);
         txtCorUsu=findViewById(R.id.txtCorUsu);
         txtPassUsu=findViewById(R.id.txtPasUsu);
-        txtTipo=findViewById(R.id.txtTipo);
+        txtTipo=findViewById(R.id.txtTipo1);
         txtEsp=findViewById(R.id.txtEsp);
         txtEst=findViewById(R.id.txtEst);
         txtNit=findViewById(R.id.txtNit);
@@ -62,21 +63,21 @@ public class Registrar extends AppCompatActivity {
                 txtTel.setError(null);
                 txtFecha.setError(null);
 
-                String nom, correo, clave;
-                Integer esp,est,tipo;;
+                String nom, correo, clave,Stipo,Sesp,Sest;
+                Integer esp,est,tipo;
                 String nit, dui, tel, fecha, direccion;
 
-                nom=txtNomUsu.getText().toString();
-                correo=txtCorUsu.getText().toString();
-                clave=txtPassUsu.getText().toString();
-                tipo=Integer.parseInt(txtTipo.getText().toString());
-                esp=Integer.parseInt(txtEsp.getText().toString());
-                nit=txtNit.getText().toString();
-                dui=txtDui.getText().toString();
-                tel=txtTel.getText().toString();
-                fecha=txtFecha.getText().toString();
-                direccion=txtDisUsu.getText().toString();
-                est=Integer.parseInt(txtEst.getText().toString());
+                nom=txtNomUsu.getText().toString().trim();
+                correo=txtCorUsu.getText().toString().trim();
+                clave=txtPassUsu.getText().toString().trim();
+                Stipo=txtTipo.getText().toString().trim();
+                Sesp=txtEsp.getText().toString().trim();
+                nit=txtNit.getText().toString().trim();
+                dui=txtDui.getText().toString().trim();
+                tel=txtTel.getText().toString().trim();
+                fecha=txtFecha.getText().toString().trim();
+                direccion=txtDisUsu.getText().toString().trim();
+                Sest=txtEst.getText().toString().trim();
 
 
                 if(nom.equals("")){
@@ -103,7 +104,7 @@ public class Registrar extends AppCompatActivity {
                     return;
                 }
 
-                if(tipo.equals("")){
+                if(Stipo.equals("")){
                     //Primer error
                     txtTipo.setError("No puedes dejar campos vacios");
                     //Colocamos un focus
@@ -111,11 +112,11 @@ public class Registrar extends AppCompatActivity {
                     return;
                 }
 
-                if(esp.equals("")){
+                if(Sesp.equals("")){
                     //Primer error
-                    txtTipo.setError("No puedes dejar campos vacios");
+                    txtEsp.setError("No puedes dejar campos vacios");
                     //Colocamos un focus
-                    txtTipo.requestFocus();
+                    txtEsp.requestFocus();
                     return;
                 }
 
@@ -159,7 +160,7 @@ public class Registrar extends AppCompatActivity {
                     txtDisUsu.requestFocus();
                     return;
                 }
-                if(est.equals("")){
+                if(Sest.equals("")){
                     //Primer error
                     txtEst.setError("No puedes dejar campos vacios");
                     //Colocamos un focus
@@ -171,13 +172,22 @@ public class Registrar extends AppCompatActivity {
 
 
 
+                try {
 
-                helper.abrir();
-                helper.insetarReg(nom, correo, clave ,tipo, esp ,nit, dui, tel, fecha, direccion ,est);
-                Toast.makeText(getApplicationContext(),"Id Registro: "+helper.IdR(),Toast.LENGTH_SHORT).show();
-                helper.close();
-                Intent intent=new Intent(Registrar.this,MainActivity.class);
-                startActivity(intent);
+                    tipo=Integer.parseInt(Stipo);
+                    esp=Integer.parseInt(Sesp);
+                    est=Integer.parseInt(Sest);
+
+                    helper.abrir();
+                    helper.insetarReg(nom, correo, clave, tipo, esp, nit, dui, tel, fecha, direccion, est);
+                    Toast.makeText(getApplicationContext(), "Id Registro: " + helper.IdR(), Toast.LENGTH_SHORT).show();
+                    helper.close();
+
+                    Intent intent = new Intent(Registrar.this, MainActivity.class);
+                    startActivity(intent);
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
 
             }
         });

@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/lbCuadrosFragment"
-        android:name="com.example.pruebanavegacion.lbCuadrosFragment"
+        android:name="com.example.pruebanavegacion.ui_Laboratorio.lbCuadrosFragment"
         android:label="Consultar Cuadro"
         tools:layout="@layout/fragment_lb_cuadros" />
 </navigation>

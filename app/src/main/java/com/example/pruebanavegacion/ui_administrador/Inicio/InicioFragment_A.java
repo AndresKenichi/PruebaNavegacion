@@ -1,5 +1,6 @@
 package com.example.pruebanavegacion.ui_administrador.Inicio;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.pruebanavegacion.R;
+import com.example.pruebanavegacion.ui_administrador.AgregarUsuario.AgregarUsuarioF;
 
 public class InicioFragment_A extends Fragment {
 
@@ -32,4 +36,5 @@ public class InicioFragment_A extends Fragment {
         });
         return root;
     }
+
 }

@@ -189,7 +189,7 @@ public class Utilidades {
 
     //Declaramos una variable String donde tendremos un comando SQL para Usuario
    public static final String Crear_Tabla_Usuarios="create table "+Tabla_Usuario+"("+Campo_Id+" integer primary key autoincrement, "+Campo_Nombre+" text, " +
-            " "+Campo_Correo+" text, "+Campo_Clave+" text, "+Campo_Tipo_User+" integer, "+Campo_Especialidad+" text, "+Campo_Nit+" text, "+Campo_Dui+" text, "+Campo_Telefono+" text, " +
+            " "+Campo_Correo+" text, "+Campo_Clave+" text, "+Campo_Tipo_User+" text, "+Campo_Especialidad+" text, "+Campo_Nit+" text, "+Campo_Dui+" text, "+Campo_Telefono+" text, " +
             " "+Campo_Fecha_Nac+" text, "+Campo_Direccion+" text, "+Campo_Estado+" integer );";
 
 

@@ -88,25 +88,17 @@
                 android:hint="Ingresar Dui"
                 android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/txtTipo1"
+            <Spinner
+                android:id="@+id/spnEspe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:ems="10"
-                android:hint="Tipo Usuario"
-                android:inputType="number" />
+                android:entries="@array/snpespecialidades" />
 
-            <EditText
-                android:id="@+id/txtEsp"
+            <Spinner
+                android:id="@+id/spnTi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:ems="10"
-                android:hint="Ingresar Especialidad"
-                android:inputType="number" />
+                android:entries="@array/snproles" />
 
             <EditText
                 android:id="@+id/txtEst"

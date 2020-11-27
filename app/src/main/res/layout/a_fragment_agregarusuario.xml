@@ -94,7 +94,8 @@
                 android:id="@+id/spnEspecialidad"
                 android:layout_width="223dp"
                 android:layout_height="30dp"
-                android:background="@drawable/spinlarge1" />
+                android:background="@drawable/spinlarge1"
+                android:entries="@array/snpespecialidades" />
 
             <TextView
                 android:id="@+id/textViewx3"

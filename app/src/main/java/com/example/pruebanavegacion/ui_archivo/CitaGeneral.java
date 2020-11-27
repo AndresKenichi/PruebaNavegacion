@@ -1,5 +1,6 @@
 package com.example.pruebanavegacion.ui_archivo;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -28,6 +30,7 @@ import java.util.TimeZone;
 public class CitaGeneral extends Fragment {
     TextView tvDate, tvHour;
     Button btnDate, btnHour;
+    private int year,month,day;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -84,7 +87,8 @@ public class CitaGeneral extends Fragment {
         tvHour=view.findViewById(R.id.tvHour);
         btnDate=view.findViewById(R.id.btnDate);
         btnHour=view.findViewById(R.id.btnHour);
-
+        //instancia para un objeto de tipo calendar
+        final Calendar calendar=Calendar.getInstance();
 
         //btn para el timepicker
         btnHour.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +110,27 @@ public class CitaGeneral extends Fragment {
                     }
                 },hours, mins, false);
                 timePickerDialog.show();
+            }
+        });
+
+        //btn para el date picker
+        btnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                year=calendar.get(Calendar.YEAR);
+                month=calendar.get(Calendar.MONTH);
+                day=calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        tvDate.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+                    }
+                },year,month,day);
+                //estableciendo la fecha minima
+                calendar.add(Calendar.MONTH,0);
+                calendar.add(Calendar.DAY_OF_MONTH,0);
+                datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis()-1000);
+                datePickerDialog.show();
             }
         });
 

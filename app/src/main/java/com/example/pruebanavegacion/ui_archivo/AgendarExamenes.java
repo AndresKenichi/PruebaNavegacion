@@ -2,6 +2,8 @@ package com.example.pruebanavegacion.ui_archivo;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -64,6 +66,10 @@ public class AgendarExamenes extends Fragment {
         return inflater.inflate(R.layout.ar_fragment_agendar_examenes, container, false);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
 
+    }
 }

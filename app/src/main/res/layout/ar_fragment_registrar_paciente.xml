@@ -3,8 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logoshadow"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui_archivo.RegistrarPaciente">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logoshadow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,6 +37,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Registrar paciente"
+                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <LinearLayout
@@ -40,15 +51,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="No. paciente:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextNumber"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -62,15 +77,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Usuario:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextTextPersonName4"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -84,15 +103,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="DUI:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextNumber2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -106,15 +129,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="NIT:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextNumber3"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -128,15 +155,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Direccion:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextTextPersonName5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -150,16 +181,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="fecha nacimiento:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextDate2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:hint="DD/MM/YYYY"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        android:textColor="#FFFFFF" />
 
                 </LinearLayout>
 
@@ -174,15 +208,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Telefono:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextPhone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="phone" />
+                        android:inputType="phone"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <Switch
@@ -190,7 +228,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Seguro medico:"
-                    android:textColor="#938888"
+                    android:textColor="#000000"
                     android:textOff="NO"
                     android:textOn="SI"
                     android:textSize="18sp" />
@@ -206,15 +244,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Aseguradora:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextTextPersonName6"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -228,15 +270,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="No. Afiliado:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextNumber4"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <TextView
@@ -246,6 +292,7 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="Datos medicos"
+                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <LinearLayout
@@ -264,10 +311,13 @@
                     <EditText
                         android:id="@+id/editTextTextPersonName7"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -281,15 +331,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Peso:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextNumber5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -303,15 +357,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Alergias:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextTextPersonName8"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -325,15 +383,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Discapacidades:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextTextPersonName9"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <TextView
@@ -342,6 +404,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Contacto de emergencia"
+                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <LinearLayout
@@ -355,15 +418,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nombre:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextTextPersonName10"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -377,15 +444,19 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Telefono:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <EditText
                         android:id="@+id/editTextPhone2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edtlow"
                         android:ems="10"
-                        android:inputType="phone" />
+                        android:inputType="phone"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -399,13 +470,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Parentesco:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <Spinner
                         android:id="@+id/spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_height="45dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinlarge1" />
 
                 </LinearLayout>
 
@@ -422,7 +496,9 @@
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
                         android:layout_weight="1"
-                        android:text="Guardar" />
+                        android:background="@color/colorPrimary"
+                        android:text="Guardar"
+                        android:textColor="#FFFFFF" />
 
                     <Button
                         android:id="@+id/button2"
@@ -431,7 +507,9 @@
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
                         android:layout_weight="1"
-                        android:text="Cancelar" />
+                        android:background="@color/colorPrimary"
+                        android:text="Cancelar"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
             </LinearLayout>

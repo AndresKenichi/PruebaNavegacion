@@ -113,13 +113,17 @@ public class ConsultarCuadros extends Fragment {
                     Cursor InfoConsulta= BuscarCuadronConsulta(numeroC);
                     if (InfoConsulta.getCount()>0){
                         InfoConsulta.moveToFirst();
-                        Integer idCita=InfoConsulta.getInt(1);
-                        String indicaciones=InfoConsulta.getString(6);
+                        String idCita=InfoConsulta.getString(0);
+                        String Fecha=InfoConsulta.getString(1);
+                        String DUI=InfoConsulta.getString(2);
+                        String indicaciones=InfoConsulta.getString(3);
                         String diagnostico=InfoConsulta.getString(4);
-                        String tratamiento=InfoConsulta.getString(7);
+                        String tratamiento=InfoConsulta.getString(5);
 
                         // Toast.makeText(getContext(),"hay existencias "+idCita,Toast.LENGTH_SHORT).show();
-                        txtName.setText(idCita.toString());
+                        txtName.setText(idCita);
+                        txtAge.setText(Fecha);
+                        txtDUI.setText(DUI);
                         txtObservaciones.setText(indicaciones);
                         txtDiagnostico.setText(diagnostico);
                         txtTratamiento.setText(tratamiento);
@@ -153,8 +157,9 @@ public class ConsultarCuadros extends Fragment {
         Cursor cursorConsulta=null;
 
         Sqlite_Base objCon=new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
-        cursorConsulta=objCon.getWritableDatabase().rawQuery("select * from "+ Utilidades.Tabla_Consultas+" where "+Utilidades.Campo_IdConsultas+" like "+numero+" ;",new String[]{});
-
+        //cursorConsulta=objCon.getWritableDatabase().rawQuery("select * from "+ Utilidades.Tabla_Consultas+" where "+Utilidades.Campo_IdConsultas+" like "+numero+" ;",new String[]{});
+        cursorConsulta=objCon.getWritableDatabase().rawQuery("Select p.Nombre,p.Fecha,p.DUI, cn.Indicaciones,cn.Diagnostico,cn.Tratamiento from Pacientes p inner join Citas_Generales c on \n" +
+                "c.IdPaciente = p.IdPaciente inner join consultas cn on c.IdCita_G = cn.IdCita_G where cn.IdConsultas="+numero,new String[]{});
         return  cursorConsulta;
     }
 

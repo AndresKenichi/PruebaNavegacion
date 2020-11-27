@@ -17,9 +17,9 @@ import BaseHospital.Sqlite_Base;
 public class Registrar extends AppCompatActivity {
 
     Button btnRegistrar;
-    EditText txtNomUsu,txtDisUsu,txtCorUsu,txtPassUsu, txtTipo;
-    EditText txtEsp, txtEst, txtNit, txtDui, txtTel, txtFecha;
-    Spinner Especialidad;
+    EditText txtNomUsu,txtDisUsu,txtCorUsu,txtPassUsu;
+    EditText  txtEst, txtNit, txtDui, txtTel, txtFecha;
+    Spinner Especialidad,TipoU;
 /*    String nom, correo, clave , tipo;
     Integer esp,est;
     String nit, dui, tel, fecha, direccion; */
@@ -39,7 +39,7 @@ public class Registrar extends AppCompatActivity {
         txtDisUsu=findViewById(R.id.txtDisUsu);
         txtCorUsu=findViewById(R.id.txtCorUsu);
         txtPassUsu=findViewById(R.id.txtPasUsu);
-        txtTipo=findViewById(R.id.txtTipo1);
+        TipoU=findViewById(R.id.spnTi);
         Especialidad= findViewById(R.id.spnEspe);
         txtEst=findViewById(R.id.txtEst);
         txtNit=findViewById(R.id.txtNit);
@@ -56,21 +56,19 @@ public class Registrar extends AppCompatActivity {
                 txtCorUsu.setError(null);
                 txtDisUsu.setError(null);
                 txtPassUsu.setError(null);
-                txtTipo.setError(null);
                 txtEst.setError(null);
                 txtNit.setError(null);
                 txtDui.setError(null);
                 txtTel.setError(null);
                 txtFecha.setError(null);
 
-                String nom, correo, clave,Stipo,Sest;
-                Integer est,tipo;
+                String nom, correo, clave,Sest;
+                Integer est;
                 String nit, dui, tel, fecha, direccion;
 
                 nom=txtNomUsu.getText().toString().trim();
                 correo=txtCorUsu.getText().toString().trim();
                 clave=txtPassUsu.getText().toString().trim();
-                Stipo=txtTipo.getText().toString().trim();
 
                 nit=txtNit.getText().toString().trim();
                 dui=txtDui.getText().toString().trim();
@@ -104,13 +102,7 @@ public class Registrar extends AppCompatActivity {
                     return;
                 }
 
-                if(Stipo.equals("")){
-                    //Primer error
-                    txtTipo.setError("No puedes dejar campos vacios");
-                    //Colocamos un focus
-                    txtTipo.requestFocus();
-                    return;
-                }
+
 
 
                 if(nit.equals("")){
@@ -163,15 +155,14 @@ public class Registrar extends AppCompatActivity {
 
 
 
-
-
                 try {
 
-                    tipo=Integer.parseInt(Stipo);
                     est=Integer.parseInt(Sest);
                     String hue = Especialidad.getSelectedItem().toString();
+                    String euh = TipoU.getSelectedItem().toString();
+
                     helper.abrir();
-                    helper.insetarReg(nom, correo, clave, tipo, hue, nit, dui, tel, fecha, direccion, est);
+                    helper.insetarReg(nom, correo, clave, euh, hue, nit, dui, tel, fecha, direccion, est);
                     Toast.makeText(getApplicationContext(), "Id Registro: " + helper.IdR(), Toast.LENGTH_SHORT).show();
                     helper.close();
 

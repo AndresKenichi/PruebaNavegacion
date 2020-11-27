@@ -111,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
                         //USUARIO YA REGISTRADO
                         String msj = cursor.getString(1);
                         String cor= cursor.getString(2);
-                        Integer rol= cursor.getInt(4);
+                        String rol= cursor.getString(4);
 
 
                         Toast.makeText(getApplicationContext(),"Usuario:"+msj,Toast.LENGTH_SHORT).show();
                       //Nivel 0 Doctor
-                        if(rol==0){
+                        if(rol.equals("Doctor")){
 
                             Intent intent=new Intent(MainActivity.this,Home.class);
                             intent.putExtra("correo",cor);
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                        //Nivel 1 Administrador
-                        if(rol==1){
+                        if(rol.equals("Administrador")){
 
                             Intent intent1=new Intent(MainActivity.this,Administrador.class);
                             intent1.putExtra("correo",cor);
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                       //Nivel 2 Archivo
-                       else if(rol==2){
+                       else if(rol.equals("Archivo")){
 
                             Intent intent2=new Intent(MainActivity.this,Archivo.class);
                             intent2.putExtra("correo",cor);
@@ -141,16 +141,13 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                        //Nivel 3 laboratorio
-                        else if(rol==3){
+                        else if(rol.equals("Laboratorio")){
 
                             Intent intent3=new Intent(MainActivity.this,Laboratorio.class);
                             intent3.putExtra("correo",cor);
                             startActivity(intent3);
 
                         }
-
-
-
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Error de Autenticacion",Toast.LENGTH_SHORT).show();
@@ -174,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         helper.abrir();
 
         String comandoAre4 = "INSERT INTO "+Utilidades.Tabla_Areas+"("+Utilidades.Campo_Area+") " +
-                "values('ANESTESIOLOGIA'),('URGENCIAS'),('CIRUGIA'),('ONCOLOGIA'),('CARDIOLOGIA');";
+                "values('ANESTESIOLOGIA'),('URGENCIAS'),('CIRUGIA'),('ONCOLOGIA'),('CARDIOLOGIA'),('NEUROLOGIA'),('PSICOLOGIA'),('UROLOGIA'),('NUTRIOLOGIA'),('DERMATOLOGIA'),('OTORRINOLARINGOLOGIA'),('FARMACEUTICA');";
 
         helper.getWritableDatabase().execSQL(comandoAre4);
         helper.cerrar();

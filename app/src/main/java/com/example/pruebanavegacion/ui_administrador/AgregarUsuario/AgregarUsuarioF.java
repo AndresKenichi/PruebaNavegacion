@@ -56,7 +56,7 @@ public class AgregarUsuarioF extends Fragment {
         Utilidades rp = new Utilidades();
         helper = new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
-        final int[] select = new int[1];
+        final String[] select = new String[1];
 
 
         Especialidad = vista.findViewById(R.id.spnEspecialidad);
@@ -83,7 +83,7 @@ public class AgregarUsuarioF extends Fragment {
             public void onClick(View view) {
                 e2.setChecked(false);
                 e3.setChecked(false);
-                select[0] =0;
+                select[0] ="Archivo";
             }
         });
         e2.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +91,7 @@ public class AgregarUsuarioF extends Fragment {
             public void onClick(View view) {
                 e1.setChecked(false);
                 e3.setChecked(false);
-                select[0]=2;
+                select[0]="Administrador";
             }
         });
         e3.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +99,7 @@ public class AgregarUsuarioF extends Fragment {
             public void onClick(View view) {
                 e1.setChecked(false);
                 e2.setChecked(false);
-                select[0]=1;
+                select[0]="Doctor";
             }
         });
         Guardar.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +109,7 @@ public class AgregarUsuarioF extends Fragment {
                 helper = new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
                 Intent ok = new Intent(getContext(),Administrador.class);
                 String d,m,a,fecha_nac;
+
                 if(validacorreo(Usuario.getText().toString())==false){
                     Cursor u =helper.ConsultarUsuPas(Usuario.getText().toString(),Clave.getText().toString());
                     //Primer error

@@ -159,19 +159,25 @@
 
     </string-array>
     <string-array name="snpespecialidades">
-        <item>Cardiologo</item>
-        <item>Anesteciologo</item>
-        <item>Otorrinolaringologo</item>
-        <item>Cirujano</item>
-        <item>Oncologo</item>
-        <item>Enfermero Auxiliar</item>
-        <item>Dermatologo</item>
-        <item>Neumologo</item>
-        <item>Nutriologo</item>
-        <item>Neurologo</item>
-        <item>Psicologo</item>
-        <item>Gastroenterologo</item>
-        <item>Urología</item>
+    <item>Cardiologo</item>
+    <item>Anesteciologo</item>
+    <item>Otorrinolaringologo</item>
+    <item>Cirujano</item>
+    <item>Oncologo</item>
+    <item>Enfermero Auxiliar</item>
+    <item>Dermatologo</item>
+    <item>Neumologo</item>
+    <item>Nutriologo</item>
+    <item>Neurologo</item>
+    <item>Psicologo</item>
+    <item>Gastroenterologo</item>
+    <item>Urología</item>
+</string-array>
+    <string-array name="snproles">
+        <item>Doctor</item>
+        <item>Administrador</item>
+        <item>Archivo</item>
+        <item>Laboratorio</item>
     </string-array>
     <string-array name="snphoras">
         <item>00</item>

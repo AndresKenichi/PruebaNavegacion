@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"TENEMOS DATOS LUGARES",Toast.LENGTH_LONG).show();
         }else{
             insertarLugares();
+            h =  validacionArea();
+            k =  validacionLugares();
         }
 
         if(h.getCount()>0){
@@ -174,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 "values('ANESTESIOLOGIA'),('URGENCIAS'),('CIRUGIA'),('ONCOLOGIA'),('CARDIOLOGIA'),('NEUROLOGIA'),('PSICOLOGIA'),('UROLOGIA'),('NUTRIOLOGIA'),('DERMATOLOGIA'),('OTORRINOLARINGOLOGIA'),('FARMACEUTICA');";
 
         helper.getWritableDatabase().execSQL(comandoAre4);
-        helper.cerrar();
+
 
     }
     public void insertarLugares(){
@@ -187,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                 "('3','J-0001','K-6','DOS PERSONAS','1'),('3','J-0002','K-6','DOS PERSONAS','0'),('3','J-0003','K-6','PERSONAL','0'),('3','J-0003','J-6','EJECUTIVA','0')";
 
         helper.getWritableDatabase().execSQL(comandoL);
+
     }
     public Cursor validacionArea(){
 

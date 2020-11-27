@@ -46,7 +46,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editTextNumber8"
+                        android:id="@+id/edtNoCuadro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -55,7 +55,7 @@
                         android:inputType="number" />
 
                     <Button
-                        android:id="@+id/button5"
+                        android:id="@+id/btnSearchCuadro"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -83,7 +83,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView50"
+                        android:id="@+id/txtName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -106,7 +106,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView52"
+                        android:id="@+id/txtAge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -129,7 +129,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView56"
+                        android:id="@+id/txtDUI"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -160,7 +160,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView59"
+                        android:id="@+id/txtObservaciones"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -182,7 +182,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView61"
+                        android:id="@+id/txtDiagnostico"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -204,7 +204,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView63"
+                        android:id="@+id/txtTratamiento"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -213,10 +213,16 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button11"
+                    android:id="@+id/btnClear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="clear" />
+
+                <Button
+                    android:id="@+id/btnInsert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Insertar" />
 
             </LinearLayout>
         </LinearLayout>

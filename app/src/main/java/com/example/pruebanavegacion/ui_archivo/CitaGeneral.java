@@ -85,6 +85,8 @@ public class CitaGeneral extends Fragment {
         btnDate=view.findViewById(R.id.btnDate);
         btnHour=view.findViewById(R.id.btnHour);
 
+
+        //btn para el timepicker
         btnHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

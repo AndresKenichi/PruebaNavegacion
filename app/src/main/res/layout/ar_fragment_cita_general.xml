@@ -38,6 +38,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Cita General"
+                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <LinearLayout
@@ -48,19 +49,21 @@
                     <EditText
                         android:id="@+id/editTextNumber6"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:background="@drawable/edt"
                         android:hint="No. paciente"
                         android:inputType="number"
                         android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/button3"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
-                        android:text="Buscar" />
+                        android:background="@drawable/btnbuscarxx" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -82,8 +85,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Primer Usuario"
-                        android:textColor="#3F51B5"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -106,8 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="7575-7575"
-                        android:textColor="#3F51B5"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -130,8 +131,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="6554984-1"
-                        android:textColor="#3F51B5"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -165,6 +165,7 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="date"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -189,7 +190,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="time" />
+                        android:inputType="time"
+                        android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
 
@@ -222,7 +224,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
 
@@ -247,6 +250,7 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="time"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -277,7 +281,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
 
@@ -301,14 +306,17 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="time" />
+                        android:inputType="time"
+                        android:textColor="@color/colorPrimary" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Guardar" />
+                    android:background="@color/colorPrimary"
+                    android:text="Guardar"
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 

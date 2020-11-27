@@ -180,14 +180,13 @@ public class MainActivity extends AppCompatActivity {
     public void insertarLugares(){
         helper.abrir();
         String comandoL="INSERT INTO "+Utilidades.Tabla_Lugares+"("+Utilidades.Campo_IdAreaL+", "+Utilidades.Campo_Num_Cama+", "+Utilidades.Campo_Num_Cuarto+", "+Utilidades.Campo_TipoHabitacion+", "+Utilidades.Campo_EstadoL+" ) " +
-                "values('1','H-0001','H-1','DOS PERSONAS','0'),('1','H-0002','H-1','DOS PERSONAS','0'),('1','H-0003','H-1','PERSONAL','0'),('1','H-0004','H-1','EJECUTIVA','0')," +
+                "values('1','H-0001','H-1','DOS PERSONAS','1'),('1','H-0002','H-1','DOS PERSONAS','0'),('1','H-0003','H-1','PERSONAL','0'),('1','H-0004','H-1','EJECUTIVA','0')," +
                 "('1','H-0005','H-1','DOS PERSONAS','0'),('1','H-0006','H-1','DOS PERSONAS','0'),('1','H-0007','H-1','PERSONAL','0'),('1','H-0008','H-1','EJECUTIVA','0')," +
-                "('2','K-0001','K-6','DOS PERSONAS','0'),('2','K-0002','K-6','DOS PERSONAS','0'),('1','K-0003','K-6','PERSONAL','0'),('2','K-0003','K-6','EJECUTIVA','0')," +
+                "('2','K-0001','K-6','DOS PERSONAS','1'),('2','K-0002','K-6','DOS PERSONAS','0'),('1','K-0003','K-6','PERSONAL','0'),('2','K-0003','K-6','EJECUTIVA','0')," +
                 "('2','K-0004','K-6','DOS PERSONAS','0'),('2','K-0005','K-6','DOS PERSONAS','0'),('1','K-0006','K-6','PERSONAL','0'),('2','K-0003','K-6','EJECUTIVA','0')," +
-                "('3','J-0001','K-6','DOS PERSONAS','0'),('3','J-0002','K-6','DOS PERSONAS','0'),('3','J-0003','K-6','PERSONAL','0'),('3','J-0003','J-6','EJECUTIVA','0')";
+                "('3','J-0001','K-6','DOS PERSONAS','1'),('3','J-0002','K-6','DOS PERSONAS','0'),('3','J-0003','K-6','PERSONAL','0'),('3','J-0003','J-6','EJECUTIVA','0')";
 
         helper.getWritableDatabase().execSQL(comandoL);
-        helper.cerrar();
     }
     public Cursor validacionArea(){
 

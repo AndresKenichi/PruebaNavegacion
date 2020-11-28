@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logoshadow"
+    android:background="#FFFFFF"
     tools:context=".ui_archivo.ConsultarCuadros">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logoshadow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -14,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,6 +39,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Consultar cuadros"
+                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <LinearLayout
@@ -36,20 +48,23 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editTextNumber8"
+                        android:id="@+id/edtNoCuadro"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edt"
                         android:ems="10"
                         android:hint="No. registro"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="#090909" />
 
                     <Button
-                        android:id="@+id/button5"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/btnSearchCuadro"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
-                        android:text="buscar" />
+                        android:background="@drawable/btnbuscarxx" />
                 </LinearLayout>
 
                 <ImageView
@@ -57,6 +72,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
                     android:src="@drawable/usericon" />
 
                 <LinearLayout
@@ -70,15 +86,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nombre:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView50"
+                        android:id="@+id/txtName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Kevin Vasquez"
-                        android:textColor="#3F51B5"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -93,15 +109,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Edad:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView52"
+                        android:id="@+id/txtAge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="25"
-                        android:textColor="#3F51B5"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -116,15 +132,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="DUI:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView56"
+                        android:id="@+id/txtDUI"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="6548941-0"
-                        android:textColor="#3F51B5"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -134,7 +150,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Datos generales"
-                    android:textSize="18sp" />
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -147,14 +164,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Observaciones:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView59"
+                        android:id="@+id/txtObservaciones"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="..."
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -169,14 +187,15 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Diagnostico:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView61"
+                        android:id="@+id/txtDiagnostico"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="..."
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -191,22 +210,33 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Tratamiento:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView63"
+                        android:id="@+id/txtTratamiento"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="..."
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button11"
+                    android:id="@+id/btnClear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="clear" />
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="clear"
+                    android:textColor="#FDFDFD" />
+
+                <Button
+                    android:id="@+id/btnInsert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="Insertar"
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
         </LinearLayout>

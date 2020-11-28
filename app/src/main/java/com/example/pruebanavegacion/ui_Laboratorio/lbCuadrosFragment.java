@@ -138,9 +138,20 @@ public class lbCuadrosFragment extends Fragment {
              Cursor InfoConsulta= BuscarCuadronConsulta(numeroC);
                 if (InfoConsulta.getCount()>0){
                    InfoConsulta.moveToFirst();
-                   Integer idCita=InfoConsulta.getInt(1);
+                   String idCita=InfoConsulta.getString(0);
+                   String Fecha=InfoConsulta.getString(1);
+                   String Dui=InfoConsulta.getString(2);
+                   String indicaciones=InfoConsulta.getString(3);
+                   String Diagnostic=InfoConsulta.getString(4);
+                   String trata=InfoConsulta.getString(5);
+
                    // Toast.makeText(getContext(),"hay existencias "+idCita,Toast.LENGTH_SHORT).show();
-                   txtNombrePaciente.setText(idCita.toString());
+                   txtNombrePaciente.setText(idCita);
+                   txtEdadPaciente.setText(Fecha);
+                   txtDuiPaciente.setText(Dui);
+                   txtObservacionesP.setText(indicaciones);
+                   txtDiagnosticoP.setText(Diagnostic);
+                   txtTratamientoP.setText(trata);
 
 
                 }else {
@@ -172,8 +183,9 @@ public class lbCuadrosFragment extends Fragment {
         Cursor cursorConsulta=null;
 
         Sqlite_Base objCon=new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
-        cursorConsulta=objCon.getWritableDatabase().rawQuery("select * from "+ Utilidades.Tabla_Consultas+" where "+Utilidades.Campo_IdConsultas+" like "+numero+" ;",new String[]{});
-
+     //   cursorConsulta=objCon.getWritableDatabase().rawQuery("select * from "+ Utilidades.Tabla_Consultas+" where "+Utilidades.Campo_IdConsultas+" like "+numero+" ;",new String[]{});
+        cursorConsulta=objCon.getWritableDatabase().rawQuery("Select p.Nombre,p.Fecha,p.DUI, cn.Indicaciones,cn.Diagnostico,cn.Tratamiento from Pacientes p inner join Citas_Generales c on \n" +
+                "c.IdPaciente = p.IdPaciente inner join consultas cn on c.IdCita_G = cn.IdCita_G where cn.IdConsultas="+numero,new String[]{});
         return  cursorConsulta;
 
     }
@@ -183,8 +195,8 @@ public class lbCuadrosFragment extends Fragment {
         Sqlite_Base objCon=new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
        objCon.abrir();
 
-        String comando="INSERT INTO "+Utilidades.Tabla_Consultas+"("+Utilidades.Campo_IdCitas+","+Utilidades.Campo_Presion+", "+Utilidades.Campo_Respiraciones+", "+Utilidades.Campo_Diagnostico+", "+Utilidades.Campo_idMedicamento+", "+Utilidades.Campo_Indicaciones+","+Utilidades.Campo_TratamientoC+","+Utilidades.Campo_Fecha_Con+" ) " +
-                "values('1','120','12','Presion y respiracion normal temperatura elevada','1','No realizar actividades fisicas exigentes','24/11/2020')";
+        String comando="INSERT INTO "+Utilidades.Tabla_Consultas+"("+Utilidades.Campo_IdCitas+","+Utilidades.Campo_Presion+", "+Utilidades.Campo_Respiraciones+", "+Utilidades.Campo_Diagnostico+", "+Utilidades.Campo_idMedicamento+", "+Utilidades.Campo_Indicaciones+","+Utilidades.Campo_Fecha_Con+","+Utilidades.Campo_TratamientoC+" ) " +
+                "values('1','120','12','Presion y respiracion normal temperatura elevada','1','No realizar actividades fisicas exigentes','24/11/2020','Acetaminofen')";
 
         objCon.getWritableDatabase().execSQL(comando);
         Toast.makeText(getContext(),"Insert exitoso..",Toast.LENGTH_SHORT).show();
@@ -198,7 +210,7 @@ public class lbCuadrosFragment extends Fragment {
         objCon.cerrar();
 
         String comandoP="INSERT INTO "+Utilidades.Tabla_Paciente+"("+Utilidades.Campo_Nombre_P+", "+Utilidades.Campo_Dui_P+", "+Utilidades.Campo_Nit_P+", "+Utilidades.Campo_Direccion_P+", "+Utilidades.Campo_Fecha_NacP+", "+Utilidades.Campo_Aseguradora+", "+Utilidades.Campo_Num_Afiliado+", "+Utilidades.Campo_Tipo_Sangre+", "+Utilidades.Campo_Peso+", "+Utilidades.Campo_Alergias+", "+Utilidades.Campo_Discapacidades+", "+Utilidades.Campo_Nombre_Emergencia+", "+Utilidades.Campo_Parentesco_Emergencia+", "+Utilidades.Campo_Telefono_Emergencia+" ) " +
-                "values('Cristian Nehemias','05384708-2','12555','San Salvador xxx','24/12/2000','Aseguradora x','22988245','Tipo A','75kg','No padece','No padece discapacidad','Juan Miguel','AMANTE','2498-0584')";
+                "values('Cristian Nehemias','05384708-2','12555','San Salvador xxx','24/12/2000','Aseguradora x','22988245','Tipo A','75kg','No padece','No padece discapacidad','Juan Miguel','Padre','2498-0584')";
 
         objCon.getWritableDatabase().execSQL(comandoP);
         Toast.makeText(getContext(),"Insert exitoso..",Toast.LENGTH_SHORT).show();

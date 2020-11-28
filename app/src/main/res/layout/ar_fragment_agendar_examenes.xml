@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logoshadow"
     tools:context=".ui_archivo.AgendarExamenes">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logoshadow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -28,6 +38,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Agendar examen"
+                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <LinearLayout
@@ -38,18 +49,20 @@
                     <EditText
                         android:id="@+id/editTextNumber7"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
+                        android:background="@drawable/edt"
                         android:ems="10"
                         android:hint="Codigo cita"
                         android:inputType="number" />
 
                     <Button
                         android:id="@+id/button6"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
-                        android:text="Buscar" />
+                        android:background="@drawable/btnbuscarxx" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -63,6 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Observaciones:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
@@ -70,7 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Dolores de espalda baja."
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -79,6 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Seleccione examenes:"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <ListView
@@ -96,6 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Examen:"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
@@ -103,7 +119,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Analisis de Orina"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -113,6 +129,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Hora:"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <LinearLayout
@@ -125,6 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
 
                     <Button
@@ -132,7 +150,9 @@
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Seleccione" />
+                        android:background="@color/colorPrimary"
+                        android:text="Seleccione"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <TextView
@@ -141,6 +161,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Fecha:"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <LinearLayout
@@ -152,21 +173,27 @@
                         android:id="@+id/textView48"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary" />
 
                     <Button
                         android:id="@+id/button8"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="SELECCIONE" />
+                        android:background="@color/colorPrimary"
+                        android:text="SELECCIONE"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/button9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AGREGAR" />
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimary"
+                    android:text="AGREGAR"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/textView49"
@@ -174,6 +201,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Examenes a realizar:"
+                    android:textColor="#000000"
                     android:textSize="18sp" />
 
                 <ListView
@@ -184,7 +212,9 @@
                     android:id="@+id/button10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="aceptar" />
+                    android:background="@color/colorPrimary"
+                    android:text="aceptar"
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

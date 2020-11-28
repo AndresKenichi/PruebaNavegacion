@@ -72,7 +72,7 @@ public class Sqlite_Base extends SQLiteOpenHelper {
     }
     //Metodo para insertar registros en la tabla usuarios
 
-    public void insetarReg(String nom, String correo, String clave ,Integer tipo, Integer esp ,String nit, String dui,String tel, String fecha, String direccion ,Integer est){
+    public void insetarReg(String nom, String correo, String clave ,String tipo, String esp ,String nit, String dui,String tel, String fecha, String direccion ,Integer est){
         //Estos valores cuando se envien se deben colocar en ...
         ContentValues valores=new ContentValues();
         //Con put agregamos valores a el objeto valores

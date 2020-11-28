@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:paddingRight="5dp"
     tools:context=".ui_administrador.GestionarAreas.GestionarAreasF">
 
-    <LinearLayout
-        android:layout_width="389dp"
-        android:layout_height="596dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.496">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,35 +21,28 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView66"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:text=" " />
+
 
                 <TextView
                     android:id="@+id/textView106"
-                    android:layout_width="94dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:text="Nombre Area"
-                    android:textAlignment="viewStart"
+                    android:layout_weight="1"
                     android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/spnAreasGA"
-                    android:layout_width="256dp"
-                    android:layout_height="27dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/spinlarge1" />
 
-                <TextView
-                    android:id="@+id/textView107"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text=" " />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -70,14 +60,11 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:orientation="vertical">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
@@ -95,7 +82,7 @@
 
                 <Spinner
                     android:id="@+id/spnHabi"
-                    android:layout_width="95dp"
+                    android:layout_width="124dp"
                     android:layout_height="30dp"
                     android:background="@drawable/spin1" />
 
@@ -105,21 +92,9 @@
                     android:layout_height="match_parent"
                     android:text=" " />
 
-                <TextView
-                    android:id="@+id/textView109"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:text="Estado"
-                    android:textStyle="bold" />
-
-                <ToggleButton
-                    android:id="@+id/toggleButton"
-                    android:layout_width="66dp"
-                    android:layout_height="wrap_content"
-                    android:text="ToggleButton" />
             </LinearLayout>
 
-        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -219,10 +194,11 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/spinner6"
+                    android:id="@+id/spnEsp"
                     android:layout_width="233dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/spinlarge1" />
+                    android:background="@drawable/spinlarge1"
+                    android:entries="@array/snpespecialidades" />
 
                 <TextView
                     android:id="@+id/textView116"
@@ -258,7 +234,7 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/spinner7"
+                    android:id="@+id/spnNMedico"
                     android:layout_width="232dp"
                     android:layout_height="30dp"
                     android:background="@drawable/spinlarge1" />
@@ -297,10 +273,11 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/spinner8"
+                    android:id="@+id/spnIntervencion"
                     android:layout_width="232dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/spinlarge1" />
+                    android:background="@drawable/spinlarge1"
+                    android:entries="@array/snpintervencion" />
 
                 <TextView
                     android:id="@+id/textView120"
@@ -363,22 +340,25 @@
                     android:text=" " />
 
                 <Spinner
-                    android:id="@+id/spinner9"
+                    android:id="@+id/spnDiaGA"
                     android:layout_width="61dp"
                     android:layout_height="33dp"
-                    android:background="@drawable/spin1" />
+                    android:background="@drawable/spin1"
+                    android:entries="@array/snpdias" />
 
                 <Spinner
-                    android:id="@+id/spinner10"
+                    android:id="@+id/spnMesGA"
                     android:layout_width="95dp"
                     android:layout_height="33dp"
-                    android:background="@drawable/spin1" />
+                    android:background="@drawable/spin1"
+                    android:entries="@array/snpmeses" />
 
                 <Spinner
-                    android:id="@+id/spinner11"
+                    android:id="@+id/spnAnoGA"
                     android:layout_width="83dp"
                     android:layout_height="33dp"
-                    android:background="@drawable/spin1" />
+                    android:background="@drawable/spin1"
+                    android:entries="@array/snpanosade" />
             </LinearLayout>
 
         </LinearLayout>
@@ -404,32 +384,28 @@
                     android:id="@+id/textView125"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fecha de Salida"
+                    android:text="Hora Ingreso"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView126"
-                    android:layout_width="16dp"
+                    android:layout_width="37dp"
                     android:layout_height="match_parent"
                     android:text=" " />
 
                 <Spinner
-                    android:id="@+id/spinner12"
-                    android:layout_width="61dp"
+                    android:id="@+id/spnHoraGA"
+                    android:layout_width="93dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/spin1" />
+                    android:background="@drawable/spin1"
+                    android:entries="@array/snphoras" />
 
                 <Spinner
-                    android:id="@+id/spinner13"
-                    android:layout_width="95dp"
-                    android:layout_height="35dp"
-                    android:background="@drawable/spin1" />
-
-                <Spinner
-                    android:id="@+id/spinner14"
+                    android:id="@+id/spnMinGA"
                     android:layout_width="90dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/spin1" />
+                    android:background="@drawable/spin1"
+                    android:entries="@array/snpminutos" />
 
             </LinearLayout>
 
@@ -463,7 +439,7 @@
                     android:text=" " />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btnAgregarGA"
                     android:layout_width="94dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/modificarbtn" />
@@ -491,4 +467,3 @@
         </LinearLayout>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>

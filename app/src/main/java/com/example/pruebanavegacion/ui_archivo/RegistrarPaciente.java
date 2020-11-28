@@ -1,5 +1,6 @@
 package com.example.pruebanavegacion.ui_archivo;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -12,13 +13,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pruebanavegacion.MainActivity;
 import com.example.pruebanavegacion.R;
 import com.example.pruebanavegacion.Registrar;
+
+import java.util.Calendar;
 
 import BaseHospital.DatosConexion;
 import BaseHospital.Sqlite_Base;
@@ -30,10 +35,11 @@ import Utilidades.Utilidades;
  * create an instance of this fragment.
  */
 public class RegistrarPaciente extends Fragment {
-    EditText edtUserAR,edtDUIAR, edtNITAR,edtDireccionAR,edtDateAR,edtAseguradoraAR,edtNoAfiliadoAR,edtTipoSangreAR,edtPesoAR,edtAlergiasAR,edtDiscapacidadesAR,edtNameContacAR,edtTelAR;
+    EditText edtUserAR,edtDUIAR, edtNITAR,edtDireccionAR,edtAseguradoraAR,edtNoAfiliadoAR,edtTipoSangreAR,edtPesoAR,edtAlergiasAR,edtDiscapacidadesAR,edtNameContacAR,edtTelAR;
     Spinner spinnerParentescoAR;
-    Button btnRegistrarPaciente;
-    private Sqlite_Base helper;
+    TextView edtDateAR;
+    Button btnRegistrarPaciente,btnDateRegistrarPaciente;
+    private int year,month,day;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,12 +105,35 @@ public class RegistrarPaciente extends Fragment {
         edtNameContacAR=view.findViewById(R.id.edtNameContacAR);
         edtTelAR=view.findViewById(R.id.edtTelAR);
         spinnerParentescoAR=view.findViewById(R.id.spinnerParentescoAR);
+        btnDateRegistrarPaciente=view.findViewById(R.id.btnDateRegistrarPaciente);
         btnRegistrarPaciente=view.findViewById(R.id.btnRegistrarPaciente);
+        //instancia para un objeto de tipo calendar
+        final Calendar calendar=Calendar.getInstance();
+
+        //btn para el date picker
+        btnDateRegistrarPaciente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                year=calendar.get(Calendar.YEAR);
+                month=calendar.get(Calendar.MONTH);
+                day=calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        edtDateAR.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+                    }
+                },year,month,day);
+                //estableciendo la fecha minima
+                calendar.add(Calendar.MONTH,0);
+                calendar.add(Calendar.DAY_OF_MONTH,0);
+                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis()-1000);
+                datePickerDialog.show();
+            }
+        });
 
         btnRegistrarPaciente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                helper = new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
                 edtUserAR.setError(null);
                 edtDUIAR.setError(null);
                 edtNITAR.setError(null);

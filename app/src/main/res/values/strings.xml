@@ -273,4 +273,11 @@
         <item>Familiar</item>
         <item>Amigo</item>
     </string-array>
+    <string-array name="spDoctorCitaGeneral">
+        <item>Seleccione</item>
+        <item>Douglas</item>
+        <item>Pascacio</item>
+        <item>Isabel</item>
+        <item>Kevin</item>
+    </string-array>
 </resources>

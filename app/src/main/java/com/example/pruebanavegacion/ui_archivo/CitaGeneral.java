@@ -2,6 +2,8 @@ package com.example.pruebanavegacion.ui_archivo;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,8 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.pruebanavegacion.R;
 
@@ -22,14 +26,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import BaseHospital.DatosConexion;
+import BaseHospital.Sqlite_Base;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CitaGeneral#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class CitaGeneral extends Fragment {
-    TextView tvDate, tvHour;
-    Button btnDate, btnHour;
+    EditText edtNoPacienteCitaAR;
+    TextView tvDate, tvHour,txtNombrePaciente,txtDUIpaciente,txtNITpaciente;
+    Button btnDate, btnHour,btnBuscarPacienteAR;
     private int year,month,day;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,12 +91,53 @@ public class CitaGeneral extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        edtNoPacienteCitaAR=view.findViewById(R.id.edtNoPacienteCitaAR);
+        btnBuscarPacienteAR=view.findViewById(R.id.btnBuscarPacienteAR);
+        txtNombrePaciente=view.findViewById(R.id.txtNombrePaciente);
+        txtDUIpaciente=view.findViewById(R.id.txtDUIpaciente);
+        txtNITpaciente=view.findViewById(R.id.txtNITpaciente);
+
         tvDate=view.findViewById(R.id.tvDate);
         tvHour=view.findViewById(R.id.tvHour);
         btnDate=view.findViewById(R.id.btnDate);
         btnHour=view.findViewById(R.id.btnHour);
         //instancia para un objeto de tipo calendar
         final Calendar calendar=Calendar.getInstance();
+
+        //button para buscar paciente y asignar nueva cita
+        btnBuscarPacienteAR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtNoPacienteCitaAR.setError(null);
+                String numeroCuadro=edtNoPacienteCitaAR.getText().toString().trim();
+                if(numeroCuadro.isEmpty()){
+                    //Primer error
+                    edtNoPacienteCitaAR.setError("Deber ingresar No Paciente");
+                    //Colocamos un focus
+                    edtNoPacienteCitaAR.requestFocus();
+                    return;
+                }
+                Integer numeroC=Integer.parseInt(numeroCuadro);
+                try {
+                    Cursor InfoConsulta= BuscarPaciente(numeroC);
+                    if (InfoConsulta.getCount()>0){
+                        InfoConsulta.moveToFirst();
+                        String id=InfoConsulta.getString(0);
+                        String nombre=InfoConsulta.getString(1);
+                        String DUI=InfoConsulta.getString(2);
+
+                        txtNombrePaciente.setText(id);
+                        txtDUIpaciente.setText(nombre);
+                        txtNITpaciente.setText(DUI);
+                    }else {
+                        Toast.makeText(getContext(),"El paciente no existe",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        });
 
         //btn para el timepicker
         btnHour.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +183,14 @@ public class CitaGeneral extends Fragment {
             }
         });
 
-
-
     }
+
+    public Cursor BuscarPaciente(Integer numero) throws SQLException {
+        Cursor cursorConsulta=null;
+
+        Sqlite_Base objCon=new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+        cursorConsulta=objCon.getWritableDatabase().rawQuery("Select p.IdPaciente,p.Nombre,p.DUI from Pacientes p where p.IdPaciente ="+numero,new String[]{});
+        return  cursorConsulta;
+    }
+
 }

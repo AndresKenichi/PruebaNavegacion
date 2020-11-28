@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_doctors"
+    app:startDestination="@id/nav_inicio_a">
+
+    <fragment
+        android:id="@+id/nav_inicio_a"
+        android:name="com.example.pruebanavegacion.ui_administrador.Inicio.InicioFragment_A"
+        android:label="INICIO"
+        tools:layout="@layout/a_fragment_inicio" />
+
+    <fragment
+        android:id="@+id/nav_appointments"
+        android:name="com.example.pruebanavegacion.appointment"
+        android:label="APPOINTMENTS"
+        tools:layout="@layout/fragment_appointment" />
+
+    <fragment
+        android:id="@+id/nav_medical_chart"
+        android:name="com.example.pruebanavegacion.MedicalChart"
+        android:label="APPOINTMENTS"
+        tools:layout="@layout/fragment_medical_chart" />
+
+</navigation>

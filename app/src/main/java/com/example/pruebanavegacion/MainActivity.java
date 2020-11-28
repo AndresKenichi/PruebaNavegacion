@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                       //Nivel 0 Doctor
                         if(rol==0){
 
-                            Intent intent=new Intent(MainActivity.this,Home.class);
+                            Intent intent=new Intent(MainActivity.this, Doctors.class);
                             intent.putExtra("correo",cor);
                             startActivity(intent);
 

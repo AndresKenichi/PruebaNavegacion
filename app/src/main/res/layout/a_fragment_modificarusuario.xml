@@ -103,7 +103,9 @@
                 android:id="@+id/tbEst"
                 android:layout_width="114dp"
                 android:layout_height="match_parent"
-                android:text="ToggleButton" />
+                android:text="ToggleButton"
+                android:textOff="DE BAJA"
+                android:textOn="ACTIVO" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -452,16 +454,15 @@
 
             <EditText
                 android:id="@+id/edtContrasenaMU"
-                android:layout_width="184dp"
-                android:layout_height="30dp"
+                android:layout_width="183dp"
+                android:layout_height="35dp"
                 android:background="@drawable/edt"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textColor="@color/colorPrimary" />
+                android:inputType="textPassword" />
 
             <TextView
                 android:id="@+id/textView56"
-                android:layout_width="match_parent"
+                android:layout_width="17dp"
                 android:layout_height="wrap_content"
                 android:text=" " />
         </LinearLayout>

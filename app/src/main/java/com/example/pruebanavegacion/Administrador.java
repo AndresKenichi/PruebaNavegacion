@@ -37,19 +37,11 @@ public class Administrador extends AppCompatActivity {
         x = new Sqlite_Base(getApplicationContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         x.abrir();
         correo=getIntent().getStringExtra("correo");
-        /*FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }); */
 
         DrawerLayout drawer = findViewById(R.id.drawer_layoutAdmin);
         NavigationView navigationView = findViewById(R.id.nav_viewAdmin);
         // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        // menu should be considered as top level destinations.R.id.nav_consultarmedicamentos_a,R.id.nav_medicamentos_a
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_inicio_a,R.id.nav_agregarusuario_a,R.id.nav_modificarusuario_a,R.id.nav_medicamentos_a,R.id.nav_consultarmedicamentos_a,
                 R.id.nav_consultarpacientes_a,R.id.nav_gestionarconsultas_a,R.id.nav_gestionarareas_a,R.id.nav_consultarareas_a)
@@ -59,7 +51,6 @@ public class Administrador extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        UpdateNavHeader(correo);
 
     }
 
@@ -77,7 +68,11 @@ public class Administrador extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
+    @Override
+    public void onPause(){
+        super.onPause();
+        finish();
+    }
     public void UpdateNavHeader(String corr){
 
         NavigationView navigationView = findViewById(R.id.nav_viewAdmin);

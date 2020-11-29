@@ -160,6 +160,7 @@ public class AgregarUsuarioF extends Fragment {
         return vista;
 
     }
+
     public boolean validacorreo(String crrr){
         boolean g=false;
         Pattern pattern = Pattern
@@ -175,4 +176,5 @@ public class AgregarUsuarioF extends Fragment {
         }
         return g;
     }
+
 }

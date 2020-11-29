@@ -4,6 +4,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_inicio_a"
             android:icon="@drawable/ic_menu_slideshow"
@@ -16,14 +17,7 @@
             android:id="@+id/nav_modificarusuario_a"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="MODIFICAR USUARIO" />
-        <item
-            android:id="@+id/nav_medicamentos_a"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="MEDICAMENTOS" />
-        <item
-            android:id="@+id/nav_consultarmedicamentos_a"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="CONSULTAR MEDICAMENTOS" />
+
         <item
             android:id="@+id/nav_consultarpacientes_a"
             android:icon="@drawable/ic_menu_slideshow"
@@ -40,5 +34,14 @@
             android:id="@+id/nav_consultarareas_a"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="CONSULTAR AREAS" />
+    </group>
+    <group>
+        <item
+
+            android:title="____________________________________" />
+        <item
+            android:id="@+id/nav_cerrarsesion_a"
+            android:icon="@drawable/image_icon_logout_pic_512x512"
+            android:title="CERRAR SESION" />
     </group>
 </menu>

@@ -1,14 +1,33 @@
 package com.example.pruebanavegacion.ui_archivo;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.pruebanavegacion.MainActivity;
 import com.example.pruebanavegacion.R;
+import com.example.pruebanavegacion.Registrar;
+
+import java.util.Calendar;
+
+import BaseHospital.DatosConexion;
+import BaseHospital.Sqlite_Base;
+import Utilidades.Utilidades;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +35,11 @@ import com.example.pruebanavegacion.R;
  * create an instance of this fragment.
  */
 public class RegistrarPaciente extends Fragment {
+    EditText edtUserAR,edtDUIAR, edtNITAR,edtDireccionAR,edtAseguradoraAR,edtNoAfiliadoAR,edtTipoSangreAR,edtPesoAR,edtAlergiasAR,edtDiscapacidadesAR,edtNameContacAR,edtTelAR;
+    Spinner spinnerParentescoAR;
+    TextView edtDateAR;
+    Button btnRegistrarPaciente,btnDateRegistrarPaciente;
+    private int year,month,day;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,4 +87,192 @@ public class RegistrarPaciente extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.ar_fragment_registrar_paciente, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        edtUserAR=view.findViewById(R.id.edtUserAR);
+        edtDUIAR=view.findViewById(R.id.edtDUIAR);
+        edtNITAR=view.findViewById(R.id.edtNITAR);
+        edtDireccionAR=view.findViewById(R.id.edtDireccionAR);
+        edtDateAR=view.findViewById(R.id.edtDateAR);
+        edtAseguradoraAR=view.findViewById(R.id.edtAseguradoraAR);
+        edtNoAfiliadoAR=view.findViewById(R.id.edtNoAfiliadoAR);
+        edtTipoSangreAR=view.findViewById(R.id.edtTipoSangreAR);
+        edtPesoAR=view.findViewById(R.id.edtPesoAR);
+        edtAlergiasAR=view.findViewById(R.id.edtAlergiasAR);
+        edtDiscapacidadesAR=view.findViewById(R.id.edtDiscapacidadesAR);
+        edtNameContacAR=view.findViewById(R.id.edtNameContacAR);
+        edtTelAR=view.findViewById(R.id.edtTelAR);
+        spinnerParentescoAR=view.findViewById(R.id.spinnerParentescoAR);
+        btnDateRegistrarPaciente=view.findViewById(R.id.btnDateRegistrarPaciente);
+        btnRegistrarPaciente=view.findViewById(R.id.btnRegistrarPaciente);
+        //instancia para un objeto de tipo calendar
+        final Calendar calendar=Calendar.getInstance();
+
+        //btn para el date picker
+        btnDateRegistrarPaciente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                year=calendar.get(Calendar.YEAR);
+                month=calendar.get(Calendar.MONTH);
+                day=calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        edtDateAR.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+                    }
+                },year,month,day);
+                //estableciendo la fecha minima
+                calendar.add(Calendar.MONTH,0);
+                calendar.add(Calendar.DAY_OF_MONTH,0);
+                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis()-1000);
+                datePickerDialog.show();
+            }
+        });
+
+        btnRegistrarPaciente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtUserAR.setError(null);
+                edtDUIAR.setError(null);
+                edtNITAR.setError(null);
+                edtDireccionAR.setError(null);
+                edtDateAR.setError(null);
+                edtAseguradoraAR.setError(null);
+                edtNoAfiliadoAR.setError(null);
+                edtTipoSangreAR.setError(null);
+                edtPesoAR.setError(null);
+                edtAlergiasAR.setError(null);
+                edtDiscapacidadesAR.setError(null);
+                edtNameContacAR.setError(null);
+                edtTelAR.setError(null);
+
+                String usuario,DUI,NIT,direccion,date,aseguradora,noafiliado
+                        ,tiposangre,peso,alergias,discapacidades,nombrecontacto,telefonocontacto;
+
+                usuario=edtUserAR.getText().toString().trim();
+                DUI=edtDUIAR.getText().toString().trim();
+                NIT=edtNITAR.getText().toString().trim();
+                direccion=edtDireccionAR.getText().toString().trim();
+                date=edtDateAR.getText().toString().trim();
+                aseguradora=edtAseguradoraAR.getText().toString().trim();
+                noafiliado=edtNoAfiliadoAR.getText().toString().trim();
+                tiposangre=edtTipoSangreAR.getText().toString().trim();
+                peso=edtPesoAR.getText().toString().trim();
+                alergias=edtAlergiasAR.getText().toString().trim();
+                discapacidades=edtDiscapacidadesAR.getText().toString().trim();
+                nombrecontacto=edtNameContacAR.getText().toString().trim();
+                telefonocontacto=edtTelAR.getText().toString().trim();
+
+                if(usuario.equals("")){
+                    //Primer error
+                    edtUserAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtUserAR.requestFocus();
+                    return;
+                }
+                if(DUI.equals("")){
+                    //Primer error
+                    edtDUIAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtDUIAR.requestFocus();
+                    return;
+                }
+                if(NIT.equals("")){
+                    //Primer error
+                    edtNITAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtNITAR.requestFocus();
+                    return;
+                }
+                if(direccion.equals("")){
+                    //Primer error
+                    edtDireccionAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtDireccionAR.requestFocus();
+                    return;
+                }
+                if(date.equals("")){
+                    //Primer error
+                    edtDateAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtDateAR.requestFocus();
+                    return;
+                }
+                if(aseguradora.equals("")){
+                    //Primer error
+                    edtAseguradoraAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtAseguradoraAR.requestFocus();
+                    return;
+                }
+                if(noafiliado.equals("")){
+                    //Primer error
+                    edtNoAfiliadoAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtNoAfiliadoAR.requestFocus();
+                    return;
+                }
+                if(tiposangre.equals("")){
+                    //Primer error
+                    edtTipoSangreAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtTipoSangreAR.requestFocus();
+                    return;
+                }
+                if(peso.equals("")){
+                    //Primer error
+                    edtPesoAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtPesoAR.requestFocus();
+                    return;
+                }
+                if(alergias.equals("")){
+                    //Primer error
+                    edtAlergiasAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtAlergiasAR.requestFocus();
+                    return;
+                }
+                if(discapacidades.equals("")){
+                    //Primer error
+                    edtDiscapacidadesAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtDiscapacidadesAR.requestFocus();
+                    return;
+                }
+                if(nombrecontacto.equals("")){
+                    //Primer error
+                    edtNameContacAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtNameContacAR.requestFocus();
+                    return;
+                }
+                if(telefonocontacto.equals("")){
+                    //Primer error
+                    edtTelAR.setError("No puedes dejar campos vacios");
+                    //Colocamos un focus
+                    edtTelAR.requestFocus();
+                    return;
+                }
+                try {
+                    String parentesco = spinnerParentescoAR.getSelectedItem().toString();
+
+                    Sqlite_Base objCon=new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+                    objCon.abrir();
+                    String comando="INSERT INTO "+ Utilidades.Tabla_Paciente+"("+Utilidades.Campo_Nombre_P+","+Utilidades.Campo_Dui_P+","+Utilidades.Campo_Nit_P+", "+Utilidades.Campo_Direccion_P+", "+Utilidades.Campo_Fecha_NacP+", "+Utilidades.Campo_Aseguradora+", "+Utilidades.Campo_Num_Afiliado+","+Utilidades.Campo_Tipo_Sangre+","+Utilidades.Campo_Peso+","+Utilidades.Campo_Alergias+","+Utilidades.Campo_Discapacidades+","+Utilidades.Campo_Nombre_Emergencia+","+Utilidades.Campo_Parentesco_Emergencia+","+Utilidades.Campo_Telefono_Emergencia+" ) " +
+                            "values('"+usuario+"','"+DUI+"','"+NIT+"','"+direccion+"','"+date+"','"+aseguradora+"','"+noafiliado+"','"+tiposangre+"','"+peso+"','"+alergias+"','"+discapacidades+"','"+nombrecontacto+"','"+parentesco+"','"+telefonocontacto+"')";
+
+                    objCon.getWritableDatabase().execSQL(comando);
+                    Toast.makeText(getContext(),"Paciente registrado",Toast.LENGTH_SHORT).show();
+                    objCon.cerrar();
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+
 }

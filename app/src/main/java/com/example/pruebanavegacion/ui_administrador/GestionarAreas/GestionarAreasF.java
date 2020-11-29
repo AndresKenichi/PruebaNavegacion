@@ -1,6 +1,8 @@
 package com.example.pruebanavegacion.ui_administrador.GestionarAreas;
 
+import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +19,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.pruebanavegacion.Administrador;
 import com.example.pruebanavegacion.R;
+import com.example.pruebanavegacion.ui_administrador.Inicio.InicioFragment_A;
 
 import java.util.ArrayList;
 
@@ -33,7 +37,7 @@ public class GestionarAreasF extends Fragment {
     ArrayList<String> AreasI,HabitacionesI,DoctoresI;
     ArrayAdapter adapter1,adapter2,adapter3;
     String box;
-    Button AgregarGA;
+    Button AgregarGA,Cancelar;
     EditText NoPa;
     int indexHabitacion;
     Spinner Areas,Habitacion,Especialida,Medico,Dia,Mes,Ano,Hora,Min;
@@ -56,30 +60,32 @@ public class GestionarAreasF extends Fragment {
         Hora =vista.findViewById(R.id.spnHoraGA);
         Min = vista.findViewById(R.id.spnMinGA);
         NoPa = vista.findViewById(R.id.edtNumPacienteGA);
+        Cancelar = vista.findViewById(R.id.btnCancelarGA);
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
         x.abrir();
 
         consultarArea();
+
         final String[] id1 = new String[1];
         final String[] id2= new String[1];
         final String[] id3= new String[1];
+
         adapter1 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,AreasA);
         Areas.setAdapter(adapter1);
-
-
 
         Areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-
                     indexHabitacion= i+1;
+                    //Mando el id de la seleccion
                     consultarLugares(indexHabitacion);
                     adapter2 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,HabitacionesA);
                     Habitacion.setAdapter(adapter2);
-                    id1[0] =AreasI.get(i);
+                    //Lleno el Array buscando en AreasI la posicion que selecione
+                    id1[0] = AreasI.get(i);
             }
 
             @Override
@@ -132,6 +138,8 @@ public class GestionarAreasF extends Fragment {
                 {
 
                     insetarIngresos(NoPa.getText().toString(),id3[0],id2[0],id1[0],FechaS,HoraS,1);
+                    Intent ga = new Intent(getContext(), Administrador.class);
+                    startActivity(ga);
 
                 }
 
@@ -145,6 +153,7 @@ public class GestionarAreasF extends Fragment {
     }
 
     public void consultarArea(){
+
         AreasA= new ArrayList<>();
         AreasI = new ArrayList<>();
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
@@ -177,6 +186,10 @@ public class GestionarAreasF extends Fragment {
         u=x.getWritableDatabase().rawQuery("SELECT IdLugar,Num_Cama FROM "+Utilidades.Tabla_Lugares+" where "+Utilidades.Campo_IdAreaL+" = "+i+" and Estado="+0,new String[]{});
 
         while(u.moveToNext()){
+            //   ID - NOMBRE
+            //    1   Area 1
+            //    2   Area 2
+            //    3   Area 3
 
             box=u.getString(0);
             HabitacionesI.add(box);
@@ -195,7 +208,7 @@ public class GestionarAreasF extends Fragment {
 
         Cursor u = null;
 
-        u=x.getWritableDatabase().rawQuery("SELECT Id,Nombre FROM "+Utilidades.Tabla_Usuario+"  where Especialidad='"+esp+"'",new String[]{});
+        u=x.getWritableDatabase().rawQuery("SELECT Id,Nombre FROM "+Utilidades.Tabla_Usuario+"  where Especialidad='"+esp+"' and Estado= "+1,new String[]{});
 
         while(u.moveToNext()){
 
@@ -206,8 +219,10 @@ public class GestionarAreasF extends Fragment {
 
         }
     }
+
     public void insetarIngresos( String idPaciente, String IdUsuario ,String IdLugar, String tipoIntervencion ,String FechaI, String HoraI, Integer est){
         //Estos valores cuando se envien se deben colocar en ...
+
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         ContentValues valores=new ContentValues();
         //Con put agregamos valores a el objeto valores

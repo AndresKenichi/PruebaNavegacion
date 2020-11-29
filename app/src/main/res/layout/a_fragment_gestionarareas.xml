@@ -459,7 +459,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btnCancelarGA"
                 android:layout_width="81dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/cancelarbtn"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import Utilidades.Utilidades;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnIngresar;
-
+    private SharedPreferences ad;
     EditText txtCorUsu,txtPassUsu;
     TextView tvRegistrese;
 
@@ -39,25 +40,49 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar=findViewById(R.id.btnIngresar);
         Cursor h =  validacionArea();
         Cursor k =  validacionLugares();
+        Cursor l =  validacionPacientes();
+        Cursor mm = validacionUsuarios();
+
+        insertarUsuario();
+        insertarLugares();
+        insertarPacientes();
+        insertarArea();
 
 
-        if(k.getCount()>0){
+        /*if(k.getCount()>0){
+
             Toast.makeText(this,"TENEMOS DATOS LUGARES",Toast.LENGTH_LONG).show();
+
         }else{
-            insertarLugares();
-            h =  validacionArea();
-            k =  validacionLugares();
+
+
+
         }
 
-        if(h.getCount()>0){
+        if(l.getCount()>0){
+
+            Toast.makeText(this,"TENEMOS DATOS PACIENTES",Toast.LENGTH_LONG).show();
+
+        }else{
+
+        }
+
+        if(mm.getCount()>0){
             Toast.makeText(this,"TENEMOS DATOS AREAS",Toast.LENGTH_LONG).show();
 
         }else{
 
-            insertarArea();
+
 
         }
+        if(h.getCount()>0){
+            Toast.makeText(this,"TENEMOS DATOS USUARIOS",Toast.LENGTH_LONG).show();
 
+        }else{
+
+            insertarUsuario();
+
+        }*/
 
 
         tvRegistrese.setOnClickListener(new View.OnClickListener() {
@@ -179,6 +204,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void insertarUsuario(){
+        helper.abrir();
+        String comandoL="INSERT INTO "+Utilidades.Tabla_Usuario+"("+Utilidades.Campo_Nombre+","+Utilidades.Campo_Correo+" ,"+Utilidades.Campo_Clave+", "+Utilidades.Campo_Tipo_User+", "+Utilidades.Campo_Especialidad+","+Utilidades.Campo_Nit+", "+Utilidades.Campo_Dui+","+Utilidades.Campo_Telefono+","+Utilidades.Campo_Fecha_Nac+","+Utilidades.Campo_Direccion+","+Utilidades.Campo_Estado+" ) " +
+                "values('Douglas Calderon','douglas@gmail.com','123','Laboratorio','Especialidad A','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1'),('Kevin Vazques','kevin@gmail.com','123','Archivo','Especialidad X','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1'),('Isabel Ceron','isa@gmail.com','123','Doctor','Especialidad X','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1')," +
+                "('Pascacio Calderon','pasca@gmail.com','123','Administrador','Especialidad A','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1')";
+
+        helper.getWritableDatabase().execSQL(comandoL);
+    }
+    public void insertarPacientes(){
+        helper.abrir();
+        String comandoP="INSERT INTO "+Utilidades.Tabla_Paciente+"("+Utilidades.Campo_Nombre_P+", "+Utilidades.Campo_Dui_P+", "+Utilidades.Campo_Nit_P+", "+Utilidades.Campo_Direccion_P+", "+Utilidades.Campo_Fecha_NacP+", "+Utilidades.Campo_Aseguradora+", "+Utilidades.Campo_Num_Afiliado+", "+Utilidades.Campo_Tipo_Sangre+", "+Utilidades.Campo_Peso+", "+Utilidades.Campo_Alergias+", "+Utilidades.Campo_Discapacidades+", "+Utilidades.Campo_Nombre_Emergencia+", "+Utilidades.Campo_Parentesco_Emergencia+", "+Utilidades.Campo_Telefono_Emergencia+" ) " +
+                "values('Cristian Nehemias','05384708-2','12555','San Salvador xxx','24/12/2000','Aseguradora x','22988245','Tipo A','75kg','No padece','No padece discapacidad','Juan Miguel','Padre','2498-0584')," +
+                "('Luis Miguel','05384708-2','12555','San Salvador xxx','24/12/2000','Aseguradora x','22988245','Tipo A','105kg','No padece','No padece discapacidad','Ana Cerritos','Esposa','2498-0584')," +
+                "('Erika Soltala','05384708-2','12555','San Salvador xxx','24/12/2000','Aseguradora x','22988245','Tipo A','105kg','No padece','No padece discapacidad','Cristian Cerritos','Hermano','2498-0584')," +
+                "('Alejandron Fernandez','05384708-2','12555','San Salvador xxx','24/12/2000','Aseguradora x','22988245','Tipo A','105kg','No padece','No padece discapacidad','Ana Cerritos','Esposa','2498-0584')";
+
+        helper.getWritableDatabase().execSQL(comandoP);
+
+    }
     public void insertarLugares(){
         helper.abrir();
         String comandoL="INSERT INTO "+Utilidades.Tabla_Lugares+"("+Utilidades.Campo_IdAreaL+", "+Utilidades.Campo_Num_Cama+", "+Utilidades.Campo_Num_Cuarto+", "+Utilidades.Campo_TipoHabitacion+", "+Utilidades.Campo_EstadoL+" ) " +
@@ -201,6 +245,26 @@ public class MainActivity extends AppCompatActivity {
         return u;
 
     }
+    public Cursor validacionPacientes(){
+
+        helper.abrir();
+        Cursor u = null;
+
+        u=helper.getWritableDatabase().rawQuery("SELECT * FROM "+Utilidades.Tabla_Paciente,new String[]{});
+
+        return u;
+
+    }
+    public Cursor validacionUsuarios(){
+
+        helper.abrir();
+        Cursor u = null;
+
+        u=helper.getWritableDatabase().rawQuery("SELECT * FROM "+Utilidades.Tabla_Usuario,new String[]{});
+
+        return u;
+
+    }
     public Cursor validacionLugares(){
 
         helper.abrir();
@@ -210,5 +274,10 @@ public class MainActivity extends AppCompatActivity {
 
         return u;
 
+    }
+    @Override
+    public void onPause(){
+        super.onPause();
+        finish();
     }
 }

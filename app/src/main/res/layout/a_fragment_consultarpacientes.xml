@@ -99,7 +99,7 @@
 
             <TextView
                 android:id="@+id/textView92"
-                android:layout_width="138dp"
+                android:layout_width="143dp"
                 android:layout_height="match_parent"
                 android:text="  " />
 

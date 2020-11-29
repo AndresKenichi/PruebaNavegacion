@@ -53,6 +53,7 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/edt"
+                        android:drawablePadding="12dp"
                         android:ems="10"
                         android:hint="No. registro"
                         android:inputType="number"

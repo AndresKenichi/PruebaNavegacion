@@ -43,19 +43,16 @@ public class MainActivity extends AppCompatActivity {
         Cursor l =  validacionPacientes();
         Cursor mm = validacionUsuarios();
 
-        insertarUsuario();
-        insertarLugares();
-        insertarPacientes();
-        insertarArea();
 
 
-        /*if(k.getCount()>0){
+
+        if(k.getCount()>0){
 
             Toast.makeText(this,"TENEMOS DATOS LUGARES",Toast.LENGTH_LONG).show();
 
         }else{
 
-
+            insertarLugares();
 
         }
 
@@ -65,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
 
+            insertarPacientes();
+            insertarCitaGeneral();
+
         }
 
         if(mm.getCount()>0){
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
 
-
+            insertarUsuario();
 
         }
         if(h.getCount()>0){
@@ -80,9 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
 
-            insertarUsuario();
 
-        }*/
+            insertarArea();
+            insertarConsultas();
+
+        }
 
 
         tvRegistrese.setOnClickListener(new View.OnClickListener() {
@@ -207,8 +209,8 @@ public class MainActivity extends AppCompatActivity {
     public void insertarUsuario(){
         helper.abrir();
         String comandoL="INSERT INTO "+Utilidades.Tabla_Usuario+"("+Utilidades.Campo_Nombre+","+Utilidades.Campo_Correo+" ,"+Utilidades.Campo_Clave+", "+Utilidades.Campo_Tipo_User+", "+Utilidades.Campo_Especialidad+","+Utilidades.Campo_Nit+", "+Utilidades.Campo_Dui+","+Utilidades.Campo_Telefono+","+Utilidades.Campo_Fecha_Nac+","+Utilidades.Campo_Direccion+","+Utilidades.Campo_Estado+" ) " +
-                "values('Douglas Calderon','douglas@gmail.com','123','Laboratorio','Especialidad A','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1'),('Kevin Vazques','kevin@gmail.com','123','Archivo','Especialidad X','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1'),('Isabel Ceron','isa@gmail.com','123','Doctor','Especialidad X','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1')," +
-                "('Pascacio Calderon','pasca@gmail.com','123','Administrador','Especialidad A','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1')";
+                "values('Douglas Calderon','douglas@gmail.com','123','Laboratorio','Cardiologo','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1'),('Kevin Vazques','kevin@gmail.com','123','Archivo','Anesteciologo','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1'),('Isabel Ceron','isa@gmail.com','123','Doctor','Cirujano','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1')," +
+                "('Pascacio Calderon','pasca@gmail.com','123','Administrador','Anesteciologo','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1')";
 
         helper.getWritableDatabase().execSQL(comandoL);
     }
@@ -235,6 +237,26 @@ public class MainActivity extends AppCompatActivity {
         helper.getWritableDatabase().execSQL(comandoL);
 
     }
+
+    public void insertarCitaGeneral(){
+        helper.abrir();
+        String comandoCG="INSERT INTO "+Utilidades.Tabla_Cita_General+"("+Utilidades.Campo_IdPaciente_G+","+Utilidades.Campo_IdUsuarios_G+", "+Utilidades.Campo_Fecha_G+", "+Utilidades.Campo_Hora_G+", "+Utilidades.Campo_Estado_G+" ) " +
+                "values('1','3','24/11/2020','14:00','1'),('2','3','24/11/2020','15:00','1'),('3','3','24/11/2020','16:00','1'),('4','3','24/11/2020','16:30','1')";
+        helper.getWritableDatabase().execSQL(comandoCG);
+
+    }
+
+    public void insertarConsultas(){
+        helper.abrir();
+        String comando="INSERT INTO "+Utilidades.Tabla_Consultas+"("+Utilidades.Campo_IdCitas+","+Utilidades.Campo_Presion+", "+Utilidades.Campo_Respiraciones+", "+Utilidades.Campo_Diagnostico+", "+Utilidades.Campo_idMedicamento+", "+Utilidades.Campo_Indicaciones+","+Utilidades.Campo_Fecha_Con+","+Utilidades.Campo_TratamientoC+" ) " +
+                "values('1','120','12','Presion y respiracion normal temperatura elevada','1','No realizar actividades fisicas exigentes','24/11/2020','Acetaminofen')," +
+                "('2','150','12','Presion elevada y temperatura elevada','1','Guardar reposo','24/11/2020','Vasotec')," +
+                "('3','120','12','Presion, respiracion y temperatura alta','1','Posible caso de dengue','24/11/2020','Acetaminofen')";
+
+        helper.getWritableDatabase().execSQL(comando);
+
+    }
+
     public Cursor validacionArea(){
 
         helper.abrir();

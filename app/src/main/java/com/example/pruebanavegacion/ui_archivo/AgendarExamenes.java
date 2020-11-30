@@ -251,5 +251,6 @@ public class AgendarExamenes extends Fragment {
         valores.put(Utilidades.Campo_Estado_E,Estado_E);
         long idR=obj.getWritableDatabase().insert(Utilidades.Tabla_Cita_Examen, Utilidades.Campo_IdCita_E,valores);
         Toast.makeText(getContext(),"Id Registro: "+idR,Toast.LENGTH_SHORT).show();
+        //todos los cambios aceptados
     }
 }

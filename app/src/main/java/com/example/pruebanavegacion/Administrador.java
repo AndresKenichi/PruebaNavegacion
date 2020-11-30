@@ -33,7 +33,7 @@ public class Administrador extends AppCompatActivity {
         setContentView(R.layout.activity_administrador);
         Toolbar toolbar = findViewById(R.id.toolbara);
         setSupportActionBar(toolbar);
-
+        //mayami me lo komfirmo xdxd
         x = new Sqlite_Base(getApplicationContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         x.abrir();
         correo=getIntent().getStringExtra("correo");

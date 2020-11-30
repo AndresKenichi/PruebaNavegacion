@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="#2D71A39F"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textviewz33"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Paciente:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtNombreCP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="paciente-x" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView94"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="ID Cita:"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtCitaCP"
+                        android:layout_width="105dp"
+                        android:layout_height="wrap_content"
+                        android:text="xxxxx-x" />
+
+                    <TextView
+                        android:id="@+id/textView93"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estado:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtEstadoCP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="estado-x" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView98"
+                        android:layout_width="57dp"
+                        android:layout_height="wrap_content"
+                        android:text="Doctor:"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDoctorCP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="doctor-x" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView96"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha/Hora Consulta:"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:id="@+id/txtDiaCP"
+                        android:layout_width="186dp"
+                        android:layout_height="wrap_content"
+                        android:text="doctor-x" />
+
+                    <TextView
+                        android:id="@+id/txtHoraCP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

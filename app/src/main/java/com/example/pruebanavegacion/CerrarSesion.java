@@ -46,8 +46,6 @@ public class CerrarSesion extends Fragment {
         titulo.setTitle("CERRAR SESION");
         titulo.show();
 
-
-
     }
 
     @Override

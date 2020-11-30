@@ -33,7 +33,7 @@ public class Administrador extends AppCompatActivity {
         setContentView(R.layout.activity_administrador);
         Toolbar toolbar = findViewById(R.id.toolbara);
         setSupportActionBar(toolbar);
-
+        //mayami me lo komfirmo xdxd
         x = new Sqlite_Base(getApplicationContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         x.abrir();
         correo=getIntent().getStringExtra("correo");
@@ -43,8 +43,8 @@ public class Administrador extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.R.id.nav_consultarmedicamentos_a,R.id.nav_medicamentos_a
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_inicio_a,R.id.nav_agregarusuario_a,R.id.nav_modificarusuario_a,R.id.nav_medicamentos_a,R.id.nav_consultarmedicamentos_a,
-                R.id.nav_consultarpacientes_a,R.id.nav_gestionarconsultas_a,R.id.nav_gestionarareas_a,R.id.nav_consultarareas_a)
+                R.id.nav_inicio_a,R.id.nav_agregarusuario_a,R.id.nav_modificarusuario_a,
+                R.id.nav_consultarpacientes_a,R.id.nav_gestionarareas_a,R.id.nav_consultarareas_a)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_hosta);

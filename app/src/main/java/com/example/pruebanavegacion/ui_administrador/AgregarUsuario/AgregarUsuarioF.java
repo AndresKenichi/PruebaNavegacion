@@ -39,7 +39,7 @@ public class AgregarUsuarioF extends Fragment {
     private AgregarUsuarioVM agregarUsuarioVM;
     private Sqlite_Base helper;
     View vista;
-    CheckBox e1,e2,e3;
+    CheckBox e1,e2,e3,e4;
     Button Guardar;
     EditText NombreEmpleado,DUI,NIT ,Usuario,Clave,ConClave,Direccion,NumEmpleado;
     Spinner Dia,Mes,Ano,Especialidad;
@@ -76,14 +76,15 @@ public class AgregarUsuarioF extends Fragment {
         e1 = (CheckBox) vista.findViewById(R.id.chkDoctor);
         e2 = (CheckBox) vista.findViewById(R.id.chkArchivo);
         e3= (CheckBox) vista.findViewById(R.id.chkAdmin);
-
+        e4 = (CheckBox) vista.findViewById(R.id.chkLab);
 
         e1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 e2.setChecked(false);
                 e3.setChecked(false);
-                select[0] ="Archivo";
+                e4.setChecked(false);
+                select[0] ="Doctor";
             }
         });
         e2.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +92,8 @@ public class AgregarUsuarioF extends Fragment {
             public void onClick(View view) {
                 e1.setChecked(false);
                 e3.setChecked(false);
-                select[0]="Administrador";
+                e4.setChecked(false);
+                select[0]="Archivo";
             }
         });
         e3.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +101,17 @@ public class AgregarUsuarioF extends Fragment {
             public void onClick(View view) {
                 e1.setChecked(false);
                 e2.setChecked(false);
-                select[0]="Doctor";
+                e4.setChecked(false);
+                select[0]="Administrador";
+            }
+        });
+        e4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                e1.setChecked(false);
+                e2.setChecked(false);
+                e3.setChecked(false);
+                select[0]="Laboratorio";
             }
         });
         Guardar.setOnClickListener(new View.OnClickListener() {

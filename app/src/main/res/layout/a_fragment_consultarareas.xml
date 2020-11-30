@@ -25,7 +25,7 @@
 
         <Spinner
             android:id="@+id/spnAr"
-            android:layout_width="226dp"
+            android:layout_width="230dp"
             android:layout_height="30dp"
             android:background="@drawable/spinlarge1" />
 
@@ -49,7 +49,7 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPacientes"
+            android:id="@+id/rvPacientesX"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

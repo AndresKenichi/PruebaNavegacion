@@ -159,19 +159,18 @@
 
     </string-array>
     <string-array name="snpespecialidades">
-        <item>Cardiologo</item>
         <item>Anesteciologo</item>
-        <item>Otorrinolaringologo</item>
+        <item>Enfermero Auxiliar</item>
         <item>Cirujano</item>
         <item>Oncologo</item>
-        <item>Enfermero Auxiliar</item>
-        <item>Dermatologo</item>
+        <item>Cardiologo</item>
         <item>Neumologo</item>
-        <item>Nutriologo</item>
-        <item>Neurologo</item>
         <item>Psicologo</item>
-        <item>Gastroenterologo</item>
-        <item>Urología</item>
+        <item>Urologo</item>
+        <item>Nutriologo</item>
+        <item>Dermatologo</item>
+        <item>torrinolaringologo</item>
+        <item>Farmaceutica</item>
     </string-array>
     <string-array name="snproles">
         <item>Doctor</item>

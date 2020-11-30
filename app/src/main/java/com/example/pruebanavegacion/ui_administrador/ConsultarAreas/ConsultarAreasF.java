@@ -5,14 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,14 +24,13 @@ import java.util.List;
 
 import BaseHospital.DatosConexion;
 import BaseHospital.Sqlite_Base;
-import Utilidades.Utilidades;
 
 public class ConsultarAreasF extends Fragment {
 
     private ConsultarAreasVM ConsultarAreasVM;
     private RecyclerView rvPacienteX;
-    ArrayList<RecyclerViewPacientes> list;
-    List<csPacientes> pacient;
+    ArrayList<RecyclerViewPacientesCA> list;
+    List<csPacientesCA> pacient;
 
     ArrayAdapter adapterX;
     ArrayList<String> area,areaid;
@@ -42,7 +38,7 @@ public class ConsultarAreasF extends Fragment {
     private ImageView ivLogo;
     private Button Buscar;
     private TextView txtN,txtE,txtD,txtC;
-    private RecyclerViewPacientes adaptadorPacientes;
+    private RecyclerViewPacientesCA adaptadorPacientes;
     private Sqlite_Base xx;
     final String[] gu = new String[1];
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,7 +49,7 @@ public class ConsultarAreasF extends Fragment {
 
         llenarArea();
 
-        rvPacienteX= (RecyclerView) root.findViewById(R.id.rvPacientes);
+        rvPacienteX= (RecyclerView) root.findViewById(R.id.rvPacientesX);
         ivLogo = (ImageView) root.findViewById(R.id.imgPacienteLogo);
         txtN = (TextView) root.findViewById(R.id.txtNombreP);
         txtE = (TextView) root.findViewById(R.id.txtEstadocv);
@@ -75,7 +71,7 @@ public class ConsultarAreasF extends Fragment {
             @Override
             public void onClick(View view) {
                 gu[0]=Area.getSelectedItem().toString();
-                adaptadorPacientes = new RecyclerViewPacientes(obtenerPacientes(gu[0]));
+                adaptadorPacientes = new RecyclerViewPacientesCA(obtenerPacientes(gu[0]));
                 rvPacienteX.setAdapter(adaptadorPacientes);
 
 
@@ -102,7 +98,7 @@ public class ConsultarAreasF extends Fragment {
 
          }
     }
-    public List<csPacientes> obtenerPacientes(String ar){
+    public List<csPacientesCA> obtenerPacientes(String ar){
 
         pacient = new ArrayList<>();
 
@@ -123,7 +119,7 @@ public class ConsultarAreasF extends Fragment {
                     esta="Disponible";
                     break;
             }
-            pacient.add(new csPacientes(GX.getString(0),GX.getString(1),esta,GX.getString(3),R.drawable.paciente_espera_alta));
+            pacient.add(new csPacientesCA(GX.getString(0),GX.getString(1),esta,GX.getString(3),R.drawable.paciente_espera_alta));
         }
         return pacient;
     }

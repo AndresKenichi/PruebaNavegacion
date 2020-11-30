@@ -80,7 +80,7 @@ public class CitasDc extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        //NUEVO
         tvAlgo=view.findViewById(R.id.tvAlgo);
         btnOpcion=view.findViewById(R.id.btnOpcion);
 

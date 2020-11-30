@@ -1,5 +1,6 @@
 package com.example.pruebanavegacion.ui;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -28,9 +29,13 @@ import Utilidades.Utilidades;
  */
 public class ConsultasDc extends Fragment {
     EditText edtNoDOC;
-    TextView tvNombre,tvEdad,tvDUI;
-    EditText edtPresion,edtRespiraciones,edtObservaciones,edtDiagnostico;
+    TextView tvNombre,tvEdad,tvDUI,tvMedicamento;
+    EditText edtPresion,edtRespiraciones,edtObservaciones,edtDiagnostico,tvDosis;
     Button btnBusca,btnGuardarConsulta;
+    String IdCitaG;
+    String Nombre;
+    String Fecha;
+    String DUI;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -87,12 +92,14 @@ public class ConsultasDc extends Fragment {
         tvNombre=view.findViewById(R.id.tvNombre);
         tvEdad=view.findViewById(R.id.tvEdad);
         tvDUI=view.findViewById(R.id.tvDUI);
+        tvMedicamento=view.findViewById(R.id.tvMedicamento);
         edtPresion=view.findViewById(R.id.edtPresion);
         edtRespiraciones=view.findViewById(R.id.edtRespiraciones);
         edtObservaciones=view.findViewById(R.id.edtObservaciones);
         edtDiagnostico=view.findViewById(R.id.edtDiagnostico);
         btnBusca=view.findViewById(R.id.btnBusca);
         btnGuardarConsulta=view.findViewById(R.id.btnGuardarConsulta);
+        tvDosis=view.findViewById(R.id.tvDosis);
 
         btnBusca.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,12 +120,14 @@ public class ConsultasDc extends Fragment {
                     Cursor InfoConsulta= BuscarCuadronConsulta(numeroC);
                     if (InfoConsulta.getCount()>0){
                         InfoConsulta.moveToFirst();
-                        String idCita=InfoConsulta.getString(0);
-                        String Fecha=InfoConsulta.getString(1);
-                        String DUI=InfoConsulta.getString(2);
+                        IdCitaG=InfoConsulta.getString(0);
+                        Nombre=InfoConsulta.getString(1);
+                        Fecha=InfoConsulta.getString(2);
+                        DUI=InfoConsulta.getString(3);
 
-                        // Toast.makeText(getContext(),"hay existencias "+idCita,Toast.LENGTH_SHORT).show();
-                        tvNombre.setText(idCita);
+                        //Toast.makeText(getContext(),"hay existencias "+IdCitaG,Toast.LENGTH_SHORT).show();
+
+                        tvNombre.setText(Nombre);
                         tvEdad.setText(Fecha);
                         tvDUI.setText(DUI);
                     }else {
@@ -131,6 +140,14 @@ public class ConsultasDc extends Fragment {
             }
         });
 
+        btnGuardarConsulta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //insetarConsultas(IdCitaG,edtPresion.getText().toString(), edtRespiraciones.getText().toString(),edtDiagnostico.getText().toString()
+                        //,tvMedicamento.getText().toString(),"acetaminofen","01/01/2020");
+            }
+        });
+
     }
 
 
@@ -138,8 +155,25 @@ public class ConsultasDc extends Fragment {
         Cursor cursorConsulta=null;
 
         Sqlite_Base objCon=new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
-        cursorConsulta=objCon.getWritableDatabase().rawQuery("Select p.Nombre,p.Fecha,p.DUI, cn.Indicaciones,cn.Diagnostico,cn.Tratamiento from Pacientes p inner join Citas_Generales c on \n" +
+        cursorConsulta=objCon.getWritableDatabase().rawQuery("Select c.IdCita_G,p.Nombre,p.Fecha,p.DUI, cn.Indicaciones,cn.Diagnostico,cn.Tratamiento from Pacientes p inner join Citas_Generales c on \n" +
                 "c.IdPaciente = p.IdPaciente inner join consultas cn on c.IdCita_G = cn.IdCita_G where cn.IdConsultas="+numero,new String[]{});
         return  cursorConsulta;
+    }
+
+    public void insetarConsultas(String IdCita,String presion, String Respiracion, String Diagnostico, String idMedic, String Indicaciones,String Trata,String FECHA_E){
+        //Estos valores cuando se envien se deben colocar en ...
+        Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+        ContentValues valores=new ContentValues();
+        //Con put agregamos valores a el objeto valores
+        valores.put(Utilidades.Campo_IdCitas,IdCita);
+        valores.put(Utilidades.Campo_Presion,presion);
+        valores.put(Utilidades.Campo_Respiraciones,Respiracion);
+        valores.put(Utilidades.Campo_Diagnostico,Diagnostico);
+        valores.put(Utilidades.Campo_idMedicamento,idMedic);
+        valores.put(Utilidades.Campo_Indicaciones,idMedic);
+        valores.put(Utilidades.Campo_TratamientoC,Trata);
+        valores.put(Utilidades.Campo_Fecha_Con,FECHA_E);
+        long idR=obj.getWritableDatabase().insert(Utilidades.Tabla_Consultas, Utilidades.Campo_IdConsultas,valores);
+        Toast.makeText(getContext(),"Id Registro: "+idR,Toast.LENGTH_SHORT).show();
     }
 }

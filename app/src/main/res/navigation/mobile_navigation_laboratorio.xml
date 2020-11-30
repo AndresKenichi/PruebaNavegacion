@@ -11,4 +11,19 @@
         android:name="com.example.pruebanavegacion.ui_Laboratorio.lbCuadrosFragment"
         android:label="Consultar Cuadro"
         tools:layout="@layout/fragment_lb_cuadros" />
+    <fragment
+        android:id="@+id/lbRealizarExamen"
+        android:name="com.example.pruebanavegacion.ui_Laboratorio.lbRealizarExamen"
+        android:label="Realizar Examenes"
+        tools:layout="@layout/lb_fragment_realizarexamen" >
+        <action
+            android:id="@+id/action_lbRealizarExamen_to_lbResultadoExamen"
+            app:destination="@id/lbResultadoExamen" />
+    </fragment>
+    <fragment
+        android:id="@+id/lbResultadoExamen"
+        android:name="com.example.pruebanavegacion.ui_Laboratorio.lbResultadoExamen"
+        android:label="lbResultadoExamen"
+        tools:layout="@layout/lb_fragment_resultadoexamen"
+        />
 </navigation>

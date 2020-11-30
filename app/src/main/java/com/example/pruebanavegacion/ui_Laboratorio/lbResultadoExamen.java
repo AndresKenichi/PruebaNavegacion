@@ -1,15 +1,11 @@
 package com.example.pruebanavegacion.ui_Laboratorio;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,7 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pruebanavegacion.Citas_Examen;
 import com.example.pruebanavegacion.Citas_Examen2;
@@ -37,10 +32,10 @@ import Utilidades.Utilidades;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link lbRealizarExamen#newInstance} factory method to
+ * Use the {@link lbResultadoExamen#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class lbRealizarExamen extends Fragment {
+public class lbResultadoExamen extends Fragment {
 
   EditText edtNumCuadro;
   TextView txtNombrePaciente,txtEdadPaciente,txtDuiPaciente,txtObservacionesP;
@@ -67,7 +62,7 @@ public class lbRealizarExamen extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public lbRealizarExamen() {
+    public lbResultadoExamen() {
         // Required empty public constructor
     }
 
@@ -80,8 +75,8 @@ public class lbRealizarExamen extends Fragment {
      * @return A new instance of fragment lbCuadrosFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static lbRealizarExamen newInstance(String param1, String param2) {
-        lbRealizarExamen fragment = new lbRealizarExamen();
+    public static lbResultadoExamen newInstance(String param1, String param2) {
+        lbResultadoExamen fragment = new lbResultadoExamen();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -102,7 +97,7 @@ public class lbRealizarExamen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.lb_fragment_realizarexamen, container, false);
+        return inflater.inflate(R.layout.lb_fragment_resultadoexamen, container, false);
     }
 
     @Override
@@ -117,7 +112,7 @@ public class lbRealizarExamen extends Fragment {
         txtDuiPaciente=view.findViewById(R.id.txtDuiPaciente);
         txtObservacionesP=view.findViewById(R.id.txtObservacionesP);
         btnInsertarCuadros=view.findViewById(R.id.btnInsertarCuadros);
-       // btnInsertarCuadros.setVisibility(View.INVISIBLE);
+        btnInsertarCuadros.setVisibility(View.INVISIBLE);
         btnContinuar=view.findViewById(R.id.btnContinuar);
         btnBuscarCuadro=view.findViewById(R.id.btnBuscarCuadro);
         lvlExamenes=view.findViewById(R.id.lvlExamenes);
@@ -126,11 +121,6 @@ public class lbRealizarExamen extends Fragment {
         btnContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent=new Intent(getContext(),lbRealizarExamen.class);
-               // intent.putExtra("Id", Ids);
-               // intent.putExtra("Nombre", NombreExamen);
-                startActivity(intent);
 
             }
         });

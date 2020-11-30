@@ -97,7 +97,9 @@ public class Utilidades {
 
     //Declaramos las constantes que seran campos de nuestras tabla Lista examenes
     public static final String Tabla_Lista_Examenes="Lista_Examenes";
-    public static final String Campo_IdExamenes_P="IdExamenes_P";
+    public static final String Campo_IdListaExamenes_P="IdListaExamenes";
+    public static final String Campo_IdCita_ex="IdCita_E";
+    public static final String Campo_IdPaciente_Lex="IdPaciente";
     public static final String Campo_IdUsuariosEx="IdUsuarios";
     public static final String Campo_FechaEx="Fecha";
     public static final String Campo_HoraEx="Hora";
@@ -153,9 +155,9 @@ public class Utilidades {
             " "+Campo_Fecha_E+" text, "+Campo_Hora_E+" text, "+Campo_Tipo_E+" text, "+Campo_Estado_E+" integer, foreign key("+Campo_IdPaciente_E+") references "+Tabla_Paciente+"("+Campo_IdPaciente+") );";
 
     //Declaramos una variable String donde tendremos un comando SQL para Ingresos
-    public static final String Crear_Tabla_ListaExamenes="create table "+Tabla_Lista_Examenes+"("+Campo_IdExamenes_P+" integer primary key autoincrement, "+Campo_IdUsuariosEx+" integer, " +
+    public static final String Crear_Tabla_ListaExamenes="create table "+Tabla_Lista_Examenes+"("+Campo_IdListaExamenes_P+" integer primary key autoincrement, "+Campo_IdCita_ex+" integer, "+Campo_IdPaciente_Lex+" integer,"+Campo_IdUsuariosEx+" integer, " +
             " "+Campo_FechaEx+" integer, "+Campo_HoraEx+" integer, "+Campo_EstadoEx+" Integer, " +
-            " foreign key("+Campo_IdUsuariosEx+") references "+Tabla_Usuario+"("+Campo_Id+"));";
+            " foreign key("+Campo_IdUsuariosEx+") references "+Tabla_Usuario+"("+Campo_Id+"), foreign key("+Campo_IdPaciente_Lex+") references "+Tabla_Paciente+"("+Campo_IdPaciente+"));";
 
 
     //Declaramos una variable String donde tendremos un comando SQL para Ingresos

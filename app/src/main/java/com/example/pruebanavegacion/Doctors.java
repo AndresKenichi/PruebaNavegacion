@@ -40,7 +40,7 @@ public class Doctors extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_inicio_a, R.id.nav_appointments, R.id.nav_medical_chart)
+                R.id.nav_inicio_a, R.id.nav_medical_chart, R.id.nav_appointments)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_hosta_doctors);

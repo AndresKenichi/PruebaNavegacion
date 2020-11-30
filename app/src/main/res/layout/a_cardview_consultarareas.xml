@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="#2D71A39F"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgPacienteLogo"
+                android:layout_width="178dp"
+                android:layout_height="151dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/paciente_recuperacion" />
+
+            <LinearLayout
+                android:layout_width="233dp"
+                android:layout_height="149dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textviewz33"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Paciente:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtNombreP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="paciente-x" />
+
+                <TextView
+                    android:id="@+id/textView94"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Numero Habitacion:"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtCama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="cama-x" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView98"
+                        android:layout_width="57dp"
+                        android:layout_height="wrap_content"
+                        android:text="Estado:"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtEstadocv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Disponible" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView96"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Doctor a Cargo:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDoctor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="doctor-x" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

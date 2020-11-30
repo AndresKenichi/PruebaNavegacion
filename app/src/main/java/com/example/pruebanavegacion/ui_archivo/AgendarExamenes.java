@@ -117,8 +117,6 @@ public class AgendarExamenes extends Fragment {
         btnHourAR=view.findViewById(R.id.btnHourAR);
         tvNOMBREEXAMEN=view.findViewById(R.id.tvNOMBREEXAMEN);
 
-
-
         //instancia para un objeto de tipo calendar
         final Calendar calendar=Calendar.getInstance();
         //btn para el timepicker
@@ -178,7 +176,6 @@ public class AgendarExamenes extends Fragment {
                 Integer numeroP=Integer.parseInt(numeroPaciente);
                 try {
                     Cursor InfoConsulta= BuscarPaciente(numeroP);
-
                     if (InfoConsulta.getCount()>0){
                         InfoConsulta.moveToFirst();
                         idPaciente=InfoConsulta.getString(0);
@@ -196,6 +193,8 @@ public class AgendarExamenes extends Fragment {
         btnAgregarALista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 insetarCitaE(idPaciente,tvDateAR.getText().toString(),tvHourAR.getText().toString(),nombreExamen,"1");
                 consultarListaExamenes(idPaciente);
                 adapter=new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,listaCitasE);
@@ -209,7 +208,6 @@ public class AgendarExamenes extends Fragment {
                 tvNOMBREEXAMEN.setText(nombreExamen);
             }
         });
-
     }
 
     private Cursor BuscarPaciente(Integer numeroP) {
@@ -254,5 +252,4 @@ public class AgendarExamenes extends Fragment {
         long idR=obj.getWritableDatabase().insert(Utilidades.Tabla_Cita_Examen, Utilidades.Campo_IdCita_E,valores);
         Toast.makeText(getContext(),"Id Registro: "+idR,Toast.LENGTH_SHORT).show();
     }
-
 }

@@ -113,7 +113,7 @@ public class lbCuadrosFragment extends Fragment {
 
               //Toast.makeText(getContext(),"Holiiii",Toast.LENGTH_SHORT).show();
               InsertarCuadro();
-
+                //new
             }
         });
 

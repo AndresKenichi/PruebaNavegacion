@@ -403,22 +403,6 @@ public class lbRealizarExamen extends Fragment {
         Toast.makeText(getContext(),"Id Registro: "+idR,Toast.LENGTH_SHORT).show();
     }
 
-    public void insetarConsultas(String IdCita,String presion, String Respiracion, String Diagnostico, String idMedic,String Trata,String FECHA_E){
-        //Estos valores cuando se envien se deben colocar en ...
-        Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
-        ContentValues valores=new ContentValues();
-        //Con put agregamos valores a el objeto valores
-        valores.put(Utilidades.Campo_IdCitas,IdCita);
-        valores.put(Utilidades.Campo_Presion,presion);
-        valores.put(Utilidades.Campo_Respiraciones,Respiracion);
-        valores.put(Utilidades.Campo_Diagnostico,Diagnostico);
-        valores.put(Utilidades.Campo_idMedicamento,idMedic);
-        valores.put(Utilidades.Campo_TratamientoC,Trata);
-        valores.put(Utilidades.Campo_Fecha_Con,FECHA_E);
-
-        long idR=obj.getWritableDatabase().insert(Utilidades.Tabla_Consultas, Utilidades.Campo_IdConsultas,valores);
-        Toast.makeText(getContext(),"Id Registro: "+idR,Toast.LENGTH_SHORT).show();
-    }
 
     private void consultarListaExamenes(String idPaciente) {
         Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);

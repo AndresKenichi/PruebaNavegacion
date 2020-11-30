@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(k.getCount()>0){
 
-            Toast.makeText(this,"TENEMOS DATOS LUGARES",Toast.LENGTH_LONG).show();
+           // Toast.makeText(this,"TENEMOS DATOS LUGARES",Toast.LENGTH_LONG).show();
 
         }else{
 
@@ -58,17 +58,18 @@ public class MainActivity extends AppCompatActivity {
 
         if(l.getCount()>0){
 
-            Toast.makeText(this,"TENEMOS DATOS PACIENTES",Toast.LENGTH_LONG).show();
+          //  Toast.makeText(this,"TENEMOS DATOS PACIENTES",Toast.LENGTH_LONG).show();
 
         }else{
 
             insertarPacientes();
             insertarCitaGeneral();
+            insertarCitaExamen();
 
         }
 
         if(mm.getCount()>0){
-            Toast.makeText(this,"TENEMOS DATOS AREAS",Toast.LENGTH_LONG).show();
+           // Toast.makeText(this,"TENEMOS DATOS AREAS",Toast.LENGTH_LONG).show();
 
         }else{
 
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         if(h.getCount()>0){
-            Toast.makeText(this,"TENEMOS DATOS USUARIOS",Toast.LENGTH_LONG).show();
+          //  Toast.makeText(this,"TENEMOS DATOS USUARIOS",Toast.LENGTH_LONG).show();
 
         }else{
 
@@ -254,6 +255,18 @@ public class MainActivity extends AppCompatActivity {
                 "('3','120','12','Presion, respiracion y temperatura alta','1','Posible caso de dengue','24/11/2020','Acetaminofen')";
 
         helper.getWritableDatabase().execSQL(comando);
+
+    }
+
+    public void insertarCitaExamen(){
+        helper.abrir();
+
+
+        String comando="INSERT INTO "+Utilidades.Tabla_Cita_Examen+"("+Utilidades.Campo_IdPaciente_E+","+Utilidades.Campo_Fecha_E+", "+Utilidades.Campo_Hora_E+", "+Utilidades.Campo_Tipo_E+", "+Utilidades.Campo_Estado_E+" ) " +
+                "values('2','16/12/2020','13:00','Examen VIH','1'),('2','16/12/2020','13:00','Examen Orina','1'),('1','16/12/2020','13:00','Examen Glucosa','1'),('1','16/12/2020','13:00','Examen VIH','1')";
+
+        helper.getWritableDatabase().execSQL(comando);
+        Toast.makeText(getApplicationContext(),"Insert exitoso..",Toast.LENGTH_SHORT).show();
 
     }
 

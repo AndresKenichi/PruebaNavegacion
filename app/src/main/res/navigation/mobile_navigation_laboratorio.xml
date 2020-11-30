@@ -18,7 +18,7 @@
         tools:layout="@layout/lb_fragment_realizarexamen" >
         <action
             android:id="@+id/action_lbRealizarExamen_to_lbResultadoExamen"
-            app:destination="@id/lbResultadoExamen" />
+            app:destination="@id/lbRealizarExamen" />
     </fragment>
     <fragment
         android:id="@+id/lbResultadoExamen"
@@ -26,4 +26,9 @@
         android:label="lbResultadoExamen"
         tools:layout="@layout/lb_fragment_resultadoexamen"
         />
+    <fragment
+        android:id="@+id/lbModificarExamen"
+        android:name="com.example.pruebanavegacion.ui_Laboratorio.lbModificarExamen"
+        android:label="Modificar examen"
+        tools:layout="@layout/lb_fragment_modificarexamen" />
 </navigation>

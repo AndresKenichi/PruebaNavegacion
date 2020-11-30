@@ -30,7 +30,7 @@ import Utilidades.Utilidades;
 public class ConsultasDc extends Fragment {
     EditText edtNoDOC;
     TextView tvNombre,tvEdad,tvDUI,tvMedicamento;
-    EditText edtPresion,edtRespiraciones,edtObservaciones,edtDiagnostico,tvDosis;
+    EditText edtPresion,edtRespiraciones,edtObservaciones,edtDiagnostico,tvDosis,tvIndicaciones;
     Button btnBusca,btnGuardarConsulta;
     String IdCitaG;
     String Nombre;
@@ -100,6 +100,7 @@ public class ConsultasDc extends Fragment {
         btnBusca=view.findViewById(R.id.btnBusca);
         btnGuardarConsulta=view.findViewById(R.id.btnGuardarConsulta);
         tvDosis=view.findViewById(R.id.tvDosis);
+        tvIndicaciones=view.findViewById(R.id.tvDosis);
 
         btnBusca.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,8 +144,8 @@ public class ConsultasDc extends Fragment {
         btnGuardarConsulta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //insetarConsultas(IdCitaG,edtPresion.getText().toString(), edtRespiraciones.getText().toString(),edtDiagnostico.getText().toString()
-                        //,tvMedicamento.getText().toString(),"acetaminofen","01/01/2020");
+                insetarConsultas(IdCitaG,edtPresion.getText().toString(), edtRespiraciones.getText().toString(),edtDiagnostico.getText().toString()
+                        ,tvMedicamento.getText().toString(),tvDosis.getText().toString(),tvIndicaciones.getText().toString(),"09/12/2020");
             }
         });
 

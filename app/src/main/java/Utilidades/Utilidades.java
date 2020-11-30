@@ -24,7 +24,7 @@ public class Utilidades {
     public static final String Campo_Presion="Presion_Arterial";
     public static final String Campo_Respiraciones="Respiraciones";
     public static final String Campo_Diagnostico="Diagnostico";
-    public static final String Campo_idMedicamento="IdMedicamentos";
+    public static final String Campo_idMedicamento="Cantidad";
     public static final String Campo_Indicaciones="Indicaciones";
     public static final String Campo_Fecha_Con="Fecha";
     public static final String Campo_TratamientoC="Tratamiento";

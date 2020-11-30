@@ -3,23 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/bienvenidoDc">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.pruebanavegacion.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
+        android:id="@+id/bienvenidoDc"
+        android:name="com.example.pruebanavegacion.ui.BienvenidoDc"
+        android:label="Bienvenido"
+        tools:layout="@layout/doc_bienvenido" />
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.pruebanavegacion.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/ConsultasDc"
+        android:name="com.example.pruebanavegacion.ui.ConsultasDc"
+        android:label="Consultas"
+        tools:layout="@layout/doc_consulta" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.pruebanavegacion.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/CitasDc"
+        android:name="com.example.pruebanavegacion.ui.CitasDc"
+        android:label="Citas"
+        tools:layout="@layout/doc_citas" />
 </navigation>

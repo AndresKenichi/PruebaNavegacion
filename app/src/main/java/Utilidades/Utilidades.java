@@ -24,7 +24,7 @@ public class Utilidades {
     public static final String Campo_Presion="Presion_Arterial";
     public static final String Campo_Respiraciones="Respiraciones";
     public static final String Campo_Diagnostico="Diagnostico";
-    public static final String Campo_idMedicamento="IdMedicamentos";
+    public static final String Campo_idMedicamento="Cantidad";
     public static final String Campo_Indicaciones="Indicaciones";
     public static final String Campo_Fecha_Con="Fecha";
     public static final String Campo_TratamientoC="Tratamiento";
@@ -97,7 +97,9 @@ public class Utilidades {
 
     //Declaramos las constantes que seran campos de nuestras tabla Lista examenes
     public static final String Tabla_Lista_Examenes="Lista_Examenes";
-    public static final String Campo_IdExamenes_P="IdExamenes_P";
+    public static final String Campo_IdListaExamenes_P="IdListaExamenes";
+    public static final String Campo_IdCita_ex="IdCita_E";
+    public static final String Campo_IdPaciente_Lex="IdPaciente";
     public static final String Campo_IdUsuariosEx="IdUsuarios";
     public static final String Campo_FechaEx="Fecha";
     public static final String Campo_HoraEx="Hora";
@@ -116,9 +118,9 @@ public class Utilidades {
     public static final String Tabla_Resultados_Examenes="Resultados_Examenes";
     public static final String Campo_IdResultado="IdResultado";
     public static final String Campo_IdCita_REX="IdCita_E";
-    public static final String Campo_Observaciones="Observaciones";
-    public static final String Campo_DiagnosticoREx="Diagnostico";
-    public static final String Campo_Tratamiento="Tratamiento";
+    public static final String Campo_ResultadoExamen="ResultadoExamen";
+    public static final String Campo_Rangominimo="Rangominimo";
+    public static final String Campo_Rangomaximo="Rangomaximo";
     public static final String Campo_FechaREx="Fecha";
     public static final String Campo_HoraREx="Hora";
     public static final String Campo_Estado_REx="Estado";
@@ -134,7 +136,7 @@ public class Utilidades {
 
     //Declaramos una variable String donde tendremos un comando SQL para Detalle medicamentos
     public static final String Crear_Tabla_detallemedicamentos="create table "+Tabla_detalle_medicamentos+"("+Campo_IdDetalle+" integer primary key autoincrement, "+Campo_IdMedicamento_D+" integer, " +
-            ""+Campo_IdPaciente_D+" integer, "+Campo_IdUsuarios_D+" integer, "+Campo_Tratamiento+" text, " +
+            ""+Campo_IdPaciente_D+" integer, "+Campo_IdUsuarios_D+" integer, " +
             " "+Campo_FechaREx+" text, "+Campo_HoraREx+" text "+Campo_Estado_REx+" Integer, "+Campo_IdConsultasD+" integer, "+Campo_CantidadD+" integer, " +
             " foreign key("+Campo_IdMedicamento_D+") references "+Tabla_Medicamentos+"("+Campo_IdMedicamentos+"), " +
             " foreign key("+Campo_IdPaciente_D+") references "+Tabla_Paciente+"("+Campo_IdPaciente+"), " +
@@ -144,7 +146,7 @@ public class Utilidades {
 
     //Declaramos una variable String donde tendremos un comando SQL para Resultados Examenes
     public static final String Crear_Tabla_ResultadosExamenes="create table "+Tabla_Resultados_Examenes+"("+Campo_IdResultado+" integer primary key autoincrement, "+Campo_IdCita_REX+" integer, " +
-            ""+Campo_Observaciones+" text, "+Campo_DiagnosticoREx+" text, "+Campo_Tratamiento+" text, " +
+            ""+Campo_ResultadoExamen+" text, "+Campo_Rangominimo+" text, "+Campo_Rangomaximo+" text, " +
             " "+Campo_FechaREx+" text, "+Campo_HoraREx+" text "+Campo_Estado_REx+" Integer, " +
             " foreign key("+Campo_IdCita_REX+") references "+Tabla_Cita_Examen+"("+Campo_IdCita_E+"));";
 
@@ -153,9 +155,9 @@ public class Utilidades {
             " "+Campo_Fecha_E+" text, "+Campo_Hora_E+" text, "+Campo_Tipo_E+" text, "+Campo_Estado_E+" integer, foreign key("+Campo_IdPaciente_E+") references "+Tabla_Paciente+"("+Campo_IdPaciente+") );";
 
     //Declaramos una variable String donde tendremos un comando SQL para Ingresos
-    public static final String Crear_Tabla_ListaExamenes="create table "+Tabla_Lista_Examenes+"("+Campo_IdExamenes_P+" integer primary key autoincrement, "+Campo_IdUsuariosEx+" integer, " +
+    public static final String Crear_Tabla_ListaExamenes="create table "+Tabla_Lista_Examenes+"("+Campo_IdListaExamenes_P+" integer primary key autoincrement, "+Campo_IdCita_ex+" integer, "+Campo_IdPaciente_Lex+" integer,"+Campo_IdUsuariosEx+" integer, " +
             " "+Campo_FechaEx+" integer, "+Campo_HoraEx+" integer, "+Campo_EstadoEx+" Integer, " +
-            " foreign key("+Campo_IdUsuariosEx+") references "+Tabla_Usuario+"("+Campo_Id+"));";
+            " foreign key("+Campo_IdUsuariosEx+") references "+Tabla_Usuario+"("+Campo_Id+"), foreign key("+Campo_IdPaciente_Lex+") references "+Tabla_Paciente+"("+Campo_IdPaciente+"));";
 
 
     //Declaramos una variable String donde tendremos un comando SQL para Ingresos
@@ -201,7 +203,7 @@ public class Utilidades {
 
     //Declaramos una variable String donde tendremos un comando SQL para Consultas
     public static final String Crear_Tabla_Consultas="create table "+Tabla_Consultas+"("+Campo_IdConsultas+" integer primary key autoincrement, "+Campo_IdCitas+" integer, "+Campo_Presion+" text, " +
-            " "+Campo_Respiraciones+" text, "+Campo_Diagnostico+" text, "+Campo_idMedicamento+" integer, "+Campo_Indicaciones+" text, "+Campo_TratamientoC+" text, " +
+            " "+Campo_Respiraciones+" text, "+Campo_Diagnostico+" text, "+Campo_idMedicamento+" text, "+Campo_Indicaciones+" text, "+Campo_TratamientoC+" text, " +
             " "+Campo_Fecha_Con+" text, foreign key("+Campo_IdCitas+") references "+Tabla_Cita_General+"("+Campo_IdCita_G+") );";
 
 

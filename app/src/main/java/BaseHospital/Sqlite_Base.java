@@ -92,6 +92,20 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         //Toast.makeText(this,"Id Registro: "+idResultante,Toast.LENGTH_SHORT).show();
 
     }
+    public void insetarCitaG(String IdPaciente, String IdUsuarios_G, String Fecha_G ,String Hora_G, String Estado_G){
+        //Estos valores cuando se envien se deben colocar en ...
+        ContentValues valores=new ContentValues();
+        //Con put agregamos valores a el objeto valores
+        valores.put(Campo_IdPaciente_G,IdPaciente);
+        valores.put(Campo_IdUsuarios_G,IdUsuarios_G);
+        valores.put(Campo_Fecha_G,Fecha_G);
+        valores.put(Campo_Hora_G,Hora_G);
+        valores.put(Campo_Estado_G,Estado_G);
+
+        idResultante= this.getWritableDatabase().insert(Tabla_Cita_General, Campo_IdCita_G,valores);
+        //Toast.makeText(this,"Id Registro: "+idResultante,Toast.LENGTH_SHORT).show();
+
+    }
 
 
 
@@ -128,6 +142,8 @@ public class Sqlite_Base extends SQLiteOpenHelper {
         return mcursor;
 
     }
+
+
 
 
 

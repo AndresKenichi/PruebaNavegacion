@@ -10,12 +10,14 @@
             android:title="Consultar Cuadros"
             />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Realizar Examen" />
+        android:id="@+id/lbRealizarExamen"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="Realizar Examen" />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:id="@+id/lbModificarExamen"
+            android:icon="@drawable/ic_menu_gallery"
             android:title="Modificar Examen" />
+
     </group>
 </menu>

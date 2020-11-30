@@ -47,17 +47,17 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editTextNumber7"
+                        android:id="@+id/edtUsuarioAgendar"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:background="@drawable/edt"
                         android:ems="10"
-                        android:hint="Codigo cita"
+                        android:hint="Codigo usuario"
                         android:inputType="number" />
 
                     <Button
-                        android:id="@+id/button6"
+                        android:id="@+id/btnBuscarUserAgendarExamen"
                         android:layout_width="200dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="5dp"
@@ -80,12 +80,13 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView39"
+                        android:id="@+id/tvObservacionesAR"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
+
                 </LinearLayout>
 
                 <TextView
@@ -97,8 +98,10 @@
                     android:textSize="18sp" />
 
                 <ListView
+                    android:id="@+id/lv1AR"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="200dp"
+                    android:entries="@array/lista_examenes_AR" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -107,7 +110,7 @@
 
                     <TextView
                         android:id="@+id/textView43"
-                        android:layout_width="300dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Examen:"
@@ -115,48 +118,17 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView44"
+                        android:id="@+id/tvNOMBREEXAMEN"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="#000000"
                         android:textSize="18sp" />
+
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/textView46"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Hora:"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView45"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18sp" />
-
-                    <Button
-                        android:id="@+id/button7"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/colorPrimary"
-                        android:text="Seleccione"
-                        android:textColor="#FFFFFF" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textView47"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -169,30 +141,61 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
+                    <Button
+                        android:id="@+id/btnDateAR"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:drawable/ic_menu_today" />
+
                     <TextView
-                        android:id="@+id/textView48"
+                        android:id="@+id/tvDateAR"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/colorPrimary" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView47"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Hora:"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button8"
-                        android:layout_width="300dp"
+                        android:id="@+id/btnHourAR"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@color/colorPrimary"
-                        android:text="SELECCIONE"
-                        android:textColor="#FFFFFF" />
+                        android:background="@android:drawable/ic_menu_recent_history" />
+
+                    <TextView
+                        android:id="@+id/tvHourAR"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button9"
+                    android:id="@+id/btnAgregarALista"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@color/colorPrimary"
-                    android:text="AGREGAR"
+                    android:text="AGREGAR A LISTA"
                     android:textColor="#FFFFFF" />
 
                 <TextView
@@ -205,15 +208,16 @@
                     android:textSize="18sp" />
 
                 <ListView
+                    android:id="@+id/lv2AR"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
 
                 <Button
-                    android:id="@+id/button10"
+                    android:id="@+id/btnAgregarExamen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorPrimary"
-                    android:text="aceptar"
+                    android:text="AGREGAR"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
         </LinearLayout>

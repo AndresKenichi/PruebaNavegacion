@@ -32,6 +32,9 @@ public class Usuarios {
         Estado = estado;
     }
 
+    public Usuarios() {
+    }
+
     public Integer getId() {
         return Id;
     }

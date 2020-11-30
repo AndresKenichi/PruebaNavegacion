@@ -1,17 +1,13 @@
 package com.example.pruebanavegacion.ui_Laboratorio;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,10 +21,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pruebanavegacion.Citas_Examen;
 import com.example.pruebanavegacion.Citas_Examen2;
+import com.example.pruebanavegacion.Citas_Examen3;
 import com.example.pruebanavegacion.R;
 
 import java.util.ArrayList;
@@ -39,20 +35,20 @@ import Utilidades.Utilidades;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link lbRealizarExamen#newInstance} factory method to
+ * Use the {@link lbModificarExamen#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class lbRealizarExamen extends Fragment {
+public class lbModificarExamen extends Fragment {
 
   EditText edtNumCuadro,edtResultadoEx,edtRangoMinimo,edtRangoMaximo,edtFecha,edtHora;
   TextView txtNombrePaciente,txtEdadPaciente,txtDuiPaciente,txtObservacionesP,txtNombreExamen;
   Button btnInsertarCuadros,btnBuscarCuadro,btnContinuar,btnInsertarExamen;
   //ArrayList<Citas_Examen> listExamen;
-    ArrayList<Citas_Examen2> listaEx;
+    ArrayList<Citas_Examen3> listaEx;
     ArrayList<String> ExamenenesEnProceso,listaCitasE ;
   //AdaptadorExamen Adaptadorex;
   ArrayAdapter adapter;
-  String idCita,NombrePLista,IdCitasEx;
+  String idCita,NombrePLista,IdResultadoEx,IdCitasEx;
   ListView lvlExamenes;
   String numeroCuadro;
   String   Ids;
@@ -69,7 +65,7 @@ public class lbRealizarExamen extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public lbRealizarExamen() {
+    public lbModificarExamen() {
         // Required empty public constructor
     }
 
@@ -82,8 +78,8 @@ public class lbRealizarExamen extends Fragment {
      * @return A new instance of fragment lbCuadrosFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static lbRealizarExamen newInstance(String param1, String param2) {
-        lbRealizarExamen fragment = new lbRealizarExamen();
+    public static lbModificarExamen newInstance(String param1, String param2) {
+        lbModificarExamen fragment = new lbModificarExamen();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -104,7 +100,7 @@ public class lbRealizarExamen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.lb_fragment_realizarexamen, container, false);
+        return inflater.inflate(R.layout.lb_fragment_modificarexamen, container, false);
     }
 
     @Override
@@ -241,8 +237,10 @@ public class lbRealizarExamen extends Fragment {
                     return;
                 }
 
-                insetarResultados(IdCitasEx,rx, rm, rmax, Fecha ,hora);
+                String[] idREX={IdResultadoEx};
                 String[] idCR={IdCitasEx};
+                insetarResultados(idREX,IdCitasEx,rx, rm, rmax, Fecha ,hora);
+
                 ModificarReg(idCR, "0");
                 consultarListaExamenes(numeroCuadro);
                 Toast.makeText(getContext(),"Si se pudo: ",Toast.LENGTH_SHORT).show();
@@ -296,6 +294,7 @@ public class lbRealizarExamen extends Fragment {
         lvlExamenes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                IdResultadoEx=listaEx.get(i).getIdResultadoe();
                 Ids=listaEx.get(i).getIdEx();
                 NombreExamen=listaEx.get(i).getNombreExamen();
 
@@ -388,7 +387,7 @@ public class lbRealizarExamen extends Fragment {
 
     }
 
-    public void insetarResultados(String IdCitaER,String Result, String RangoMinimo, String RangoMaximo, String Fecha_E ,String Hora_E){
+    public void insetarResultados(String[] idREX,String IdCitaER,String Result, String RangoMinimo, String RangoMaximo, String Fecha_E ,String Hora_E){
         //Estos valores cuando se envien se deben colocar en ...
         Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         ContentValues valores=new ContentValues();
@@ -399,27 +398,28 @@ public class lbRealizarExamen extends Fragment {
         valores.put(Utilidades.Campo_Rangomaximo,RangoMaximo);
         valores.put(Utilidades.Campo_FechaREx,Fecha_E);
         valores.put(Utilidades.Campo_HoraREx,Hora_E);
-        long idR=obj.getWritableDatabase().insert(Utilidades.Tabla_Resultados_Examenes, Utilidades.Campo_IdResultado,valores);
+        long idR=obj.getWritableDatabase().update(Utilidades.Tabla_Resultados_Examenes, valores ,Utilidades.Campo_IdResultado+"=?",idREX);
         Toast.makeText(getContext(),"Id Registro: "+idR,Toast.LENGTH_SHORT).show();
     }
-
 
     private void consultarListaExamenes(String idPaciente) {
         Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
 
 
-        listaEx=new ArrayList<Citas_Examen2>();
+        listaEx=new ArrayList<Citas_Examen3>();
         //select * from usuarios
-        Cursor cursor=obj.getWritableDatabase().rawQuery("Select IdCita_E, Tipo  from Citas_Examenes where IdPaciente="+idPaciente+" and Estado=1;",new String[]{});
+        //Cursor cursor=obj.getWritableDatabase().rawQuery("Select IdCita_E, Tipo  from Citas_Examenes where IdPaciente="+idPaciente+" and Estado=0;",new String[]{});
+        Cursor cursor=obj.getWritableDatabase().rawQuery("Select re.IdResultado,c.IdCita_E, c.Tipo  from Citas_Examenes c inner join Resultados_Examenes re on c.IdCita_E=re.IdCita_E where IdPaciente="+idPaciente+" and Estado=0;",new String[]{});
 
         //Recoremos nuestros registros si es que contamos con registros
         while (cursor.moveToNext()){
 
-            IdCitasEx=cursor.getString(0);
-            NombrePLista=cursor.getString(1);
+            IdResultadoEx=cursor.getString(0);
+            IdCitasEx=cursor.getString(1);
+            NombrePLista=cursor.getString(2);
 
-            listaEx.add(new Citas_Examen2(IdCitasEx,NombrePLista));
+            listaEx.add(new Citas_Examen3(IdResultadoEx,IdCitasEx,NombrePLista));
         }
         obtenerListaEx();
 
@@ -512,6 +512,7 @@ public class lbRealizarExamen extends Fragment {
 
     }
 
+    /*
     //Creamos una clase y heredamos de la clase ArrayAdapter para llenar el listView con los componentes View de xmlContinente
     class AdaptadorExamen extends ArrayAdapter<Citas_Examen> {
         AppCompatActivity appCompatActivity;
@@ -561,7 +562,7 @@ public class lbRealizarExamen extends Fragment {
     static class VistaItem{
         TextView nombre;
         CheckBox chkEstado;
-    }
+    } */
 
     public void ModificarReg(String[] idCitaExM, String est){
         //Estos valores cuando se envien se deben colocar en ...

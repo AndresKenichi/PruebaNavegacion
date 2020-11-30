@@ -1,8 +1,8 @@
 package com.example.pruebanavegacion;
 
-public class Citas_Examen {
+public class Citas_Examen3 {
 
-    //Declaracion de variables
+   /* //Declaracion de variables
     private String NombreExamen;
     boolean estado;
 
@@ -29,9 +29,8 @@ public class Citas_Examen {
 
     public boolean isChekeado(){
         return estado;
-    }
+    } */
 
-   /*
     //Declaracion de variables
     private String IdResultadoe;
     private String NombreExamen;
@@ -40,7 +39,8 @@ public class Citas_Examen {
 
 
     //Creamo un constructor para asignarle valores  a las variables
-    public Citas_Examen(String IdResultadoe, String idEx, String NombreExamen){
+    public Citas_Examen3(String IdResultadoe, String idEx, String NombreExamen){
+        this.IdResultadoe=IdResultadoe;
         this.NombreExamen=NombreExamen;
         this.idEx=idEx;
 
@@ -62,7 +62,7 @@ public class Citas_Examen {
 
     public String getIdEx() {
         return idEx;
-    } */
+    }
 
 
 

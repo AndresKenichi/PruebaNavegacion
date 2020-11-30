@@ -22,10 +22,7 @@
             android:id="@+id/nav_consultarpacientes_a"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="CONSULTAR PACIENTES" />
-        <item
-            android:id="@+id/nav_gestionarconsultas_a"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="GESTIONAR CONSULTAS" />
+
         <item
             android:id="@+id/nav_gestionarareas_a"
             android:icon="@drawable/ic_menu_slideshow"

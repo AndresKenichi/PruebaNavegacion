@@ -22,16 +22,7 @@
         android:name="com.example.pruebanavegacion.ui_administrador.ModificarUsuario.ModificarUsuarioF"
         android:label="MODIFICAR USUARIO"
         tools:layout="@layout/a_fragment_modificarusuario" />
-    <fragment
-        android:id="@+id/nav_medicamentos_a"
-        android:name="com.example.pruebanavegacion.ui_administrador.Medicamentos.MedicamentosF"
-        android:label="MEDICAMENTOS"
-        tools:layout="@layout/a_fragment_medicamentos" />
-    <fragment
-        android:id="@+id/nav_consultarmedicamentos_a"
-        android:name="com.example.pruebanavegacion.ui_administrador.ConsultarMedicamentos.ConsultarMedicamentosF"
-        android:label="CONSULTAR MEDICAMENTOS"
-        tools:layout="@layout/a_fragment_consultarmedicamentos" />
+
     <fragment
         android:id="@+id/nav_consultarpacientes_a"
         android:name="com.example.pruebanavegacion.ui_administrador.ConsultarPacientes.ConsultarPacientesF"

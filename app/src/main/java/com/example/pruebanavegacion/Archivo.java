@@ -3,7 +3,6 @@ package com.example.pruebanavegacion;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +43,7 @@ public class Archivo extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.welcomeFragment, R.id.registrarPaciente, R.id.citaGeneral, R.id.agendarExamenes, R.id.consultarCuadros)
+                R.id.welcomeFragment, R.id.registrarPaciente, R.id.citaGeneral, R.id.agendarExamenes, R.id.consultarCuadros, R.id.nav_cerrarsesion_k)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_hostar);
@@ -78,6 +77,7 @@ public class Archivo extends AppCompatActivity {
         txtCorreo.setText(corr);
 
     }
+
 
 
 }

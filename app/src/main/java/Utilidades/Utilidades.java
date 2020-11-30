@@ -118,9 +118,9 @@ public class Utilidades {
     public static final String Tabla_Resultados_Examenes="Resultados_Examenes";
     public static final String Campo_IdResultado="IdResultado";
     public static final String Campo_IdCita_REX="IdCita_E";
-    public static final String Campo_Observaciones="Observaciones";
-    public static final String Campo_DiagnosticoREx="Diagnostico";
-    public static final String Campo_Tratamiento="Tratamiento";
+    public static final String Campo_ResultadoExamen="ResultadoExamen";
+    public static final String Campo_Rangominimo="Rangominimo";
+    public static final String Campo_Rangomaximo="Rangomaximo";
     public static final String Campo_FechaREx="Fecha";
     public static final String Campo_HoraREx="Hora";
     public static final String Campo_Estado_REx="Estado";
@@ -136,7 +136,7 @@ public class Utilidades {
 
     //Declaramos una variable String donde tendremos un comando SQL para Detalle medicamentos
     public static final String Crear_Tabla_detallemedicamentos="create table "+Tabla_detalle_medicamentos+"("+Campo_IdDetalle+" integer primary key autoincrement, "+Campo_IdMedicamento_D+" integer, " +
-            ""+Campo_IdPaciente_D+" integer, "+Campo_IdUsuarios_D+" integer, "+Campo_Tratamiento+" text, " +
+            ""+Campo_IdPaciente_D+" integer, "+Campo_IdUsuarios_D+" integer, " +
             " "+Campo_FechaREx+" text, "+Campo_HoraREx+" text "+Campo_Estado_REx+" Integer, "+Campo_IdConsultasD+" integer, "+Campo_CantidadD+" integer, " +
             " foreign key("+Campo_IdMedicamento_D+") references "+Tabla_Medicamentos+"("+Campo_IdMedicamentos+"), " +
             " foreign key("+Campo_IdPaciente_D+") references "+Tabla_Paciente+"("+Campo_IdPaciente+"), " +
@@ -146,7 +146,7 @@ public class Utilidades {
 
     //Declaramos una variable String donde tendremos un comando SQL para Resultados Examenes
     public static final String Crear_Tabla_ResultadosExamenes="create table "+Tabla_Resultados_Examenes+"("+Campo_IdResultado+" integer primary key autoincrement, "+Campo_IdCita_REX+" integer, " +
-            ""+Campo_Observaciones+" text, "+Campo_DiagnosticoREx+" text, "+Campo_Tratamiento+" text, " +
+            ""+Campo_ResultadoExamen+" text, "+Campo_Rangominimo+" text, "+Campo_Rangomaximo+" text, " +
             " "+Campo_FechaREx+" text, "+Campo_HoraREx+" text "+Campo_Estado_REx+" Integer, " +
             " foreign key("+Campo_IdCita_REX+") references "+Tabla_Cita_Examen+"("+Campo_IdCita_E+"));";
 

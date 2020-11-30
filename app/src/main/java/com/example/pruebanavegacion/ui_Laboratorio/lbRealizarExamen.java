@@ -42,8 +42,8 @@ import Utilidades.Utilidades;
  */
 public class lbRealizarExamen extends Fragment {
 
-  EditText edtNumCuadro;
-  TextView txtNombrePaciente,txtEdadPaciente,txtDuiPaciente,txtObservacionesP;
+  EditText edtNumCuadro,edtResultadoEx,edtRangoMinimo,edtRangoMaximo,edtFecha,edtHora;
+  TextView txtNombrePaciente,txtEdadPaciente,txtDuiPaciente,txtObservacionesP,txtNombreExamen;
   Button btnInsertarCuadros,btnBuscarCuadro,btnContinuar;
   //ArrayList<Citas_Examen> listExamen;
     ArrayList<Citas_Examen2> listaEx;
@@ -121,16 +121,22 @@ public class lbRealizarExamen extends Fragment {
         btnContinuar=view.findViewById(R.id.btnContinuar);
         btnBuscarCuadro=view.findViewById(R.id.btnBuscarCuadro);
         lvlExamenes=view.findViewById(R.id.lvlExamenes);
+        edtResultadoEx=view.findViewById(R.id.edtResultadoEx);
+        edtRangoMinimo=view.findViewById(R.id.edtRangoMinimo);
+        edtRangoMaximo=view.findViewById(R.id.edtRangoMaximo);
+        edtFecha=view.findViewById(R.id.edtFecha);
+        edtHora=view.findViewById(R.id.edtHora);
 
 
         btnContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(getContext(),lbRealizarExamen.class);
+               // Intent intent=new Intent(getContext(),lbRealizarExamen.class);
                // intent.putExtra("Id", Ids);
                // intent.putExtra("Nombre", NombreExamen);
-                startActivity(intent);
+               // startActivity(intent);
+
 
             }
         });
@@ -167,7 +173,7 @@ public class lbRealizarExamen extends Fragment {
                 Ids=listaEx.get(i).getIdEx();
                 NombreExamen=listaEx.get(i).getNombreExamen();
 
-               //Toast.makeText(getContext(),"IdCita "+Ids+"Nombre "+NombreExamen,Toast.LENGTH_SHORT).show();
+              // Toast.makeText(getContext(),"IdCita "+Ids+"Nombre "+NombreExamen,Toast.LENGTH_SHORT).show();
             }
         });
 

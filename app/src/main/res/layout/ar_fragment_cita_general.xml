@@ -47,23 +47,25 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editTextNumber6"
+                        android:id="@+id/edtNoPacienteCitaAR"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:ems="10"
                         android:background="@drawable/edt"
+                        android:ems="10"
                         android:hint="No. paciente"
                         android:inputType="number"
+                        android:paddingStart="12dp"
                         android:textSize="18sp" />
 
                     <Button
-                        android:id="@+id/button3"
+                        android:id="@+id/btnBuscarPacienteAR"
                         android:layout_width="200dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/btnbuscarxx" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -75,18 +77,20 @@
                         android:id="@+id/textView26"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:text="Nombre:"
+                        android:text="ID:"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView27"
+                        android:id="@+id/txtNombrePaciente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -98,18 +102,20 @@
                         android:id="@+id/textView28"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:text="Telefono:"
+                        android:text="Nombre:"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView29"
+                        android:id="@+id/txtDUIpaciente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -121,50 +127,80 @@
                         android:id="@+id/textView30"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:text="DUI:"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/textView31"
+                        android:id="@+id/txtNITpaciente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
-                </LinearLayout>
 
-                <Switch
-                    android:id="@+id/switch4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Programar cita"
-                    android:textOff="NO"
-                    android:textOn="SI"
-                    android:textSize="18sp" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView89"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="Doctor:"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerDoc"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinlarge1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView61"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fecha:"
+                        android:textColor="#050505"
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/btnDate"
-                        android:layout_width="100dp"
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@android:drawable/ic_menu_today"/>
+                        android:background="@android:drawable/ic_menu_today"
+                        android:paddingLeft="100dp"
+                        android:paddingRight="100dp" />
 
                     <TextView
                         android:id="@+id/tvDate"
-                        android:layout_width="match_parent"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="date"
+                        android:text="DD/MM/YYYY"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -172,147 +208,47 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView66"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hora:"
+                        android:textColor="#050505"
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/btnHour"
-                        android:layout_width="100dp"
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@android:drawable/ic_menu_recent_history"/>
+                        android:background="@android:drawable/ic_menu_recent_history"
+                        android:paddingLeft="100dp"
+                        android:paddingRight="100dp" />
 
                     <TextView
                         android:id="@+id/tvHour"
-                        android:layout_width="match_parent"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="time"
-                        android:textColor="@color/colorPrimary" />
-
-                </LinearLayout>
-
-                <Switch
-                    android:id="@+id/switch2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Programar radiografia"
-                    android:textOff="NO"
-                    android:textOn="SI"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView36"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Dia:"
-                        android:textColor="#101010"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/editTextDate4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="date"
-                        android:textColor="@color/colorPrimary" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView33"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Hora:"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/editTextTime"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="time"
+                        android:text="HH:MM"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
-                </LinearLayout>
 
-                <Switch
-                    android:id="@+id/switch3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Programar examenes"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView34"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Dia:"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/editTextDate3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="date"
-                        android:textColor="@color/colorPrimary" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView35"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Hora:"
-                        android:textColor="#070707"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/editTextTime2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="time"
-                        android:textColor="@color/colorPrimary" />
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btnGuardarCitaGeneral"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:text="Guardar"
-                    android:textColor="#FFFFFF" />
+                    android:backgroundTint="@color/colorPrimary"
+                    android:paddingTop="10dp"
+                    android:text="GUARDAR"
+                    android:textColor="@color/colorFondotxt" />
 
             </LinearLayout>
 

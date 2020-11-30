@@ -104,6 +104,7 @@ public class lbCuadrosFragment extends Fragment {
         btnInsertarCuadros=view.findViewById(R.id.btnInsertarCuadros);
         btnLimpiar=view.findViewById(R.id.btnLimpiar);
         btnBuscarCuadro=view.findViewById(R.id.btnBuscarCuadro);
+        btnInsertarCuadros.setVisibility(View.INVISIBLE);
 
         btnInsertarCuadros.setOnClickListener(new View.OnClickListener(){
 

@@ -24,7 +24,7 @@ public class Utilidades {
     public static final String Campo_Presion="Presion_Arterial";
     public static final String Campo_Respiraciones="Respiraciones";
     public static final String Campo_Diagnostico="Diagnostico";
-    public static final String Campo_idMedicamento="IdMedicamentos";
+    public static final String Campo_idMedicamento="Cantidad";
     public static final String Campo_Indicaciones="Indicaciones";
     public static final String Campo_Fecha_Con="Fecha";
     public static final String Campo_TratamientoC="Tratamiento";
@@ -203,7 +203,7 @@ public class Utilidades {
 
     //Declaramos una variable String donde tendremos un comando SQL para Consultas
     public static final String Crear_Tabla_Consultas="create table "+Tabla_Consultas+"("+Campo_IdConsultas+" integer primary key autoincrement, "+Campo_IdCitas+" integer, "+Campo_Presion+" text, " +
-            " "+Campo_Respiraciones+" text, "+Campo_Diagnostico+" text, "+Campo_idMedicamento+" integer, "+Campo_Indicaciones+" text, "+Campo_TratamientoC+" text, " +
+            " "+Campo_Respiraciones+" text, "+Campo_Diagnostico+" text, "+Campo_idMedicamento+" text, "+Campo_Indicaciones+" text, "+Campo_TratamientoC+" text, " +
             " "+Campo_Fecha_Con+" text, foreign key("+Campo_IdCitas+") references "+Tabla_Cita_General+"("+Campo_IdCita_G+") );";
 
 

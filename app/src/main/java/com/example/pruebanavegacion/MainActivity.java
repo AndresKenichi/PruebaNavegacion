@@ -43,19 +43,18 @@ public class MainActivity extends AppCompatActivity {
         Cursor l =  validacionPacientes();
         Cursor mm = validacionUsuarios();
 
-        insertarUsuario();
-        insertarLugares();
-        insertarPacientes();
-        insertarArea();
 
 
-        /*if(k.getCount()>0){
+
+
+
+        if(k.getCount()>0){
 
             Toast.makeText(this,"TENEMOS DATOS LUGARES",Toast.LENGTH_LONG).show();
 
         }else{
 
-
+            insertarLugares();
 
         }
 
@@ -64,25 +63,25 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"TENEMOS DATOS PACIENTES",Toast.LENGTH_LONG).show();
 
         }else{
-
+            insertarPacientes();
         }
 
         if(mm.getCount()>0){
-            Toast.makeText(this,"TENEMOS DATOS AREAS",Toast.LENGTH_LONG).show();
-
-        }else{
-
-
-
-        }
-        if(h.getCount()>0){
             Toast.makeText(this,"TENEMOS DATOS USUARIOS",Toast.LENGTH_LONG).show();
 
         }else{
 
             insertarUsuario();
 
-        }*/
+        }
+        if(h.getCount()>0){
+            Toast.makeText(this,"TENEMOS DATOS AREA",Toast.LENGTH_LONG).show();
+
+        }else{
+
+            insertarArea();
+
+        }
 
 
         tvRegistrese.setOnClickListener(new View.OnClickListener() {
@@ -207,8 +206,8 @@ public class MainActivity extends AppCompatActivity {
     public void insertarUsuario(){
         helper.abrir();
         String comandoL="INSERT INTO "+Utilidades.Tabla_Usuario+"("+Utilidades.Campo_Nombre+","+Utilidades.Campo_Correo+" ,"+Utilidades.Campo_Clave+", "+Utilidades.Campo_Tipo_User+", "+Utilidades.Campo_Especialidad+","+Utilidades.Campo_Nit+", "+Utilidades.Campo_Dui+","+Utilidades.Campo_Telefono+","+Utilidades.Campo_Fecha_Nac+","+Utilidades.Campo_Direccion+","+Utilidades.Campo_Estado+" ) " +
-                "values('Douglas Calderon','douglas@gmail.com','123','Laboratorio','Especialidad A','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1'),('Kevin Vazques','kevin@gmail.com','123','Archivo','Especialidad X','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1'),('Isabel Ceron','isa@gmail.com','123','Doctor','Especialidad X','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1')," +
-                "('Pascacio Calderon','pasca@gmail.com','123','Administrador','Especialidad A','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1')";
+                "values('Douglas Calderon','douglas@gmail.com','123','Laboratorio','Cirujano','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1'),('Kevin Vazques','kevin@gmail.com','123','Archivo','Neurologo','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1'),('Isabel Ceron','isa@gmail.com','123','Doctor','Anesteciologo','4899997-8','05374522-7','2298-8270','16/05/1997','Cuscatlan','1')," +
+                "('Pascacio Calderon','pasca@gmail.com','123','Administrador','Cardiologo','5899998-8','05384522-7','2298-8270','16/05/1997','Santa Ana','1'),('Jose Pascasio','user1@gmail.com','123','Administrador','Cardiologo','5899998-8','05384522-7','2298-8270','16/05/1997','SS','1')";
 
         helper.getWritableDatabase().execSQL(comandoL);
     }

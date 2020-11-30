@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.example.pruebanavegacion.R;
 import com.example.pruebanavegacion.ui_administrador.Inicio.InicioFragment_A;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import BaseHospital.DatosConexion;
 import BaseHospital.Sqlite_Base;
@@ -36,12 +38,22 @@ public class GestionarAreasF extends Fragment {
     ArrayList<String> AreasA,HabitacionesA,DoctoresA;
     ArrayList<String> AreasI,HabitacionesI,DoctoresI;
     ArrayAdapter adapter1,adapter2,adapter3;
-    String box;
+    String box,numcam;
     Button AgregarGA,Cancelar;
-    EditText NoPa;
+    EditText NoPa,ErrorDoc;
     int indexHabitacion;
-    Spinner Areas,Habitacion,Especialida,Medico,Dia,Mes,Ano,Hora,Min;
+    Spinner Areas,Habitacion,Especialida,Intervencion,Medico,Dia,Mes,Ano,Hora,Min;
     View vista;
+
+    final String[] idintervencion = new String[1];
+    final String[] idarea= new String[1];
+    final String[] iduser= new String[1];
+    final String[]  idhabitacion = new String[1];
+    final String[] di = new String[1];
+    final String[] me= new String[1];
+    final String[] an= new String[1];
+    final String[] hh= new String[1];
+    final String[] min= new String[1];
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         GestionarAreasVM =
@@ -53,6 +65,7 @@ public class GestionarAreasF extends Fragment {
         Habitacion= vista.findViewById(R.id.spnHabi);
         Especialida = vista.findViewById(R.id.spnEsp);
         Medico = vista.findViewById(R.id.spnNMedico);
+        Intervencion = vista.findViewById(R.id.spnIntervencion);
         AgregarGA = vista.findViewById(R.id.btnAgregarGA);
         Dia = vista.findViewById(R.id.spnDiaGA);
         Mes = vista.findViewById(R.id.spnMesGA);
@@ -61,31 +74,33 @@ public class GestionarAreasF extends Fragment {
         Min = vista.findViewById(R.id.spnMinGA);
         NoPa = vista.findViewById(R.id.edtNumPacienteGA);
         Cancelar = vista.findViewById(R.id.btnCancelarGA);
+        ErrorDoc = vista.findViewById(R.id.txtErrorDoc);
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
-
         x.abrir();
-
         consultarArea();
-
-        final String[] id1 = new String[1];
-        final String[] id2= new String[1];
-        final String[] id3= new String[1];
 
         adapter1 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,AreasA);
         Areas.setAdapter(adapter1);
 
         Areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                     indexHabitacion= i+1;
                     //Mando el id de la seleccion
                     consultarLugares(indexHabitacion);
                     adapter2 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,HabitacionesA);
                     Habitacion.setAdapter(adapter2);
                     //Lleno el Array buscando en AreasI la posicion que selecione
-                    id1[0] = AreasI.get(i);
+                    idarea[0] = AreasI.get(i);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+        Intervencion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                idintervencion[0]=adapterView.getSelectedItem().toString();
             }
 
             @Override
@@ -94,15 +109,65 @@ public class GestionarAreasF extends Fragment {
             }
         });
         Especialida.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 consultarDoc(adapterView.getSelectedItem().toString());
                 adapter3 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,DoctoresA);
                 Medico.setAdapter(adapter3);
-                id2[0] =AreasI.get(i);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+        Dia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                di[0]=adapterView.getSelectedItem().toString();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        Mes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                me[0]=adapterView.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        Ano.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                an[0]=adapterView.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        Hora.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    hh[0]= adapterView.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        Min.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                min[0]= adapterView.getSelectedItem().toString();
             }
 
             @Override
@@ -113,7 +178,18 @@ public class GestionarAreasF extends Fragment {
         Medico.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                id3[0] =AreasI.get(i);
+                    iduser[0]=DoctoresI.get(i);
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        Habitacion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                idhabitacion[0] = HabitacionesI.get(i);
             }
 
             @Override
@@ -121,59 +197,72 @@ public class GestionarAreasF extends Fragment {
 
             }
         });
-
         AgregarGA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String FechaS;
                 String HoraS;
-
+                String idALs[] = {Habitacion.getSelectedItem().toString()};
                 FechaS = Dia.getSelectedItem().toString()+"-"+Mes.getSelectedItem().toString()+"-"+Ano.getSelectedItem().toString();
                 HoraS = Hora.getSelectedItem().toString()+":"+Min.getSelectedItem().toString();
+                String cadFe = di[0]+"/"+me[0]+"/"+an[0];
+                String cadHor = hh[0]+":"+min[0];
 
+                boolean bv= validarFechaHoraDoc(cadFe,cadHor,iduser[0]);
                 if((NoPa.getText().toString()).equals("")){
                     NoPa.setError("Ingrese un ID");
                     NoPa.requestFocus();
-                }else
-                {
 
-                    insetarIngresos(NoPa.getText().toString(),id3[0],id2[0],id1[0],FechaS,HoraS,1);
-                    Intent ga = new Intent(getContext(), Administrador.class);
-                    startActivity(ga);
+                }else {
+                    if(bv==true){
+                        Toast.makeText(getContext(),"DOCTOR NO DISPONIBLE A ESTA HORA",Toast.LENGTH_LONG).show();
+                    }else
+                    {
 
+                        Toast.makeText(getContext(),"INGRESADO",Toast.LENGTH_LONG).show();
+                        insetarIngresos(NoPa.getText().toString(),iduser[0],idhabitacion[0],idintervencion[0],FechaS,HoraS,1);
+                        actualizarEstado(idALs,1);
+
+                        Intent ga = new Intent(getContext(), Administrador.class);
+                        startActivity(ga);
+                    }
                 }
+
 
             }
         });
-
         x.close();
-
         return vista;
-
     }
 
+    public void actualizarEstado(String[] idAL,int est){
+
+        ContentValues val = new ContentValues();
+        x = new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+
+        val.put(Utilidades.Campo_EstadoL,est);
+
+        x.getWritableDatabase().update(Utilidades.Tabla_Lugares,val ,Utilidades.Campo_Num_Cama+"=?",idAL);
+    }
     public void consultarArea(){
 
         AreasA= new ArrayList<>();
         AreasI = new ArrayList<>();
-        x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
+        x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         x.abrir();
 
         Cursor u = null;
 
         u=x.getWritableDatabase().rawQuery("SELECT IdArea,Nombre FROM "+Utilidades.Tabla_Areas,new String[]{});
-        while(u.moveToNext()){
 
+        while(u.moveToNext()){
             box=u.getString(0);
             AreasI.add(box);
             box=u.getString(1);
             AreasA.add(box);
-
         }
     }
-
-
     public void consultarLugares(int i){
 
         HabitacionesA= new ArrayList<>();
@@ -186,10 +275,6 @@ public class GestionarAreasF extends Fragment {
         u=x.getWritableDatabase().rawQuery("SELECT IdLugar,Num_Cama FROM "+Utilidades.Tabla_Lugares+" where "+Utilidades.Campo_IdAreaL+" = "+i+" and Estado="+0,new String[]{});
 
         while(u.moveToNext()){
-            //   ID - NOMBRE
-            //    1   Area 1
-            //    2   Area 2
-            //    3   Area 3
 
             box=u.getString(0);
             HabitacionesI.add(box);
@@ -202,13 +287,14 @@ public class GestionarAreasF extends Fragment {
 
         DoctoresA= new ArrayList<>();
         DoctoresI = new ArrayList<>();
+
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
         x.abrir();
 
         Cursor u = null;
 
-        u=x.getWritableDatabase().rawQuery("SELECT Id,Nombre FROM "+Utilidades.Tabla_Usuario+"  where Especialidad='"+esp+"' and Estado= "+1,new String[]{});
+        u=x.getWritableDatabase().rawQuery("SELECT Id,Nombre FROM "+Utilidades.Tabla_Usuario+"  where Especialidad='"+esp+"' and Estado= "+1+" and Tipo_User = 'Doctor'",new String[]{});
 
         while(u.moveToNext()){
 
@@ -237,5 +323,53 @@ public class GestionarAreasF extends Fragment {
         Long idResultante= x.getWritableDatabase().insert(Utilidades.Tabla_Ingresos, Utilidades.Campo_Id,valores);
         Toast.makeText(getContext(),"INGRESO INSERTADO: "+idResultante,Toast.LENGTH_SHORT).show();
 
+    }
+    public boolean validarDiaExist(String fec,String idP){
+
+        x = new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+        x.abrir();
+        String fech=" ",hora=" ";
+        Boolean s=false;
+        Cursor gf = null;
+
+        gf = x.getWritableDatabase().rawQuery("Select FechaIngreso,HoraIngreso from Ingresos where IdPaciente = "+idP+"and Estado = 1",new String[]{});
+
+        while(gf.moveToNext()){
+
+            fech=gf.getString(0);
+            hora = gf.getString(1);
+        }
+        if(fec.equals(fech)){
+            s= false;
+        }else{
+            s= true;
+        }
+
+        return s;
+    }
+    public boolean validarFechaHoraDoc(String fec,String hor,String idD){
+
+        x = new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+        x.abrir();
+        String fech=" ",hora=" ",es=" ";
+        boolean xc = false;
+        Cursor gf = null;
+
+        gf = x.getWritableDatabase().rawQuery("Select FechaIngreso,HoraIngreso from Ingresos where IdUsuarios = "+idD+" and Estado = 1",new String[]{});
+        while(gf.moveToNext()){
+            fech=gf.getString(0);
+            hora = gf.getString(1);
+        }
+
+        if(fech.equals(fec)){
+            if(hora.equals(hor)){
+                xc=true;
+            }
+            else
+            {
+                xc = false;
+            }
+        }
+        return xc;
     }
 }

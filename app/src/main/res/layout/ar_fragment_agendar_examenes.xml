@@ -53,7 +53,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/edt"
                         android:ems="10"
-                        android:hint="Codigo cita"
+                        android:hint="Codigo usuario"
                         android:inputType="number" />
 
                     <Button

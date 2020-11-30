@@ -280,4 +280,14 @@
         <item>Isabel</item>
         <item>Kevin</item>
     </string-array>
+    <string-array name="lista_examenes_AR">
+        <item>Analisis de colesterol en la sangre</item>
+        <item>Analisis de glucosa en la sangre</item>
+        <item>Urinalisis completo</item>
+        <item>Examen de heces</item>
+        <item>Hemograma</item>
+        <item>Cultivo de sangre</item>
+        <item>Pruebas de embarazo</item>
+        <item>VIH o SIDA</item>
+    </string-array>
 </resources>

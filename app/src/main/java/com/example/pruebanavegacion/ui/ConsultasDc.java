@@ -156,8 +156,7 @@ public class ConsultasDc extends Fragment {
         Cursor cursorConsulta=null;
 
         Sqlite_Base objCon=new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
-        cursorConsulta=objCon.getWritableDatabase().rawQuery("Select c.IdCita_G,p.Nombre,p.Fecha,p.DUI, cn.Indicaciones,cn.Diagnostico,cn.Tratamiento from Pacientes p inner join Citas_Generales c on \n" +
-                "c.IdPaciente = p.IdPaciente inner join consultas cn on c.IdCita_G = cn.IdCita_G where cn.IdConsultas="+numero,new String[]{});
+        cursorConsulta=objCon.getWritableDatabase().rawQuery("Select c.IdCita_G,p.Nombre,c.Fecha,p.DUI from Pacientes p inner join Citas_Generales c on c.IdPaciente = p.IdPaciente where c.IdCita_G="+numero,new String[]{});
         return  cursorConsulta;
     }
 

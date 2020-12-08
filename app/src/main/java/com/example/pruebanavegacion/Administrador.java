@@ -33,9 +33,9 @@ public class Administrador extends AppCompatActivity {
         setContentView(R.layout.activity_administrador);
         Toolbar toolbar = findViewById(R.id.toolbara);
         setSupportActionBar(toolbar);
-        //mayami me lo komfirmo xdxd
         x = new Sqlite_Base(getApplicationContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         x.abrir();
+
         correo=getIntent().getStringExtra("correo");
 
         DrawerLayout drawer = findViewById(R.id.drawer_layoutAdmin);
@@ -51,7 +51,7 @@ public class Administrador extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
+        UpdateNavHeader(correo);
     }
 
     @Override

@@ -22,7 +22,6 @@ import Utilidades.Utilidades;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnIngresar;
-    private SharedPreferences ad;
     EditText txtCorUsu,txtPassUsu;
     TextView tvRegistrese;
 
@@ -33,60 +32,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //Inicializamos objetos del XML
         txtCorUsu=findViewById(R.id.txtUsuario);
         txtPassUsu=findViewById(R.id.txtPassword);
         tvRegistrese=findViewById(R.id.tvRegistrese);
         btnIngresar=findViewById(R.id.btnIngresar);
+
+        //Cursores para validar existencia de datos en la BD
         Cursor h =  validacionArea();
         Cursor k =  validacionLugares();
         Cursor l =  validacionPacientes();
         Cursor mm = validacionUsuarios();
 
-
-
-
+        //Validaciones para evitar duplicidad de datos
         if(k.getCount()>0){
-
            // Toast.makeText(this,"TENEMOS DATOS LUGARES",Toast.LENGTH_LONG).show();
-
         }else{
-
             insertarLugares();
-
         }
-
         if(l.getCount()>0){
-
           //  Toast.makeText(this,"TENEMOS DATOS PACIENTES",Toast.LENGTH_LONG).show();
-
         }else{
-
             insertarPacientes();
             insertarCitaGeneral();
             insertarCitaExamen();
-
         }
 
         if(mm.getCount()>0){
            // Toast.makeText(this,"TENEMOS DATOS AREAS",Toast.LENGTH_LONG).show();
-
         }else{
 
             insertarUsuario();
-
         }
         if(h.getCount()>0){
           //  Toast.makeText(this,"TENEMOS DATOS USUARIOS",Toast.LENGTH_LONG).show();
-
         }else{
-
-
             insertarArea();
             insertarConsultas();
-
         }
-
+        //**
 
         tvRegistrese.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,11 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
                 txtCorUsu.clearFocus();
                 txtPassUsu.clearFocus();
-
-
                 Intent intent2=new Intent(MainActivity.this,Registrar.class);
                 startActivity(intent2);
-
 
             }
         });
@@ -129,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-
                 try {
                     //Declaramos un objeto de tipo cursor para recibirlo y enviarlo la siguiente actividad
                     //le enviamos estos datos al objeto de tipo cursor
@@ -137,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //Consultamos el resultado si es mayor a cero es porque si existen registros
                     if(cursor.getCount()>0){
+
                         cursor.moveToFirst();
                         //USUARIO YA REGISTRADO
                         String msj = cursor.getString(1);
@@ -146,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(),"Usuario:"+msj,Toast.LENGTH_SHORT).show();
                       //Nivel 0 Doctor
+
                         if(rol.equals("Doctor")){
 
                             Intent intent=new Intent(MainActivity.this,Home.class);
@@ -169,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent2);
 
                         }
-
                        //Nivel 3 laboratorio
                         else if(rol.equals("Laboratorio")){
 
@@ -260,8 +241,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void insertarCitaExamen(){
         helper.abrir();
-
-
         String comando="INSERT INTO "+Utilidades.Tabla_Cita_Examen+"("+Utilidades.Campo_IdPaciente_E+","+Utilidades.Campo_Fecha_E+", "+Utilidades.Campo_Hora_E+", "+Utilidades.Campo_Tipo_E+", "+Utilidades.Campo_Estado_E+" ) " +
                 "values('2','16/12/2020','13:00','Examen VIH','1'),('2','16/12/2020','13:00','Examen Orina','1'),('1','16/12/2020','13:00','Examen Glucosa','1'),('1','16/12/2020','13:00','Examen VIH','1')";
 
@@ -300,6 +279,7 @@ public class MainActivity extends AppCompatActivity {
         return u;
 
     }
+    //un SELECT para verificar si existen datos en tabla Lugares
     public Cursor validacionLugares(){
 
         helper.abrir();

@@ -19,7 +19,6 @@ import static Utilidades.Utilidades.*;
 
 public class Sqlite_Base extends SQLiteOpenHelper {
 
-
     Long idResultante;
     //Nombre de la base de datos en este constructor es donde colocamos el nombre de nuestra base...
     public Sqlite_Base(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -131,34 +130,11 @@ public class Sqlite_Base extends SQLiteOpenHelper {
     //AGREGAMOS EL CONTROL DE ERRORES SQLException
     public Cursor ConsultarUsuPas(String usu, String pas) throws SQLException {
         Cursor mcursor=null;
-        // mcursor=this.getReadableDatabase().query("usuarios",new String[]{"ID","Nombre","Distrito","Correo","Password"},"Correo like '"+usu+"' and Password like '"+pas+"' ",null,null,null,null);
-
         mcursor=this.getWritableDatabase().rawQuery("select * from "+ Tabla_Usuario+" where "+ Campo_Correo+" like '"+usu+"' and "+ Campo_Clave+" like '"+pas+"';",new String[]{});
-
-
-
 
         //Si el valor de el cursor es 1 encontro algo sino 0 y es porque no existe..
         return mcursor;
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //comentario de kevin
 }

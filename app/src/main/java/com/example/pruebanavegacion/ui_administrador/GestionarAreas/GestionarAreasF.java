@@ -44,7 +44,7 @@ public class GestionarAreasF extends Fragment {
     int indexHabitacion;
     Spinner Areas,Habitacion,Especialida,Intervencion,Medico,Dia,Mes,Ano,Hora,Min;
     View vista;
-
+    // Para llenar con el selectedItem
     final String[] idintervencion = new String[1];
     final String[] idarea= new String[1];
     final String[] iduser= new String[1];
@@ -54,13 +54,14 @@ public class GestionarAreasF extends Fragment {
     final String[] an= new String[1];
     final String[] hh= new String[1];
     final String[] min= new String[1];
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         GestionarAreasVM =
                 ViewModelProviders.of(this).get(GestionarAreasVM.class);
         vista= inflater.inflate(R.layout.a_fragment_gestionarareas, container, false);
 
-
+        //Declaramos objetos del XML a utilizar
         Areas = vista.findViewById(R.id.spnAreasGA);
         Habitacion= vista.findViewById(R.id.spnHabi);
         Especialida = vista.findViewById(R.id.spnEsp);
@@ -75,8 +76,10 @@ public class GestionarAreasF extends Fragment {
         NoPa = vista.findViewById(R.id.edtNumPacienteGA);
         Cancelar = vista.findViewById(R.id.btnCancelarGA);
         ErrorDoc = vista.findViewById(R.id.txtErrorDoc);
+        //Abrimos coneccion
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         x.abrir();
+        // Este metodo consulta las areas y llena el primer Spinner
         consultarArea();
 
         adapter1 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,AreasA);
@@ -85,18 +88,21 @@ public class GestionarAreasF extends Fragment {
         Areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
                     indexHabitacion= i+1;
-                    //Mando el id de la seleccion
+                    //Mando el id de la seleccion  a consultarlugares
                     consultarLugares(indexHabitacion);
+
                     adapter2 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,HabitacionesA);
                     Habitacion.setAdapter(adapter2);
-                    //Lleno el Array buscando en AreasI la posicion que selecione
+                    //Lleno el Array buscando en AreasI la posicion que selecione, capturando el id del area seleccionada
                     idarea[0] = AreasI.get(i);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
         Intervencion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -108,10 +114,11 @@ public class GestionarAreasF extends Fragment {
 
             }
         });
+
         Especialida.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                //MEtodo consultar Doctores, le enviamos la Especialidad a buscar
                 consultarDoc(adapterView.getSelectedItem().toString());
                 adapter3 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,DoctoresA);
                 Medico.setAdapter(adapter3);
@@ -244,6 +251,8 @@ public class GestionarAreasF extends Fragment {
 
         x.getWritableDatabase().update(Utilidades.Tabla_Lugares,val ,Utilidades.Campo_Num_Cama+"=?",idAL);
     }
+
+
     public void consultarArea(){
 
         AreasA= new ArrayList<>();
@@ -257,21 +266,30 @@ public class GestionarAreasF extends Fragment {
         u=x.getWritableDatabase().rawQuery("SELECT IdArea,Nombre FROM "+Utilidades.Tabla_Areas,new String[]{});
 
         while(u.moveToNext()){
+
+            // Este es el IDArea
             box=u.getString(0);
+            //Muevo en esta pocision al Array
             AreasI.add(box);
+            // Este es el NOMBREAREA
             box=u.getString(1);
+            //Muevo en esta posicion al Array
             AreasA.add(box);
         }
+
     }
+
     public void consultarLugares(int i){
 
         HabitacionesA= new ArrayList<>();
         HabitacionesI = new ArrayList<>();
+
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
         x.abrir();
 
         Cursor u = null;
+        //Aca envio el indice i, validando que sea ese indice en la tabla Lugares y su estado sea disponible(0)
         u=x.getWritableDatabase().rawQuery("SELECT IdLugar,Num_Cama FROM "+Utilidades.Tabla_Lugares+" where "+Utilidades.Campo_IdAreaL+" = "+i+" and Estado="+0,new String[]{});
 
         while(u.moveToNext()){
@@ -282,6 +300,7 @@ public class GestionarAreasF extends Fragment {
             HabitacionesA.add(box);
         }
     }
+
 
     public void consultarDoc(String esp){
 

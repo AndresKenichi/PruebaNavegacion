@@ -53,6 +53,7 @@ public class lbModificarExamen extends Fragment {
   String numeroCuadro;
   String   Ids;
   String NombreExamen="";
+  Cursor llenado;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -157,6 +158,14 @@ public class lbModificarExamen extends Fragment {
 
                 txtNombreExamen.setText(NombreExamen);
 
+                llenado=consultarResultadosExamen(IdResultadoEx);
+                llenado.moveToFirst();
+                edtResultadoEx.setText(llenado.getString(2));
+                edtRangoMinimo.setText(llenado.getString(3));
+                edtRangoMaximo.setText(llenado.getString(4));
+                edtFecha.setText(llenado.getString(5));
+                edtHora.setText(llenado.getString(6));
+
 
 
 
@@ -241,7 +250,7 @@ public class lbModificarExamen extends Fragment {
                 String[] idCR={IdCitasEx};
                 insetarResultados(idREX,IdCitasEx,rx, rm, rmax, Fecha ,hora);
 
-                ModificarReg(idCR, "0");
+                //ModificarReg(idCR, "1");
                 consultarListaExamenes(numeroCuadro);
                 Toast.makeText(getContext(),"Si se pudo: ",Toast.LENGTH_SHORT).show();
 
@@ -298,9 +307,14 @@ public class lbModificarExamen extends Fragment {
                 Ids=listaEx.get(i).getIdEx();
                 NombreExamen=listaEx.get(i).getNombreExamen();
 
+
+
+
               // Toast.makeText(getContext(),"IdCita "+Ids+"Nombre "+NombreExamen,Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
 
         btnInsertarCuadros.setOnClickListener(new View.OnClickListener(){
@@ -410,7 +424,7 @@ public class lbModificarExamen extends Fragment {
         listaEx=new ArrayList<Citas_Examen3>();
         //select * from usuarios
         //Cursor cursor=obj.getWritableDatabase().rawQuery("Select IdCita_E, Tipo  from Citas_Examenes where IdPaciente="+idPaciente+" and Estado=0;",new String[]{});
-        Cursor cursor=obj.getWritableDatabase().rawQuery("Select re.IdResultado,c.IdCita_E, c.Tipo  from Citas_Examenes c inner join Resultados_Examenes re on c.IdCita_E=re.IdCita_E where IdPaciente="+idPaciente+" and Estado=0;",new String[]{});
+        Cursor cursor=obj.getWritableDatabase().rawQuery("Select re.IdResultado,c.IdCita_E, c.Tipo  from Citas_Examenes c inner join Resultados_Examenes re on c.IdCita_E=re.IdCita_E where c.IdConsultas="+idPaciente+" and Estado=1;",new String[]{});
 
         //Recoremos nuestros registros si es que contamos con registros
         while (cursor.moveToNext()){
@@ -422,6 +436,18 @@ public class lbModificarExamen extends Fragment {
             listaEx.add(new Citas_Examen3(IdResultadoEx,IdCitasEx,NombrePLista));
         }
         obtenerListaEx();
+
+    }
+    private Cursor consultarResultadosExamen(String IdResultado) {
+        Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+
+
+        //select * from usuarios
+        Cursor cursor=null;
+        //Cursor cursor=obj.getWritableDatabase().rawQuery("Select IdCita_E, Tipo  from Citas_Examenes where IdPaciente="+idPaciente+" and Estado=0;",new String[]{});
+        cursor=obj.getWritableDatabase().rawQuery("select * from Resultados_Examenes where IdResultado="+IdResultadoEx+" ;",new String[]{});
+
+        return cursor;
 
     }
 

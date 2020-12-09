@@ -51,6 +51,7 @@ public class AgendarExamenes extends Fragment {
     ArrayList<Citas_Examen2>listaEx;
     ArrayList<String>listaCitasE;
     ArrayAdapter<String>adapter;
+    String numeroPaciente;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -165,7 +166,7 @@ public class AgendarExamenes extends Fragment {
             @Override
             public void onClick(View view) {
                 edtUsuarioAgendar.setError(null);
-                String numeroPaciente=edtUsuarioAgendar.getText().toString().trim();
+                numeroPaciente=edtUsuarioAgendar.getText().toString().trim();
                 if(numeroPaciente.isEmpty()){
                     //Primer error
                     edtUsuarioAgendar.setError("Deber ingresar No Paciente");
@@ -194,9 +195,9 @@ public class AgendarExamenes extends Fragment {
             @Override
             public void onClick(View view) {
 
-
-                insetarCitaE(idPaciente,tvDateAR.getText().toString(),tvHourAR.getText().toString(),nombreExamen,"1");
-                consultarListaExamenes(idPaciente);
+//El estado debe ser cero ya que aun no se han llenado los resultados
+                insetarCitaE(idPaciente,numeroPaciente,tvDateAR.getText().toString(),tvHourAR.getText().toString(),nombreExamen,"0");
+                consultarListaExamenes(numeroPaciente);
                 adapter=new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,listaCitasE);
                 lv2AR.setAdapter(adapter);
             }
@@ -218,12 +219,12 @@ public class AgendarExamenes extends Fragment {
                 "c.IdPaciente = p.IdPaciente inner join consultas cn on c.IdCita_G = cn.IdCita_G where cn.IdConsultas="+numeroP,new String[]{});
         return  cursorConsulta;
     }
-    private void consultarListaExamenes(String idPaciente) {
+    private void consultarListaExamenes(String idConsulta) {
         Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
         listaEx=new ArrayList<Citas_Examen2>();
         //select * from usuarios
-        Cursor cursor=obj.getWritableDatabase().rawQuery("Select IdCita_E, Tipo  from Citas_Examenes where IdPaciente="+idPaciente+" and Estado=1;",new String[]{});
+        Cursor cursor=obj.getWritableDatabase().rawQuery("Select IdCita_E, Tipo  from Citas_Examenes where "+Utilidades.Campo_IdConsultas_E+"="+idConsulta+" and Estado=0;",new String[]{});
         //Recoremos nuestros registros si es que contamos con registros
         while (cursor.moveToNext()){
             IdCitasEx=cursor.getString(0);
@@ -239,12 +240,13 @@ public class AgendarExamenes extends Fragment {
             listaCitasE.add(listaEx.get(i).getIdEx()+"-"+listaEx.get(i).getNombreExamen());
         }
     }
-    public void insetarCitaE(String IdPaciente, String Fecha_E ,String Hora_E,String Tipo_E, String Estado_E){
+    public void insetarCitaE(String IdPaciente, String IdConsulta, String Fecha_E ,String Hora_E,String Tipo_E, String Estado_E){
         //Estos valores cuando se envien se deben colocar en ...
         Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         ContentValues valores=new ContentValues();
         //Con put agregamos valores a el objeto valores
         valores.put(Utilidades.Campo_IdPaciente_E,IdPaciente);
+        valores.put(Utilidades.Campo_IdConsultas_E,IdConsulta);
         valores.put(Utilidades.Campo_Fecha_E,Fecha_E);
         valores.put(Utilidades.Campo_Hora_E,Hora_E);
         valores.put(Utilidades.Campo_Tipo_E,Tipo_E);

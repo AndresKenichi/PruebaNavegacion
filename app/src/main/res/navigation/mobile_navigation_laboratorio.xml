@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation_laboratorio"
-    app:startDestination="@id/lbCuadrosFragment">
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.pruebanavegacion.ui_archivo.WelcomeFragment"
+        android:label="Inicio"
+        tools:layout="@layout/ar_fragment_welcome" />
 
 
     <fragment
@@ -31,4 +37,10 @@
         android:name="com.example.pruebanavegacion.ui_Laboratorio.lbModificarExamen"
         android:label="Modificar examen"
         tools:layout="@layout/lb_fragment_modificarexamen" />
+
+    <fragment
+        android:id="@+id/nav_cerrarsesion_k"
+        android:name="com.example.pruebanavegacion.CerrarSesion"
+        android:label=" "
+        tools:layout="@layout/fragment_cerrar_sesion" />
 </navigation>

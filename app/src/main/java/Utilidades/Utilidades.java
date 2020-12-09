@@ -109,6 +109,7 @@ public class Utilidades {
     public static final String Tabla_Cita_Examen="Citas_Examenes";
     public static final String Campo_IdCita_E="IdCita_E";
     public static final String Campo_IdPaciente_E="IdPaciente";
+    public static final String Campo_IdConsultas_E="IdConsultas";
     public static final String Campo_Fecha_E="Fecha";
     public static final String Campo_Hora_E="Hora";
     public static final String Campo_Tipo_E="Tipo";
@@ -151,8 +152,8 @@ public class Utilidades {
             " foreign key("+Campo_IdCita_REX+") references "+Tabla_Cita_Examen+"("+Campo_IdCita_E+"));";
 
     //Declaramos una variable String donde tendremos un comando SQL para Cita Examen
-    public static final String Crear_Tabla_Cita_Examen="create table "+Tabla_Cita_Examen+"("+Campo_IdCita_E+" integer primary key autoincrement, "+Campo_IdPaciente_E+" integer, " +
-            " "+Campo_Fecha_E+" text, "+Campo_Hora_E+" text, "+Campo_Tipo_E+" text, "+Campo_Estado_E+" integer, foreign key("+Campo_IdPaciente_E+") references "+Tabla_Paciente+"("+Campo_IdPaciente+") );";
+    public static final String Crear_Tabla_Cita_Examen="create table "+Tabla_Cita_Examen+"("+Campo_IdCita_E+" integer primary key autoincrement, "+Campo_IdPaciente_E+" integer, "+Campo_IdConsultas_E+" integer, " +
+            " "+Campo_Fecha_E+" text, "+Campo_Hora_E+" text, "+Campo_Tipo_E+" text, "+Campo_Estado_E+" integer, foreign key("+Campo_IdPaciente_E+") references "+Tabla_Paciente+"("+Campo_IdPaciente+"), foreign key("+Campo_IdConsultas_E+") references "+Tabla_Consultas+"("+Campo_IdConsultas+") );";
 
     //Declaramos una variable String donde tendremos un comando SQL para Ingresos
     public static final String Crear_Tabla_ListaExamenes="create table "+Tabla_Lista_Examenes+"("+Campo_IdListaExamenes_P+" integer primary key autoincrement, "+Campo_IdCita_ex+" integer, "+Campo_IdPaciente_Lex+" integer,"+Campo_IdUsuariosEx+" integer, " +

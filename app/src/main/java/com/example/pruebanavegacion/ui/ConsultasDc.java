@@ -170,7 +170,7 @@ public class ConsultasDc extends Fragment {
         valores.put(Utilidades.Campo_Respiraciones,Respiracion);
         valores.put(Utilidades.Campo_Diagnostico,Diagnostico);
         valores.put(Utilidades.Campo_idMedicamento,idMedic);
-        valores.put(Utilidades.Campo_Indicaciones,idMedic);
+        valores.put(Utilidades.Campo_Indicaciones,Indicaciones);
         valores.put(Utilidades.Campo_TratamientoC,Trata);
         valores.put(Utilidades.Campo_Fecha_Con,FECHA_E);
         long idR=obj.getWritableDatabase().insert(Utilidades.Tabla_Consultas, Utilidades.Campo_IdConsultas,valores);

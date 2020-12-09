@@ -53,7 +53,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/edt"
                         android:ems="10"
-                        android:hint="Codigo usuario"
+                        android:hint="Codigo Consulta"
                         android:inputType="number" />
 
                     <Button

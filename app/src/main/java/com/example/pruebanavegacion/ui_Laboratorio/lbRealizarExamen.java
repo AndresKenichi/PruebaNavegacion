@@ -243,7 +243,7 @@ public class lbRealizarExamen extends Fragment {
 
                 insetarResultados(IdCitasEx,rx, rm, rmax, Fecha ,hora);
                 String[] idCR={IdCitasEx};
-                ModificarReg(idCR, "0");
+                ModificarReg(idCR, "1");
                 consultarListaExamenes(numeroCuadro);
                 Toast.makeText(getContext(),"Si se pudo: ",Toast.LENGTH_SHORT).show();
 
@@ -403,7 +403,7 @@ public class lbRealizarExamen extends Fragment {
         Toast.makeText(getContext(),"Id Registro: "+idR,Toast.LENGTH_SHORT).show();
     }
 
-
+   //Debe hacerse por id paciente
     private void consultarListaExamenes(String idPaciente) {
         Sqlite_Base obj=new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
@@ -411,7 +411,7 @@ public class lbRealizarExamen extends Fragment {
 
         listaEx=new ArrayList<Citas_Examen2>();
         //select * from usuarios
-        Cursor cursor=obj.getWritableDatabase().rawQuery("Select IdCita_E, Tipo  from Citas_Examenes where IdPaciente="+idPaciente+" and Estado=1;",new String[]{});
+        Cursor cursor=obj.getWritableDatabase().rawQuery("Select IdCita_E, Tipo  from Citas_Examenes where "+Utilidades.Campo_IdConsultas_E+"="+idPaciente+" and Estado=0;",new String[]{});
 
         //Recoremos nuestros registros si es que contamos con registros
         while (cursor.moveToNext()){

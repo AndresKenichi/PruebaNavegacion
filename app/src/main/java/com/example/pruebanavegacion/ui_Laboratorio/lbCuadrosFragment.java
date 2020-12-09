@@ -1,5 +1,6 @@
 package com.example.pruebanavegacion.ui_Laboratorio;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class lbCuadrosFragment extends Fragment {
   EditText edtNumCuadro;
   TextView txtNombrePaciente,txtEdadPaciente,txtDuiPaciente,txtObservacionesP,txtDiagnosticoP,txtTratamientoP;
   Button btnInsertarCuadros,btnBuscarCuadro,btnLimpiar;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

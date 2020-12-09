@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="No. registro"
+                        android:hint="Codigo Consulta"
                         android:inputType="number" />
 
                     <Button
@@ -55,6 +55,8 @@
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#FFF"
                         android:text="buscar" />
                 </LinearLayout>
 
@@ -205,12 +207,17 @@
                     android:id="@+id/btnInsertarCuadros"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:textColor="#FFF"
+                    android:layout_marginBottom="5dp"
                     android:text="Insertar" />
 
                 <Button
                     android:id="@+id/btnLimpiar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:textColor="#FFF"
                     android:text="clear" />
 
             </LinearLayout>

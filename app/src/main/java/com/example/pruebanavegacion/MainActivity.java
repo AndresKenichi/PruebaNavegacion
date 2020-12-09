@@ -262,8 +262,8 @@ public class MainActivity extends AppCompatActivity {
         helper.abrir();
 
 
-        String comando="INSERT INTO "+Utilidades.Tabla_Cita_Examen+"("+Utilidades.Campo_IdPaciente_E+","+Utilidades.Campo_Fecha_E+", "+Utilidades.Campo_Hora_E+", "+Utilidades.Campo_Tipo_E+", "+Utilidades.Campo_Estado_E+" ) " +
-                "values('2','16/12/2020','13:00','Examen VIH','1'),('2','16/12/2020','13:00','Examen Orina','1'),('1','16/12/2020','13:00','Examen Glucosa','1'),('1','16/12/2020','13:00','Examen VIH','1')";
+        String comando="INSERT INTO "+Utilidades.Tabla_Cita_Examen+"("+Utilidades.Campo_IdPaciente_E+","+Utilidades.Campo_IdConsultas_E+", "+Utilidades.Campo_Fecha_E+", "+Utilidades.Campo_Hora_E+", "+Utilidades.Campo_Tipo_E+", "+Utilidades.Campo_Estado_E+" ) " +
+                "values('2','2','16/12/2020','13:00','Examen VIH','0'),('2','2','16/12/2020','13:00','Examen Orina','0'),('1','1','16/12/2020','13:00','Examen Glucosa','0'),('1','1','16/12/2020','13:00','Examen VIH','0')";
 
         helper.getWritableDatabase().execSQL(comando);
         Toast.makeText(getApplicationContext(),"Insert exitoso..",Toast.LENGTH_SHORT).show();

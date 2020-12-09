@@ -107,6 +107,6 @@ public class ConsultarPacientesF extends Fragment {
         con.cerrar();
         return pacient;
 
-
+        //Es un secreto, de tu mirada y la mia 7u7
     }
 }

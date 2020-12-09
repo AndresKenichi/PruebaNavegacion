@@ -20,4 +20,12 @@
             android:title="Citas"
             />
     </group>
+    <group>
+        <item
+            android:title="____________________________________" />
+        <item
+            android:id="@+id/nav_cerrarsesion_k"
+            android:icon="@drawable/image_icon_logout_pic_512x512"
+            android:title="CERRAR SESION" />
+    </group>
 </menu>

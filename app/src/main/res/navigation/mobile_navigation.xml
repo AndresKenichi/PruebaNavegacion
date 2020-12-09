@@ -20,4 +20,9 @@
         android:name="com.example.pruebanavegacion.ui.CitasDc"
         android:label="Citas"
         tools:layout="@layout/doc_citas" />
+    <fragment
+        android:id="@+id/nav_cerrarsesion_k"
+        android:name="com.example.pruebanavegacion.CerrarSesion"
+        android:label=" "
+        tools:layout="@layout/fragment_cerrar_sesion" />
 </navigation>

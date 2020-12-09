@@ -42,7 +42,7 @@ public class Laboratorio extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.lbCuadrosFragment, R.id.lbRealizarExamen, R.id.lbModificarExamen)
+                R.id.welcomeFragment, R.id.lbCuadrosFragment, R.id.lbRealizarExamen, R.id.lbModificarExamen, R.id.nav_cerrarsesion_k)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragmentl);

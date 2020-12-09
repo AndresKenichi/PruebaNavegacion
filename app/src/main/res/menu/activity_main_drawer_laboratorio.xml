@@ -5,6 +5,11 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/welcomeFragment"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Inicio"
+            />
+        <item
             android:id="@+id/lbCuadrosFragment"
             android:icon="@drawable/ic_menu_camera"
             android:title="Consultar Cuadros"
@@ -19,5 +24,13 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Modificar Examen" />
 
+    </group>
+    <group>
+        <item
+            android:title="____________________________________" />
+        <item
+            android:id="@+id/nav_cerrarsesion_k"
+            android:icon="@drawable/image_icon_logout_pic_512x512"
+            android:title="CERRAR SESION" />
     </group>
 </menu>

@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/logoshadow"
     tools:context=".ui_administrador.AgregarUsuario.AgregarUsuarioF">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_width="364dp"
-        android:layout_height="641dp"
-        android:background="@drawable/logoshadow"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168">
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_gallery"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -36,16 +28,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40sp">
-
-            <TextView
-                android:id="@+id/textViewx1"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content" />
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <CheckBox
                 android:id="@+id/chkDoctor"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="23dp"
                 android:shadowColor="@color/colorPrimary"
                 android:text="Doctor"
@@ -56,21 +44,21 @@
 
             <CheckBox
                 android:id="@+id/chkAdmin"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="24dp"
                 android:text="Admin"
                 android:textColor="#807D7D" />
 
             <CheckBox
                 android:id="@+id/chkArchivo"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="23dp"
                 android:text="Archivo"
                 android:textColor="#807D7D" />
 
             <CheckBox
                 android:id="@+id/chkLab"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Laboratorio"
@@ -80,7 +68,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40sp">
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewx2"
@@ -89,7 +78,7 @@
 
             <TextView
                 android:id="@+id/textView10"
-                android:layout_width="104dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Especialidad"
                 android:textSize="14sp"
@@ -97,54 +86,17 @@
 
             <Spinner
                 android:id="@+id/spnEspecialidad"
-                android:layout_width="223dp"
-                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:background="@drawable/spinlarge1"
                 android:entries="@array/snpespecialidades" />
 
-            <TextView
-                android:id="@+id/textViewx3"
-                android:layout_width="73dp"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="40sp">
-
-            <TextView
-                android:id="@+id/textViewx4"
-                android:layout_width="12dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="103dp"
-                android:layout_height="match_parent"
-                android:text="No. Empleado"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edtNumEmp"
-                android:layout_width="155dp"
-                android:layout_height="32dp"
-                android:background="@drawable/edt"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textViewx5"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="45sp">
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewx6"
@@ -153,16 +105,16 @@
 
             <TextView
                 android:id="@+id/textView12"
-                android:layout_width="89dp"
-                android:layout_height="32dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
                 android:text="Nombre"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtNombreEmpleado"
-                android:layout_width="252dp"
-                android:layout_height="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:background="@drawable/edt"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -170,15 +122,12 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/textViewx7"
-                android:layout_width="18dp"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="45sp">
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewx8"
@@ -187,7 +136,7 @@
 
             <TextView
                 android:id="@+id/textView14"
-                android:layout_width="90dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="DUI"
                 android:textSize="14sp"
@@ -195,21 +144,18 @@
 
             <EditText
                 android:id="@+id/edtDui"
-                android:layout_width="218dp"
-                android:layout_height="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:background="@drawable/edt"
                 android:ems="10"
                 android:inputType="numberSigned" />
 
-            <TextView
-                android:id="@+id/textViewx9"
-                android:layout_width="92dp"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="45sp">
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewx10"
@@ -218,30 +164,26 @@
 
             <TextView
                 android:id="@+id/textView15"
-                android:layout_width="92dp"
-                android:layout_height="match_parent"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
                 android:text="NIT"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtNIT"
-                android:layout_width="216dp"
-                android:layout_height="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:background="@drawable/edt"
                 android:ems="10"
                 android:inputType="numberSigned" />
-
-            <TextView
-                android:id="@+id/textViewx11"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="45sp">
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewx12"
@@ -250,7 +192,7 @@
 
             <TextView
                 android:id="@+id/textView16"
-                android:layout_width="102dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Correo"
                 android:textSize="14sp"
@@ -258,23 +200,20 @@
 
             <EditText
                 android:id="@+id/edtUsuario"
-                android:layout_width="219dp"
-                android:layout_height="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:background="@drawable/edt"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
                 android:textColor="@color/colorPrimary" />
 
-            <TextView
-                android:id="@+id/textViewx13"
-                android:layout_width="55dp"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="45sp">
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewx14"
@@ -283,7 +222,7 @@
 
             <TextView
                 android:id="@+id/textView17"
-                android:layout_width="163dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Contraseña"
                 android:textSize="14sp"
@@ -291,8 +230,8 @@
 
             <EditText
                 android:id="@+id/edtContrasena"
-                android:layout_width="179dp"
-                android:layout_height="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:background="@drawable/edt"
                 android:ems="10"
                 android:inputType="textPassword" />
@@ -301,7 +240,8 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="45sp">
+            android:layout_height="42dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewz66"
@@ -311,16 +251,16 @@
 
             <TextView
                 android:id="@+id/textView18"
-                android:layout_width="163dp"
-                android:layout_height="match_parent"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
                 android:text="Confirmar Contraseña"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtConContrasena"
-                android:layout_width="179dp"
-                android:layout_height="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:background="@drawable/edt"
                 android:ems="10"
                 android:inputType="textPassword" />
@@ -329,7 +269,8 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="45sp">
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewx66"
@@ -339,8 +280,8 @@
 
             <TextView
                 android:id="@+id/textView19"
-                android:layout_width="135dp"
-                android:layout_height="match_parent"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Fecha Nacimiento"
                 android:textSize="14sp"
@@ -348,23 +289,23 @@
 
             <Spinner
                 android:id="@+id/spnDia"
-                android:layout_width="38dp"
-                android:layout_height="30dp"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
                 android:background="@drawable/spin1"
                 android:entries="@array/snpdias" />
 
             <Spinner
                 android:id="@+id/spnMes"
-                android:layout_width="102dp"
-                android:layout_height="30dp"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/spin1"
                 android:entries="@array/snpmeses" />
 
             <Spinner
                 android:id="@+id/spnAno"
-                android:layout_width="67dp"
-                android:layout_height="30dp"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
                 android:background="@drawable/spin1"
                 android:entries="@array/snpanos" />
 
@@ -378,7 +319,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45sp">
+            android:layout_height="35dp"
+            android:layout_marginTop="2dp">
 
             <TextView
                 android:id="@+id/textViewz61"
@@ -388,7 +330,7 @@
 
             <TextView
                 android:id="@+id/textView20"
-                android:layout_width="87dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Direccion"
                 android:textSize="14sp"
@@ -396,8 +338,8 @@
 
             <EditText
                 android:id="@+id/edtDireccion"
-                android:layout_width="256dp"
-                android:layout_height="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:background="@drawable/edt"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -406,33 +348,16 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="88dp">
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="63dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
-
-            <Button
-                android:id="@+id/btnAgregar"
-                android:layout_width="94dp"
-                android:layout_height="41dp"
-                android:background="@drawable/guardarbtn" />
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
 
     </LinearLayout>
+    </ScrollView>
 
+    <Button
+        android:id="@+id/btnAgregar"
+        android:layout_width="94dp"
+        android:layout_height="41dp"
+        android:layout_gravity="center"
+        android:background="@drawable/guardarbtn"
+        android:gravity="center" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

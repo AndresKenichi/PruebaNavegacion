@@ -24,6 +24,9 @@ import com.example.pruebanavegacion.Administrador;
 import com.example.pruebanavegacion.R;
 import com.example.pruebanavegacion.ui_administrador.Inicio.InicioFragment_A;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -44,7 +47,7 @@ public class GestionarAreasF extends Fragment {
     int indexHabitacion;
     Spinner Areas,Habitacion,Especialida,Intervencion,Medico,Dia,Mes,Ano,Hora,Min;
     View vista;
-
+    // Para llenar con el selectedItem
     final String[] idintervencion = new String[1];
     final String[] idarea= new String[1];
     final String[] iduser= new String[1];
@@ -54,13 +57,15 @@ public class GestionarAreasF extends Fragment {
     final String[] an= new String[1];
     final String[] hh= new String[1];
     final String[] min= new String[1];
+    String FechaS;
+    String HoraS;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         GestionarAreasVM =
                 ViewModelProviders.of(this).get(GestionarAreasVM.class);
         vista= inflater.inflate(R.layout.a_fragment_gestionarareas, container, false);
 
-
+        //Declaramos objetos del XML a utilizar
         Areas = vista.findViewById(R.id.spnAreasGA);
         Habitacion= vista.findViewById(R.id.spnHabi);
         Especialida = vista.findViewById(R.id.spnEsp);
@@ -75,8 +80,10 @@ public class GestionarAreasF extends Fragment {
         NoPa = vista.findViewById(R.id.edtNumPacienteGA);
         Cancelar = vista.findViewById(R.id.btnCancelarGA);
         ErrorDoc = vista.findViewById(R.id.txtErrorDoc);
+        //Abrimos coneccion
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         x.abrir();
+        // Este metodo consulta las areas y llena el primer Spinner
         consultarArea();
 
         adapter1 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,AreasA);
@@ -85,18 +92,21 @@ public class GestionarAreasF extends Fragment {
         Areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
                     indexHabitacion= i+1;
-                    //Mando el id de la seleccion
+                    //Mando el id de la seleccion  a consultarlugares
                     consultarLugares(indexHabitacion);
+
                     adapter2 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,HabitacionesA);
                     Habitacion.setAdapter(adapter2);
-                    //Lleno el Array buscando en AreasI la posicion que selecione
+                    //Lleno el Array buscando en AreasI la posicion que selecione, capturando el id del area seleccionada
                     idarea[0] = AreasI.get(i);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
         Intervencion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -108,10 +118,11 @@ public class GestionarAreasF extends Fragment {
 
             }
         });
+
         Especialida.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                //MEtodo consultar Doctores, le enviamos la Especialidad a buscar
                 consultarDoc(adapterView.getSelectedItem().toString());
                 adapter3 = new ArrayAdapter(getContext(),R.layout.support_simple_spinner_dropdown_item,DoctoresA);
                 Medico.setAdapter(adapter3);
@@ -200,34 +211,49 @@ public class GestionarAreasF extends Fragment {
         AgregarGA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String FechaS;
-                String HoraS;
+                String idp=NoPa.getText().toString();
                 String idALs[] = {Habitacion.getSelectedItem().toString()};
-                FechaS = Dia.getSelectedItem().toString()+"-"+Mes.getSelectedItem().toString()+"-"+Ano.getSelectedItem().toString();
-                HoraS = Hora.getSelectedItem().toString()+":"+Min.getSelectedItem().toString();
-                String cadFe = di[0]+"/"+me[0]+"/"+an[0];
-                String cadHor = hh[0]+":"+min[0];
 
-                boolean bv= validarFechaHoraDoc(cadFe,cadHor,iduser[0]);
+
+                FechaS = Ano.getSelectedItem().toString()+"/"+Mes.getSelectedItem().toString()+"/"+Dia.getSelectedItem().toString();
+                HoraS = Hora.getSelectedItem().toString()+":"+Min.getSelectedItem().toString();
+
+
                 if((NoPa.getText().toString()).equals("")){
                     NoPa.setError("Ingrese un ID");
                     NoPa.requestFocus();
 
                 }else {
-                    if(bv==true){
-                        Toast.makeText(getContext(),"DOCTOR NO DISPONIBLE A ESTA HORA",Toast.LENGTH_LONG).show();
-                    }else
-                    {
 
-                        Toast.makeText(getContext(),"INGRESADO",Toast.LENGTH_LONG).show();
-                        insetarIngresos(NoPa.getText().toString(),iduser[0],idhabitacion[0],idintervencion[0],FechaS,HoraS,1);
-                        actualizarEstado(idALs,1);
+                    if(validarPacienteExist(idp)==1) {
+                        //Existe Paciente Activo ya Ingresado, recibimos 1
+                        NoPa.setError("Paciente en Ingreso Activo");
+                        NoPa.requestFocus();
 
-                        Intent ga = new Intent(getContext(), Administrador.class);
-                        startActivity(ga);
+                    }else{
+                        if(validarDoctorExist(FechaS,iduser[0])==2){
+                            //Si Existe un Ingreso activo a la fecha seleccionada en el que este doctor este a cargo, enviemos 2
+                            Toast.makeText(getContext(),"Doctor No Disponible Esta Hora",Toast.LENGTH_LONG).show();
+                        }else
+                        {
+                            Toast.makeText(getContext(),"INGRESADO",Toast.LENGTH_LONG).show();
+                            insetarIngresos(NoPa.getText().toString(),iduser[0],idhabitacion[0],idintervencion[0],FechaS,HoraS,1);
+                            actualizarEstado(idALs,1);
+
+                            Intent ga = new Intent(getContext(), Administrador.class);
+                            startActivity(ga);
+                        }
                     }
-                }
 
+                }
+            }
+        });
+        Cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent fa = new Intent(getContext(), Administrador.class);
+                startActivity(fa);
 
             }
         });
@@ -239,11 +265,12 @@ public class GestionarAreasF extends Fragment {
 
         ContentValues val = new ContentValues();
         x = new Sqlite_Base(getContext(), DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
-
+        //Validar el estado del Lugar correspondiente que se esta asignando a este Paciente
         val.put(Utilidades.Campo_EstadoL,est);
-
         x.getWritableDatabase().update(Utilidades.Tabla_Lugares,val ,Utilidades.Campo_Num_Cama+"=?",idAL);
     }
+
+
     public void consultarArea(){
 
         AreasA= new ArrayList<>();
@@ -257,21 +284,30 @@ public class GestionarAreasF extends Fragment {
         u=x.getWritableDatabase().rawQuery("SELECT IdArea,Nombre FROM "+Utilidades.Tabla_Areas,new String[]{});
 
         while(u.moveToNext()){
+
+            // Este es el IDArea
             box=u.getString(0);
+            //Muevo en esta pocision al Array
             AreasI.add(box);
+            // Este es el NOMBREAREA
             box=u.getString(1);
+            //Muevo en esta posicion al Array
             AreasA.add(box);
         }
+
     }
+
     public void consultarLugares(int i){
 
         HabitacionesA= new ArrayList<>();
         HabitacionesI = new ArrayList<>();
+
         x= new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
 
         x.abrir();
 
         Cursor u = null;
+        //Aca envio el indice i, validando que sea ese indice en la tabla Lugares y su estado sea disponible(0)
         u=x.getWritableDatabase().rawQuery("SELECT IdLugar,Num_Cama FROM "+Utilidades.Tabla_Lugares+" where "+Utilidades.Campo_IdAreaL+" = "+i+" and Estado="+0,new String[]{});
 
         while(u.moveToNext()){
@@ -282,6 +318,7 @@ public class GestionarAreasF extends Fragment {
             HabitacionesA.add(box);
         }
     }
+
 
     public void consultarDoc(String esp){
 
@@ -324,52 +361,37 @@ public class GestionarAreasF extends Fragment {
         Toast.makeText(getContext(),"INGRESO INSERTADO: "+idResultante,Toast.LENGTH_SHORT).show();
 
     }
-    public boolean validarDiaExist(String fec,String idP){
+    public int validarPacienteExist(String idPa){
+        x = new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
+        x.abrir();
+        int s=0;
+        Cursor gf = null;
+        gf = x.getWritableDatabase().rawQuery("Select FechaIngreso,HoraIngreso from Ingresos where IdPaciente = "+idPa+" and Estado = 1 ",new String[]{});
+
+        if(gf.getCount()>0)
+        {
+            //Si Existe un Ingreso activo a la fecha seleccionada en el que este doctor este a cargo, enviemos 1
+            s=1;
+        }
+        return s;
+    }
+    public int validarDoctorExist(String fec,String idP){
 
         x = new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
         x.abrir();
         String fech=" ",hora=" ";
-        Boolean s=false;
-        Cursor gf = null;
+        int s=0;
 
-        gf = x.getWritableDatabase().rawQuery("Select FechaIngreso,HoraIngreso from Ingresos where IdPaciente = "+idP+"and Estado = 1",new String[]{});
+        Cursor gx = null;
+        gx = x.getWritableDatabase().rawQuery("select u.Id,u.Nombre,i.IdIngreso from usuarios u inner join Ingresos i on u.Id=i.IdUsuarios where u.Id = '"+idP+"' and i.FechaIngreso= '"+fec+"' and i.HoraIngreso = '"+HoraS+"' and i.Estado=1",new String[]{});
 
-        while(gf.moveToNext()){
-
-            fech=gf.getString(0);
-            hora = gf.getString(1);
-        }
-        if(fec.equals(fech)){
-            s= false;
-        }else{
-            s= true;
+        if(gx.getCount()>0)
+        {
+            //Existe Paciente Activo ya Ingresado, enviemos 1
+            s=2;
         }
 
         return s;
     }
-    public boolean validarFechaHoraDoc(String fec,String hor,String idD){
 
-        x = new Sqlite_Base(getContext(),DatosConexion.NOMBREBD,null,DatosConexion.VERSION);
-        x.abrir();
-        String fech=" ",hora=" ",es=" ";
-        boolean xc = false;
-        Cursor gf = null;
-
-        gf = x.getWritableDatabase().rawQuery("Select FechaIngreso,HoraIngreso from Ingresos where IdUsuarios = "+idD+" and Estado = 1",new String[]{});
-        while(gf.moveToNext()){
-            fech=gf.getString(0);
-            hora = gf.getString(1);
-        }
-
-        if(fech.equals(fec)){
-            if(hora.equals(hor)){
-                xc=true;
-            }
-            else
-            {
-                xc = false;
-            }
-        }
-        return xc;
-    }
 }

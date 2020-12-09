@@ -42,6 +42,7 @@ public class ModificarUsuarioF extends Fragment {
     String box;
     Sqlite_Base X;
     ArrayList<String> data ;
+    String[] fech ;
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         modificarUsuarioVM =
@@ -63,7 +64,6 @@ public class ModificarUsuarioF extends Fragment {
         ConClave = vista.findViewById(R.id.edtContrasenaMU);
         Telefono = vista.findViewById(R.id.edtTelefonoMU);
         Direccion = vista.findViewById(R.id.etDirMU);
-        NoEmpleado = vista.findViewById(R.id.edtNoEmpleadoMU);
         Dia = vista.findViewById(R.id.spnDiaMU);
         Mes = vista.findViewById(R.id.spnMesMU);
         Ano = vista.findViewById(R.id.spnAnoMU);
@@ -92,6 +92,18 @@ public class ModificarUsuarioF extends Fragment {
                 }
 
                 if(data.isEmpty()==false){
+                    //AQUI LE MUEVO RASA
+                    fech = new String[2];
+                    fech = data.get(8).split("/");
+
+                    ArrayAdapter AdapterDia = ArrayAdapter.createFromResource(getContext(), R.array.snpdias, android.R.layout.simple_spinner_item);
+                    ArrayAdapter AdapterMes = ArrayAdapter.createFromResource(getContext(), R.array.snpmeses, android.R.layout.simple_spinner_item);
+                    ArrayAdapter AdapterA = ArrayAdapter.createFromResource(getContext(), R.array.snpanos, android.R.layout.simple_spinner_item);
+                    Dia.setSelection(AdapterDia.getPosition(fech[0]));
+                    Mes.setSelection(AdapterMes.getPosition(fech[1]));
+                    Ano.setSelection(AdapterA.getPosition(fech[2]));
+
+                    //FIN
                     //Validar El Estado para el TooggleButton
                     if(data.get(0).equals("1")){
 
@@ -107,7 +119,6 @@ public class ModificarUsuarioF extends Fragment {
                     }
                     //Fin
                     Nombre.setText(data.get(3));
-                    NoEmpleado.setText(data.get(4));
                     DUI.setText(data.get(5));
                     NIT.setText(data.get(6));
                     Telefono.setText(data.get(7));
@@ -160,7 +171,7 @@ public class ModificarUsuarioF extends Fragment {
                 mm=Mes.getSelectedItem().toString();
                 aa=Ano.getSelectedItem().toString();
 
-                Fecc=dd+"-"+mm+"-"+aa ;
+                Fecc=dd+"/"+mm+"/"+aa ;
                 int est2=0;
 
                 if(Es1.equals("DE BAJA")){est2=0;}
@@ -173,17 +184,17 @@ public class ModificarUsuarioF extends Fragment {
 
 
                 }else{
-                        if(Nombre.equals("")||NoEmpleado.equals("")||DUI.equals("")||NIT.equals("")||Direccion.equals(""))
-                        {
-                            Codigo.setError("DEBE INGRESAR EL MALDITO CODIGO!");
-                            Codigo.requestFocus();
-                        }else {
-                            ModificarReg(idUsu, Nombre.getText().toString(), Correo.getText().toString(), Clave.getText().toString(), TipoUsuario.getSelectedItem().toString(), Especialidad.getSelectedItem().toString(), NIT.getText().toString(), DUI.getText().toString(), Telefono.getText().toString(), Fecc, Direccion.getText().toString(), est2);
-                            Toast.makeText(getContext(), "Usuario Modificado!", Toast.LENGTH_LONG).show();
+                    if(Nombre.equals("")||NoEmpleado.equals("")||DUI.equals("")||NIT.equals("")||Direccion.equals(""))
+                    {
+                        Codigo.setError("DEBE INGRESAR EL MALDITO CODIGO!");
+                        Codigo.requestFocus();
+                    }else {
+                        ModificarReg(idUsu, Nombre.getText().toString(), Correo.getText().toString(), Clave.getText().toString(), TipoUsuario.getSelectedItem().toString(), Especialidad.getSelectedItem().toString(), NIT.getText().toString(), DUI.getText().toString(), Telefono.getText().toString(), Fecc, Direccion.getText().toString(), est2);
+                        Toast.makeText(getContext(), "Usuario Modificado!", Toast.LENGTH_LONG).show();
 
-                            Intent ja = new Intent(getContext(), Administrador.class);
-                            startActivity(ja);
-                        }
+                        Intent ja = new Intent(getContext(), Administrador.class);
+                        startActivity(ja);
+                    }
 
                 }
 

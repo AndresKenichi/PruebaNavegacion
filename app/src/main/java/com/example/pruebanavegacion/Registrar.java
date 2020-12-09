@@ -33,7 +33,7 @@ public class Registrar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
-
+        //Inicializamos objetos del XML a utilizar
         btnRegistrar=findViewById(R.id.btnRegistrar);
         txtNomUsu=findViewById(R.id.txtNomUsu);
         txtDisUsu=findViewById(R.id.txtDisUsu);
@@ -47,7 +47,7 @@ public class Registrar extends AppCompatActivity {
         txtTel=findViewById(R.id.txtTel);
         txtFecha=findViewById(R.id.txtFecha);
 
-
+        //Boton para registrar
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,21 +153,21 @@ public class Registrar extends AppCompatActivity {
                     return;
                 }
 
-
-
                 try {
 
                     est=Integer.parseInt(Sest);
+                    //Spinner para especialidad y Tipo Usuario
                     String hue = Especialidad.getSelectedItem().toString();
                     String euh = TipoU.getSelectedItem().toString();
-
+                    //Abrimos conexion con la BD
                     helper.abrir();
                     helper.insetarReg(nom, correo, clave, euh, hue, nit, dui, tel, fecha, direccion, est);
                     Toast.makeText(getApplicationContext(), "Id Registro: " + helper.IdR(), Toast.LENGTH_SHORT).show();
                     helper.close();
-
+                    //Accedemos al Loggin nuevamente
                     Intent intent = new Intent(Registrar.this, MainActivity.class);
                     startActivity(intent);
+
                 } catch (SQLException e){
                     e.printStackTrace();
                 }

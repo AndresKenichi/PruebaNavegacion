@@ -25,21 +25,18 @@
                 android:orientation="horizontal">
 
 
-
                 <TextView
                     android:id="@+id/textView106"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="Nombre Area"
-                    android:layout_weight="1"
                     android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/spnAreasGA"
-                    android:layout_width="match_parent"
+                    android:layout_width="195dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:background="@drawable/spinlarge1" />
 
 
@@ -47,22 +44,8 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView88"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text=" " />
-
-        </LinearLayout>
-
-
-
-            <LinearLayout
+    <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -73,26 +56,20 @@
                     android:layout_height="match_parent"
                     android:text=" " />
 
-                <TextView
-                    android:id="@+id/textView108"
-                    android:layout_width="109dp"
-                    android:layout_height="30dp"
-                    android:text="No. Habitacion"
-                    android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView108"
+            android:layout_width="135dp"
+            android:layout_height="30dp"
+            android:text="No. Habitacion"
+            android:textStyle="bold" />
 
-                <Spinner
-                    android:id="@+id/spnHabi"
-                    android:layout_width="124dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/spin1" />
+        <Spinner
+            android:id="@+id/spnHabi"
+            android:layout_width="94dp"
+            android:layout_height="30dp"
+            android:background="@drawable/spin1" />
 
-                <TextView
-                    android:id="@+id/textView110"
-                    android:layout_width="19dp"
-                    android:layout_height="match_parent"
-                    android:text=" " />
-
-            </LinearLayout>
+    </LinearLayout>
 
 
 
@@ -120,11 +97,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView112"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text=" " />
             </LinearLayout>
 
         </LinearLayout>
@@ -188,24 +160,18 @@
 
                 <TextView
                     android:id="@+id/textView115"
-                    android:layout_width="120dp"
+                    android:layout_width="109dp"
                     android:layout_height="wrap_content"
                     android:text="Especializacion"
                     android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/spnEsp"
-                    android:layout_width="233dp"
+                    android:layout_width="219dp"
                     android:layout_height="30dp"
                     android:background="@drawable/spinlarge1"
                     android:entries="@array/snpespecialidades" />
 
-                <TextView
-                    android:id="@+id/textView116"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text=" " />
             </LinearLayout>
 
         </LinearLayout>
@@ -235,7 +201,7 @@
 
                 <Spinner
                     android:id="@+id/spnNMedico"
-                    android:layout_width="232dp"
+                    android:layout_width="208dp"
                     android:layout_height="30dp"
                     android:background="@drawable/spinlarge1" />
 
@@ -277,7 +243,7 @@
 
                 <Spinner
                     android:id="@+id/spnIntervencion"
-                    android:layout_width="232dp"
+                    android:layout_width="206dp"
                     android:layout_height="30dp"
                     android:background="@drawable/spinlarge1"
                     android:entries="@array/snpintervencion" />
@@ -426,38 +392,38 @@
                 android:orientation="horizontal"></LinearLayout>
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView131"
+                android:layout_width="153dp"
+                android:layout_height="wrap_content"
+                android:text=" " />
+
+            <Button
+                android:id="@+id/btnAgregarGA"
+                android:layout_width="94dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:background="@drawable/modificarbtn" />
 
-                <TextView
-                    android:id="@+id/textView131"
-                    android:layout_width="153dp"
-                    android:layout_height="wrap_content"
-                    android:text=" " />
-
-                <Button
-                    android:id="@+id/btnAgregarGA"
-                    android:layout_width="94dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/modificarbtn" />
-
-                <TextView
-                    android:id="@+id/textView132"
-                    android:layout_width="137dp"
-                    android:layout_height="wrap_content"
-                    android:text=" " />
-            </LinearLayout>
-
+            <TextView
+                android:id="@+id/textView132"
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:text=" " />
         </LinearLayout>
 
-        <LinearLayout
+    </LinearLayout>
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:orientation="vertical">

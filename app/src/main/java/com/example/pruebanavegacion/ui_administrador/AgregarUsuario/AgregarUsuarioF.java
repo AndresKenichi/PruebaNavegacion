@@ -60,7 +60,6 @@ public class AgregarUsuarioF extends Fragment {
 
 
         Especialidad = vista.findViewById(R.id.spnEspecialidad);
-        NumEmpleado = vista.findViewById(R.id.edtNumEmp);
         NombreEmpleado = vista.findViewById(R.id.edtNombreEmpleado);
         DUI = vista.findViewById(R.id.edtDui);
         NIT = vista.findViewById(R.id.edtNIT);
@@ -138,7 +137,7 @@ public class AgregarUsuarioF extends Fragment {
                             d = Dia.getSelectedItem().toString();
                             m = Mes.getSelectedItem().toString();
                             a = Ano.getSelectedItem().toString();
-                            fecha_nac = d+"-"+m+"-"+a;
+                            fecha_nac = d+"/"+m+"/"+a;
 
                             try{
 

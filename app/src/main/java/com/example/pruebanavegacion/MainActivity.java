@@ -212,9 +212,20 @@ public class MainActivity extends AppCompatActivity {
         String comandoL="INSERT INTO "+Utilidades.Tabla_Lugares+"("+Utilidades.Campo_IdAreaL+", "+Utilidades.Campo_Num_Cama+", "+Utilidades.Campo_Num_Cuarto+", "+Utilidades.Campo_TipoHabitacion+", "+Utilidades.Campo_EstadoL+" ) " +
                 "values('1','H-0001','H-1','DOS PERSONAS','1'),('1','H-0002','H-1','DOS PERSONAS','0'),('1','H-0003','H-1','PERSONAL','0'),('1','H-0004','H-1','EJECUTIVA','0')," +
                 "('1','H-0005','H-1','DOS PERSONAS','0'),('1','H-0006','H-1','DOS PERSONAS','0'),('1','H-0007','H-1','PERSONAL','0'),('1','H-0008','H-1','EJECUTIVA','0')," +
-                "('2','K-0001','K-6','DOS PERSONAS','1'),('2','K-0002','K-6','DOS PERSONAS','0'),('1','K-0003','K-6','PERSONAL','0'),('2','K-0003','K-6','EJECUTIVA','0')," +
-                "('2','K-0004','K-6','DOS PERSONAS','0'),('2','K-0005','K-6','DOS PERSONAS','0'),('1','K-0006','K-6','PERSONAL','0'),('2','K-0003','K-6','EJECUTIVA','0')," +
-                "('3','J-0001','K-6','DOS PERSONAS','1'),('3','J-0002','K-6','DOS PERSONAS','0'),('3','J-0003','K-6','PERSONAL','0'),('3','J-0003','J-6','EJECUTIVA','0')";
+                "('2','K-0001','K-6','DOS PERSONAS','1'),('2','K-0002','K-6','DOS PERSONAS','0'),('1','K-0003','K-6','PERSONAL','0'),('2','K-0004','K-6','EJECUTIVA','0')," +
+                "('2','K-0005','K-6','DOS PERSONAS','0'),('2','K-0006','K-6','DOS PERSONAS','0'),('1','K-0007','K-6','PERSONAL','0'),('2','K-0008','K-6','EJECUTIVA','0')," +
+                "('3','J-0001','K-6','DOS PERSONAS','1'),('3','J-0002','K-6','DOS PERSONAS','0'),('3','J-0003','K-6','PERSONAL','0'),('3','J-0004','J-6','EJECUTIVA','0')," +
+                "('3','J-0005','J-6','EJECUTIVA','0'),('3','J-0006','J-6','EJECUTIVA','0'),('3','J-0007','J-6','DOS PERSONAS','0'),('3','J-0008','J-6','PERSONAL','0')," +
+                "('4','X-0001','X-12','PERSONAL','0'),('4','X-0002','X-12','EJECUTIVA','0'),('4','X-0003','X-12','EJECUTIVA','0'),('4','X-0004','X-12','EJECUTIVA','0')," +
+                "('4','X-0005','X-12','DOS PERSONAS','0'),('5','F-0001','F-9','EJECUTIVA','0'),('5','F-0002','F-9','EJECUTIVA','0'),('5','F-0003','F-9','EJECUTIVA','0')," +
+                "('5','F-0004','F-9','PERSONAL','0'),('5','F-0005','F-9','PERSONAL','0'),('5','F-0006','F-9','DOS PERSONAS','0'),('5','F-0007','F-9','PERSONAL','0')," +
+                "('6','Q-0001','Q-0','PERSONAL','0'),('6','Q-0002','Q-0','PERSONAL','0'),('6','Q-0003','Q-0','PERSONAL','0'),('6','Q-0004','Q-0','PERSONAL','0')," +
+                "('6','Q-0005','Q-0','DOS PERSONAS','0'),('6','Q-0006','Q-0','DOS PERSONAS','0'),('6','Q-0007','Q-0','EJECUTIVA','0'),('6','Q-0008','Q-0','EJECUTIVA','0')," +
+                "('7','T-0001','T-15','DOS PERSONAS','0'),('7','T-0002','T-15','DOS PERSONAS','0'),('7','T-0003','T-15','DOS PERSONAS','0'),('7','T-0004','T-15','DOS PERSONAS','0')," +
+                "('7','T-0005','T-15','PERSONL','0'),('7','T-0006','T-15','PERSONAL','0'),('7','T-0007','T-15','PERSONAL','0'),('7','T-0008','T-15','PERSONAL','0')," +
+                "('8','G-0001','G-33','PERSONAL','0'),('8','G-0002','G-33','PERSONAL','0'),('8','G-0003','G-33','PERSONAL','0'),('8','G-0004','G-33','PERSONAL','0')," +
+                "('9','B-0021','B-34','PERSONAL','0'),('9','B-0022','B-34','PERSONAL','0'),('9','B-0023','B-34','PERSONAL','0'),('9','B-0024','B-34','PERSONAL','0')," +
+                "('10','C-0021','C-15','EJECUTIVA','0'),('10','C-0022','C-15','PERSONAL','0'),('10','C-0023','C-15','PERSONAL','0'),('10','C-0024','C-15','PERSONAL','0')";
 
         helper.getWritableDatabase().execSQL(comandoL);
 
@@ -245,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                 "values('2','16/12/2020','13:00','Examen VIH','1'),('2','16/12/2020','13:00','Examen Orina','1'),('1','16/12/2020','13:00','Examen Glucosa','1'),('1','16/12/2020','13:00','Examen VIH','1')";
 
         helper.getWritableDatabase().execSQL(comando);
-        Toast.makeText(getApplicationContext(),"Insert exitoso..",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"Insert exitoso..",Toast.LENGTH_SHORT).show();
 
     }
 
